@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/3 | zebra110</title>
+  <title>jquery（三） | zebra110</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="neng">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zebra110">
-<meta property="og:url" content="http://yoursite.com/archives/2017/03/index.html">
+  <meta name="description" content="8、类数组的操作jQuery选择器返回的是一个jQuery对象(该对象可能包括了多个dom节点),如果要对这些dom节点分别做不同的处理，就需要去遍历，需要调用jQuery对象提供的一些方法或者属性，称之为类数组的操作。类数组就是DOM节点数组
+1)each(fn(i)):循环遍历每一个元素,this代表被迭代的dom对象，$(this)代表被迭代的jQuery对象。（i根据实际情况选择要还是不要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery（三）">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/jquery（三）/index.html">
 <meta property="og:site_name" content="zebra110">
-<meta property="og:description" content="neng">
+<meta property="og:description" content="8、类数组的操作jQuery选择器返回的是一个jQuery对象(该对象可能包括了多个dom节点),如果要对这些dom节点分别做不同的处理，就需要去遍历，需要调用jQuery对象提供的一些方法或者属性，称之为类数组的操作。类数组就是DOM节点数组
+1)each(fn(i)):循环遍历每一个元素,this代表被迭代的dom对象，$(this)代表被迭代的jQuery对象。（i根据实际情况选择要还是不要">
+<meta property="og:updated_time" content="2017-03-16T07:56:30.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zebra110">
-<meta name="twitter:description" content="neng">
+<meta name="twitter:title" content="jquery（三）">
+<meta name="twitter:description" content="8、类数组的操作jQuery选择器返回的是一个jQuery对象(该对象可能包括了多个dom节点),如果要对这些dom节点分别做不同的处理，就需要去遍历，需要调用jQuery对象提供的一些方法或者属性，称之为类数组的操作。类数组就是DOM节点数组
+1)each(fn(i)):循环遍历每一个元素,this代表被迭代的dom对象，$(this)代表被迭代的jQuery对象。（i根据实际情况选择要还是不要">
   
     <link rel="alternative" href="/atom.xml" title="zebra110" type="application/atom+xml">
   
@@ -152,188 +156,365 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jquery（三）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/关于异步/" class="archive-article-date">
-  	<time datetime="2017-03-16T08:00:10.898Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/关于异步/">关于异步</a>
+    <h1 class="article-title" itemprop="name">
+      jquery（三）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Node.Js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/CSS3（一）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:59:16.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/CSS3（一）/">CSS3（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/HTML5新特性/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:58:31.887Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/HTML5新特性/">HTML5新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTML5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/JS面向对象/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:57:11.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/JS面向对象/">JS面向对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/jquery（三）/" class="archive-article-date">
+        
+        <a href="/2017/03/16/jquery（三）/" class="archive-article-date">
   	<time datetime="2017-03-16T07:56:29.937Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jquery（三）/">jquery（三）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="8、类数组的操作"><a href="#8、类数组的操作" class="headerlink" title="8、类数组的操作"></a>8、类数组的操作</h4><p>jQuery选择器返回的是一个jQuery对象(该对象可能包括了多个dom节点),如果要对这些dom节点分别做不同的处理，就需要去遍历，需要调用jQuery对象提供的一些方法或者属性，称之为类数组的操作。类数组就是DOM节点数组</p>
+<p>1)each(fn(i)):循环遍历每一个元素,this代表被迭代的dom对象，$(this)代表被迭代的jQuery对象。（i根据实际情况选择要还是不要）。</p>
+<p>2)eq(index)：返回index+1位置处的jQuery对象</p>
+<p>3)index(obj)：返回下标，其中obj可以是dom对象或者jQuery对象。</p>
+<p>4)length属性：dom对象的个数</p>
+<p>5)get()：返回dom对象组成的数组</p>
+<p>6)get(index)：返回index+1个dom对象。</p>
+<pre><code>$(&apos;#b4&apos;).click(function(){
 
-        <div class="article-info info-on-right">
-          
+$(&apos;#s2 option&apos;).each(function(){
+
+$(&apos;#s1&apos;).append($(this));
+
+});
+
+});
+
+$(function(){
+
+$(&apos;#b1&apos;).click(function(){
+
+var $obj = $(&apos;ul li&apos;);
+
+$obj.each(function(i){
+
+//i:表示正在被访问的那个节点的下标,
+
+//下标从0开始
+
+if(i == 0){
+
+$(this).css(&apos;font-size&apos;,&apos;50px&apos;);
+
+}else if(i==1){
+
+$(this).css(&apos;font-style&apos;,&apos;italic&apos;);
+
+}else{
+
+$(this).css(&apos;color&apos;,&apos;red&apos;).css(&apos;font-size&apos;,&apos;80px&apos;);
+
+}
+
+});
+
+});
+</code></pre><h4 id="9、jQuery对ajax编程的支持"><a href="#9、jQuery对ajax编程的支持" class="headerlink" title="9、jQuery对ajax编程的支持"></a>9、jQuery对ajax编程的支持</h4><p>(1)load方法:</p>
+<p>作用：是将服务器返回的数据直接添加到符合要求的节点之上，相当于obj.innerHTML = 返回的数据。</p>
+<p>语法:$obj.load(请求地址,[请求参数]);</p>
+<p>其中，请求参数可以有两种形式:</p>
+<p>第一种：请求字符串，比如 “username=zs”,或者“username=zs&amp;age=22”。</p>
+<p>第二种：javascript对象，比如 {‘username’:’zs’}，或者{‘username’:’zs’,’age’:22}</p>
+<p>load方法如果没有请求参数，会发送get请求，如果有请求参数，会发送post请求。</p>
+<p>(2)$.get方法</p>
+<p>作用：向服务器发送get请求</p>
+<p>语法:$.get(url,[data],[callback],[type]):</p>
+<p>url:请求地址</p>
+<p>data:请求参数,可以是请求字符串或者是js对象。格式为：{key,value}</p>
+<p>eg:{“name”:$(“#cost_name”).val()}</p>
+<p>callback: 是一个回调函数，用于处理服务器返回的数据，其格式 </p>
+<p>function(data,statusText),</p>
+<p>data是服务器返回的数据，如果服务器返回的是json字符串，$.get方法会自动将其转换成一个js对象或者js对象组成的数组。statusText是服务器处理的状态。</p>
+<p>type:服务器返回的数据类型:</p>
+<p>text : 文本字符串</p>
+<p>html : html内容</p>
+<p>xml: 返回dom兼容的xml对象</p>
+<p>json: json字符串</p>
+<p>script: javascript脚本</p>
+<pre><code>function quoto(){
+
+$(&apos;#tb1&apos;).empty();
+
+$.get(&apos;quoto.do?&apos; + Math.random(),function(data){
+
+//data:服务器返回的数据, 如果服务器
+
+//返回的是json字符串，$.get方法会自动
+
+//将其转换成一个js对象或者js对象组成的数组。
+
+for(i=0;i&lt;data.length;i++){
+
+$(&apos;#tb1&apos;).append(
+
+&apos;&lt;tr&gt;&lt;td&gt;&apos; + data[i].code 
+
++&apos;&lt;/td&gt;&lt;td&gt; &apos;+ data[i].name
+
+ + &apos;&lt;/td&gt;&lt;td&gt; &apos; + data[i].price
+
+  + &apos;&lt;/td&gt;&lt;/tr&gt;&apos;);
+
+}
+
+},&apos;json&apos;);
+
+}
+
+$.post()格式同上。
+
+$.put(url,[data],[callback],[type]):
+
+
+
+ //焦点离开资费名输入框进行ajax检测
+
+         $(function(){
+
+         $(&quot;#name&quot;).blur(function(){          
+
+             var name = $(this).val();
+
+         //发送ajax请求
+
+         $.post(
+
+         &quot;validFeeName.action&quot;,//请求url
+
+         {&quot;name&quot;:name},//提交参数
+
+         function(data){//data是服务器返回的ok值
+
+         if(data){//如果返回true             $(&quot;#name_error&quot;).removeClass(&quot;error_msg&quot;)
+
+               .html(&quot;资费名称可用&quot;);
+
+         }else{//如果返回false
+
+         $(&quot;#name_error&quot;).addClass(&quot;error_msg&quot;)
+
+                               .html(&quot;资费名称重复&quot;);
+
+         }
+
+         }
+
+         ,&quot;text&quot;);  
+
+         });
+
+        });
+</code></pre><p>(3)$.ajax方法</p>
+<p>作用：可以设置不同的参数，控制ajax对象向服务器发请求。</p>
+<p>语法:$.ajax(options): </p>
+<p>其中，options是一个形如 key1:value1,key2,value2…}的js对象，用于指定发送请求的选项。</p>
+<p>选项参数如下：</p>
+<p>url(string):请求地址</p>
+<p>type(string):GET/POST</p>
+<p>data(object/string):请求参数，可以是请求字符串或者js对象</p>
+<p>dataType(string) :服务器返回的数据类型</p>
+<p>success(function):请求成功后调用的回调函数，有两个参数：</p>
+<p>function(data,textStatus),其中，</p>
+<p>data是服务器返回的数据，</p>
+<p>textStatus 描述状态的字符串。</p>
+<p>error(function):请求失败时调用的函数，有三个参数</p>
+<p>function(xhr,textStatus,errorThrown),</p>
+<p>xhr: ajax对象，即XMLHttpRequest对象。</p>
+<p>textStatus和errorThrown，jQuery保证其中的一个参数可以获得异常的描述。</p>
+<p>async: true(缺省)/false</p>
+<pre><code>$(function(){
+
+$(&apos;#s1&apos;).change(function(){
+
+//先清空表格
+
+$(&apos;#tb1&apos;).empty();
+
+$.ajax({
+
+&apos;url&apos;:&apos;carInfo.do&apos;,
+
+&apos;type&apos;:&apos;post&apos;,
+
+&apos;data&apos;:&apos;carName=&apos; + $(&apos;#s1&apos;).val(),
+
+&apos;dataType&apos;:&apos;xml&apos;,
+
+&apos;success&apos;:function(data){
+
+//data:服务器返回的数据如果服务器返回的是xml, 浏览器不一样，则生成的dom树的结果也不一样，为了方便解析dom树，一般 我们使用$()函数将其转换成jQuery对象,然后进行遍历或者查找。
+
+$(&apos;#tb1&apos;).append(
+
+&apos;&lt;tr&gt;&lt;td&gt;价格:&apos; + $(data).find(&apos;price&apos;).text() 
+
++ &apos; 车重:&apos; + $(data).find(&apos;weight&apos;).text() 
+
++ &apos;&lt;/td&gt;&lt;td&gt;门数:&apos; 
+
++ $(data).find(&apos;doors&apos;).text() 
+
++ &apos; 长宽高:&apos; +  $(data).find(&apos;size&apos;).text() 
+
++ &apos;&lt;/td&gt;&lt;td&gt;排量:&apos; + $(data).find(&apos;vol&apos;).text() 
+
++ &apos; 加速性能:&apos; 
+
++ $(data).find(&apos;speed&apos;).text() + &apos;&lt;/td&gt;&lt;/tr&gt;&apos;);
+
+$(&apos;#d2&apos;).show();
+
+setTimeout(function(){
+
+$(&apos;#d2&apos;).fadeOut(&apos;slow&apos;);
+
+},3000);
+
+},
+
+&apos;error&apos;:function(){
+
+alert(&apos;服务暂时不可用&apos;);
+
+}
+
+});
+
+});
+
+});
+</code></pre><h4 id="10、给JQuery添加插件"><a href="#10、给JQuery添加插件" class="headerlink" title="10、给JQuery添加插件"></a>10、给JQuery添加插件</h4><p>可以把JQuery看做一个类，给JQuery添加插件就是给Jquery类中添加方法。相当于在Java中给String类增加方法（当然是不可以增加的），这样就可以用JQuery对象直接调用了，方便多次使用。</p>
+<p>使用场合：使用频率高的方法，</p>
+<p> JQuery经典总结</p>
+<p>eg:下面代码的作用是对指定的文本框(errorContent)进行非空验证，并输出（errorMsg）验证提示信息。</p>
+<p>   写法一：</p>
+<pre><code>$.fn.required = function(errorContent, errorMsg) {
+
+　　 var val = $(this).val();
+
+　　 if (val != null &amp;&amp; val.length &gt; 0) {
+
+　　 $(errorContent).text(&quot;&quot;);
+
+　　 return true;
+
+　　 } else {
+
+　　 $(errorContent).text(errorMsg);
+
+　　 return false;
+
+　　 }
+
+    　}
+</code></pre><p>写法二：</p>
+<pre><code>;(function($){
+
+$.fn.extend({
+
+   rangeLength:function(errorContent, errorMsg){
+
+var val = $(this).val();
+
+if (val != null &amp;&amp; val.length &gt; 0) {
+
+$(errorContent).text(&quot;&quot;);
+
+return true;
+
+} else {
+
+$(errorContent).text(errorMsg);
+
+return false;
+
+}
+
+   }
+
+});
+
+   })(jQuery)
+
+
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+   $(function() {
+
+     $(&quot;#submit&quot;).bind(&quot;click&quot;,function(){
+
+        var b1 = $(&quot;#adminCode&quot;)
+
+          .required($(&quot;#error_adminCode&quot;),&quot;账号必须填写&quot;);
+
+        var b2 = $(&quot;#password&quot;)
+
+          .required($(&quot;#error_password&quot;),&quot;密码必须填写&quot;)
+
+        if(b1 &amp;&amp; b3) {
+
+           $(&quot;#loginForm&quot;).submit();
+
+        }
+
+     });
+
+   });
+
+&lt;/script&gt;
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃冰淇淋<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -345,213 +526,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/16/jquery（三）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/jquery（二）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:55:49.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jquery（二）/">jquery（二）</a>
-    </h1>
+    <a href="/2017/03/16/JS面向对象/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS面向对象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/16/jquery（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jquery（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="jquery（三）" data-title="jquery（三）" data-url="http://yoursite.com/2017/03/16/jquery（三）/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zebra110"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/jquery（一）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:54:57.706Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jquery（一）/">jquery（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/AJAX/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:54:22.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/AJAX/">AJAX</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新建,模板,小书匠</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/DOM/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:53:42.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/DOM/">DOM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/flag/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:52:45.629Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/flag/">flag</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/03/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -574,8 +657,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

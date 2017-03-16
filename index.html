@@ -154,36 +154,31 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-关于异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/03/16/关于异步/">关于异步</a>
     </h1>
   
 
         
-        <a href="/2017/03/16/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-16T05:53:27.973Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+        <a href="/2017/03/16/关于异步/" class="archive-article-date">
+  	<time datetime="2017-03-16T08:00:10.898Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        <h2 id="异步："><a href="#异步：" class="headerlink" title="异步："></a>异步：</h2><pre><code>异步和同步是相对的，同步就是顺序执行，执行完一个再执行下一个，需要等待、协调运行。异步就是彼此独立,在等待某事件的过程中继续做自己的事，不需要等待这一事件完成后再工作。线程就是实现异步的一个方式。异步是让调用方法的主线程不需要同步等待另一线程的完成，从而可以让主线程干其它的事情。
+异步和多线程并不是一个同等关系,异步是最终目的,多线程只是我们实现异步的一种手段。异步是当一个调用请求发送给被调用者,而调用者不用等待其结果的返回而可以做其它的事情。实现异步可以采用多线程技术或则交给另外的进程来处理。
+阻塞 / 非阻塞描述的是函数，指访问某个函数时是否会阻塞线程(block，线程进入阻塞状态)。
+同步 / 异步描述的是执行IO操作的主体是谁，同步是由用户进程自己去执行最终的IO操作。异步是用户进程自己不关系实际IO操作的过程，只需要由内核在IO完成后通知它既可，由内核进程来执行最终的IO操作。
+</code></pre>
       
 
       
@@ -191,11 +186,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Node.Js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/16/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/16/关于异步/">展开全文 >></a>
         </p>
       
 
@@ -213,6 +219,1925 @@
 
 
   
+    <article id="post-CSS3（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/CSS3（一）/">CSS3（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/CSS3（一）/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:59:16.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="css标准流"><a href="#css标准流" class="headerlink" title="css标准流"></a>css标准流</h2><p><strong>display:inline-block</strong></p>
+<p>在CSS中，块级对象元素会单独占一行显示，多个block元素会各自新起一行，并且可以设置width,height属性；而内联对象元素前后不会产生换行，一系列inline元素都在一行内显示，直到该行排满，对inline元素设置width,height属性无效。<br>我们有个时候既希望元素具有宽度高度特性，又具有同行特性，这个时候我们可以使用inline-block。在CSS中通过display:inline-block对一个对象指定inline-block属性，简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。</p>
+<h5 id="不兼容——在IE下实现display-inline-block效果的两种方法："><a href="#不兼容——在IE下实现display-inline-block效果的两种方法：" class="headerlink" title="不兼容——在IE下实现display:inline-block效果的两种方法："></a>不兼容——在IE下实现display:inline-block效果的两种方法：</h5><p>1、先用display:inline-block属性触发块元素，然后再定义display:inline，让块元素呈递为内联对象（原理：这是IE的一个经典bug，如果先定义了display:inline-block，然后再设置display回inline或block，layout不会消失）（暂时理解为布局不会混乱），代码如下：<br>div {display:inline-block;}<br>div {display:inline;}</p>
+<p>2、直接让块元素设置为内联对象(display:inline)，然后通过zoom:1触发块元素的layout，代码如下：<br>div {display:inline; zoom:1;}</p>
+<h5 id="子绝父相的定位（常用）"><a href="#子绝父相的定位（常用）" class="headerlink" title="子绝父相的定位（常用）"></a>子绝父相的定位（常用）</h5><pre><code>&lt;style&gt;
+        div {font-size: 15px;color: #fff;}
+        .test1{width: 400px;height: 400px;background: #234;position:relative;}
+        .test2 {width: 300px;height: 300px;background: #345;
+            position: absolute;
+            left: 40px;top: 40px; }
+        .test{
+            width: 500px;height: 500px;background: #123;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;test1&quot;&gt;
+    test1
+    &lt;div class=&quot;test2&quot;&gt;test2&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;test&quot;&gt;
+    test
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><h5 id="记一个学习浮动的漏洞"><a href="#记一个学习浮动的漏洞" class="headerlink" title="记一个学习浮动的漏洞"></a>记一个学习浮动的漏洞</h5><p>对于CSS的清除浮动(clear)，一定要牢记：这个规则只能影响使用清除的元素本身，不能影响其他元素。</p>
+<h5 id="inline-block和float的区别"><a href="#inline-block和float的区别" class="headerlink" title="inline-block和float的区别"></a>inline-block和float的区别</h5><p>虽然设置浮动跟设置inline-block有些特征类似，但两者的区别还是非常明显的:</p>
+<ul>
+<li>文档流（Document flow）:浮动元素会脱离文档流，并使得周围元素环绕这个元素。而inline-block元素仍在文档流内。因此设置inline-block不需要清除浮动。当然，周围元素不会环绕这个元素，你也不可能通过清除inline-block就让一个元素跑到下面去。</li>
+<li>水平位置（Horizontal position）：很明显你不能通过给父元素设置text-align:center让浮动元素居中。事实上定位类属性设置到父元素上，均不会影响父元素内浮动的元素。但是父元素内元素如果设置了display：inline-block，则对父元素设置一些定位属性会影响到子元素。（这还是因为浮动元素脱离文档流的关系）。</li>
+<li>垂直对齐（Vertical alignment）：inline-block元素沿着默认的基线对齐。浮动元素紧贴顶部。你可以通过vertical属性设置这个默认基线，但对浮动元素这种方法就不行了。这也是我倾向于inline-block的主要原因。</li>
+<li>空白（Whitespace）：inline-block包含html空白节点。如果你的html中一系列元素每个元素之间都换行了，当你对这些元素设置inline-block时，这些元素之间就会出现空白。而浮动元素会忽略空白节点，互相紧贴</li>
+<li>IE6和IE7：Ie67对此属性部分支持。如果你要兼容这些浏览器，必须解决这个问题。这不是个大问题，但值得留意一下。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/CSS3（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-HTML5新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/HTML5新特性/">HTML5新特性</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/HTML5新特性/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:58:31.887Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017-02-12 22:41:11 星期二</p>
+<h5 id="1-新的Doctype"><a href="#1-新的Doctype" class="headerlink" title="1. 新的Doctype"></a>1. 新的Doctype</h5><p>尽管使用&lt;!DOCTYPE html&gt;，即使浏览器不懂这句话也会按照标准模式去渲染 </p>
+<h5 id="2-Figure元素"><a href="#2-Figure元素" class="headerlink" title="2. Figure元素"></a>2. Figure元素</h5><p>用<figure>和<figcaption>来语义化地表示带标题的图片 </figcaption></figure></p>
+<pre><code>&lt;figure&gt; 
+&lt;img src=”path/to/image” alt=”About image” /&gt;
+&lt;figcaption&gt; 
+&lt;p&gt;This is an image of something interesting. &lt;/p&gt;
+&lt;/figcaption&gt; 
+&lt;/figure&gt; 
+</code></pre><h5 id="3-重新定义的"><a href="#3-重新定义的" class="headerlink" title="3. 重新定义的"></a>3. 重新定义的<small></small></h5><p><small>已经被重新定义了，现在被用来表示小的排版，如网站底部的版权声明 </small></p>
+<h5 id="4-去掉link和script标签里面的type属性"><a href="#4-去掉link和script标签里面的type属性" class="headerlink" title="4. 去掉link和script标签里面的type属性"></a>4. 去掉link和script标签里面的type属性</h5><h5 id="5-加-不加-括号"><a href="#5-加-不加-括号" class="headerlink" title="5. 加/不加 括号"></a>5. 加/不加 括号</h5><p>HTML5没有严格的要求属性必须加引号，闭合不闭合，但是建议加上引号和闭合标签 </p>
+<h5 id="6-让你的内容可编辑，只需要加一个contenteditable属性"><a href="#6-让你的内容可编辑，只需要加一个contenteditable属性" class="headerlink" title="6. 让你的内容可编辑，只需要加一个contenteditable属性"></a>6. 让你的内容可编辑，只需要加一个contenteditable属性</h5><h5 id="7-Email-Inputs"><a href="#7-Email-Inputs" class="headerlink" title="7. Email Inputs"></a>7. Email Inputs</h5><p>如果我们给Input的type设置为email，浏览器就会验证这个输入是否是email类型，当然不能只依赖前端的校验，后端也得有相应的校验 </p>
+<h5 id="8-Placeholders"><a href="#8-Placeholders" class="headerlink" title="8. Placeholders"></a>8. Placeholders</h5><p>这个input属性的意义就是不必通过javascript来做placeholder的效果了 </p>
+<h5 id="9-Local-Storage"><a href="#9-Local-Storage" class="headerlink" title="9. Local Storage"></a>9. Local Storage</h5><p>使用Local Storage可以永久存储大的数据片段在客户端（除非主动删除），目前大部分浏览器已经支持，在使用之前可以检测一下window.localStorage是否存在 </p>
+<h5 id="10-语义化的header和footer"><a href="#10-语义化的header和footer" class="headerlink" title="10. 语义化的header和footer"></a>10. 语义化的header和footer</h5><h5 id="11-更多的HTML5表单特性"><a href="#11-更多的HTML5表单特性" class="headerlink" title="11. 更多的HTML5表单特性"></a>11. 更多的HTML5表单特性</h5><h5 id="12-IE和HTML5"><a href="#12-IE和HTML5" class="headerlink" title="12. IE和HTML5"></a>12. IE和HTML5</h5><p>默认的，HTML5新元素被以inline的方式渲染，不过可以通过下面这种方式让 其以block方式渲染 </p>
+<p>header, footer, article, section, nav, menu, hgroup {<br>display: block;<br>}<br>不幸的是IE会忽略这些样式，可以像下面这样fix: </p>
+<p>document.createElement(”article”);<br>document.createElement(”footer”);<br>document.createElement(”header”);<br>document.createElement(”hgroup”);<br>document.createElement(”nav”);<br>document.createElement(”menu”); </p>
+<h5 id="13-hgroup"><a href="#13-hgroup" class="headerlink" title="13. hgroup"></a>13. hgroup</h5><p>一般在header里面用来将一组标题组合在一起，如 </p>
+<pre><code>&lt;header&gt; 
+&lt;hgroup&gt; 
+&lt;h1&gt; Recall Fan Page &lt;/h1&gt; 
+&lt;h2&gt; Only for people who want the memory of a lifetime. &lt;/h2&gt; 
+&lt;/hgroup&gt; 
+&lt;/header&gt; 
+</code></pre><h5 id="14-Required属性"><a href="#14-Required属性" class="headerlink" title="14. Required属性"></a>14. Required属性</h5><p>required属性定义了一个input是否是必须的，你可以像下面这样声明 </p>
+<p><input type="”text”" name="”someInput”" required> 或者 </p>
+<p><input type="”text”" name="”someInput”" required="”required”"> </p>
+<h5 id="15-Autofocus属性"><a href="#15-Autofocus属性" class="headerlink" title="15. Autofocus属性"></a>15. Autofocus属性</h5><p>正如它的词义，就是聚焦到输入框里面 </p>
+<p><input type="”text”" name="”someInput”" placeholder="”Douglas" quaid”="" required autofocus> </p>
+<h5 id="16-Audio支持"><a href="#16-Audio支持" class="headerlink" title="16. Audio支持"></a>16. Audio支持</h5><p>HTML5提供了<audio>标签，你不需要再按照第三方插件来渲染音频，大多数现代浏览器提供了对于HTML5 Audio的支持，不过目前仍旧需要提供一些兼容处理，如 </audio></p>
+<pre><code>&lt;audio autoplay=”autoplay” controls=”controls”&gt; 
+&lt;source src=”file.ogg” /&gt;&lt;!–FF–&gt; 
+&lt;source src=”file.mp3″ /&gt;&lt;!–Webkit–&gt; 
+&lt;a href=”file.mp3″&gt;Download this file.&lt;/a&gt; 
+&lt;/audio&gt; 
+</code></pre><h5 id="17-Video支持"><a href="#17-Video支持" class="headerlink" title="17. Video支持"></a>17. Video支持</h5><p>和Audio很像，<video>标签提供了对于video的支持，由于HTML5文档并没有给video指定一个特定的编码，所以浏 览器去决定要支持哪些编码，导致了很多不一致。Safari和IE支持H.264编码的格式，Firefox和Opera支持Theora和Vorbis 编码的格式，当使用HTML5 video的时候，你必须都提供： </video></p>
+<pre><code>&lt;video controls preload&gt; 
+&lt;source src=”cohagenPhoneCall.ogv” type=”video/ogg; codecs=’vorbis, theora’” /&gt; 
+&lt;source src=”cohagenPhoneCall.mp4″ type=”video/mp4; ’codecs=’avc1.42E01E, mp4a.40.2′” /&gt; 
+&lt;p&gt; Your browser is old. &lt;a href=”cohagenPhoneCall.mp4″&gt;Download this video instead.&lt;/a&gt; &lt;/p&gt; 
+&lt;/video&gt; 
+</code></pre><h5 id="18-预加载视频"><a href="#18-预加载视频" class="headerlink" title="18. 预加载视频"></a>18. 预加载视频</h5><p>preload属性就像它的字面意思那么简单，你需要决定是否需要在页面加载的时候去预加载视频 </p>
+<p><video preload=""> </video></p>
+<h5 id="19-显示视频控制"><a href="#19-显示视频控制" class="headerlink" title="19. 显示视频控制"></a>19. 显示视频控制</h5><p><video preload="" controls> </video></p>
+<h5 id="20-正则表达式"><a href="#20-正则表达式" class="headerlink" title="20. 正则表达式"></a>20. 正则表达式</h5><p>由于pattern属性，我们可以在你的markup里面直接使用正则表达式了 </p>
+<pre><code>&lt;form action=“” method=”post”&gt; 
+&lt;label for=”username”&gt;Create a Username: &lt;/label&gt; 
+&lt;input type=”text” name=”username” id=”username” placeholder=”4 &lt;&gt; 10 “pattern=”[A-Za-z]{4,10}” autofocus required&gt; 
+&lt;button type=”submit”&gt;Go &lt;/button&gt; 
+&lt;/form&gt; 
+</code></pre><h5 id="21-检测属性支持"><a href="#21-检测属性支持" class="headerlink" title="21. 检测属性支持"></a>21. 检测属性支持</h5><p>除了Modernizr之外我们还可以通过javascript简单地检测一些属性是否支持，如： </p>
+<p><script><br>if (!’pattern’ in document.createElement(’input’) ) {<br>// do client/server side validation<br>}<br></script> </p>
+<h5 id="22-Mark元素"><a href="#22-Mark元素" class="headerlink" title="22. Mark元素"></a>22. Mark元素</h5><p>把<mark>元素看做是高亮的作用，当我选择一段文字的时候，javascript对于HTML的markup效果应该是这样的： </mark></p>
+<p></p><h3> Search Results </h3> <p></p>
+<p></p><p> They were interrupted, just after Quato said, <mark>”Open your Mind”</mark>. </p> <p></p>
+<h5 id="23-什么时候用"><a href="#23-什么时候用" class="headerlink" title="23. 什么时候用"></a>23. 什么时候用<div></div></h5><p>HTML5已经引入了这么多元素，那么div我们还要用吗？div你可以在没有更好的元素的时候去用。 </p>
+<h5 id="24-Data属性"><a href="#24-Data属性" class="headerlink" title="24. Data属性"></a>24. Data属性</h5><pre><code>&lt;div id=”myDiv” data-custom-attr=”My Value”&gt; Bla Bla &lt;/div&gt; 
+&lt;style&gt; 
+h1:hover:after { 
+content: attr(data-hover-response); 
+color: black; 
+position: absolute; 
+left: 0; 
+} 
+&lt;/style&gt; 
+&lt;h1 data-hover-response=”I Said Don’t Touch Me!”&gt; Don’t Touch Me &lt;/h1&gt; 
+</code></pre><h5 id="27-Output元素"><a href="#27-Output元素" class="headerlink" title="27. Output元素"></a>27. Output元素</h5><p><output>元素用来显示计算结果，也有一个和label一样的for属性 </output></p>
+<h5 id="28-用Range-Input来创建滑块"><a href="#28-用Range-Input来创建滑块" class="headerlink" title="28. 用Range Input来创建滑块"></a>28. 用Range Input来创建滑块</h5><p>HTML5引用的range类型可以创建滑块，它接受min, max, step和value属性<br>可以使用css的:before和:after来显示min和max的值     </p>
+<pre><code>&lt;input type=”range” name=”range” min=”0″ max=”10″ step=”1″ value=”&quot;&gt; 
+input[type=range]:before { content: attr(min); padding-right: 5px; } 
+input[type=range]:after { content: attr(max); padding-left: 5px;} 
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTML5</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/HTML5新特性/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/JS面向对象/">JS面向对象</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/JS面向对象/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:57:11.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2030-01-26 23:33:13 星期六</p>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>ECMA关于对象的定义是：”无序属性的集合，其属性可以包含基本值、对象或者函数。“对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。</p>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>在现实生活中，相似的对象之间往往都有一些共同的组成特征。类，实际上是对象的设计蓝图或者制作配方。我们能基于相同的类创建出许多不同的对象，这些对象又会含有各自的属性和方法。</p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>封装主要用于阐述对象中所包含（或封装的内容），它通常由两部分组成：</p>
+<p>相关的数据（用于存储属性）<br>基于这些数据所能做的事（所能调用的方法）</p>
+<h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p>聚合是指我们将现有对象合并成一个新对象的过程。例如：Book是由一个或多个author对象，publisher对象、若干chapter对象等组合而成的对象。</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>通过继承这种方式，我们可以非常优雅地实现对现有代码的重用。例如：我们定义了一个Person对象，他包含了wolk()，sleep(),speak(),eat()等方法，也包含了age,height,weight等属性，这时当我们再定义一个coder对象的时候，你不必将上述的属性和方法都重写一遍，你只需继承他即可，然后你只需将coder这个对象属于他自己的那部分特殊功能写出来。</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>上述实例中，我们的coder对象继承了person对象的一些属性和方法，这意味着这两个对象都实现了”speak”等方法，现在，我们的代码中有一个叫做James的变量，即便是我们不知道它是一个person对象还是一个coder对象的情况下，也依然可以直接调用该对象的”speak”方法<br>。类似这种不同对象通过相同的方法调用实现各自行为的能力，我们就称之为“多态”</p>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>我们可以通过对象直接量、new关键字和object.create()函数来创建。</p>
+<h4 id="对象直接量"><a href="#对象直接量" class="headerlink" title="对象直接量"></a>对象直接量</h4><p>创建对象最简单的方法就是在js中使用对象直接量，它是由若干名/值对组成的映射表，名/值对中间用冒号分隔，多个名/值对用逗号分隔。整个映射表用花括号（{}）括起来。</p>
+<pre><code>var empty = {};//没有任何属性的对象
+var fruits = {apple:big , orange:yellow};
+
+var company = {
+    CEO : &quot;Tim Cook&quot;,//属性名字里有空格，必须用字符串表示
+    Designer:&quot;Ive&quot;;
+    &quot;for&quot;:&quot;all audiences&quot;,//&quot;for&quot;是保留字，必须用引号
+    employees:{
+        firstname:&quot;David&quot;,    //这里的属性名都没有引号
+        lastname:&quot;fill&quot; //这个属性的值是一个对象
+    }
+};
+</code></pre><p>对象里还可以嵌套对象（company里嵌套了employees对象）</p>
+<p>new关键字创建对象</p>
+<p>关键字new后面跟随一个函数调用，这个函数称为构造函数（constructor），javascript语言核心的原始类型都包含内置的构造函数。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var obj = new Object();//创建一个空对象，和{}一样
+    var arr = new Array();//创建一个空数组，和[]一样
+&lt;/script&gt;
+</code></pre><p>js原型-&gt;参照：javascript学习总结（五）原型和原型链详解</p>
+<h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><p>由于ECMAScript中无法创建类，因此，开发人员发明了一种函数，用函数来封装以特定接口创建对象的细节：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var Car = (function(){
+        var Car = function(model,year,miles){
+            this.model = model;
+            this.year = year;
+            this.miles = miles;
+        };
+
+        return function(model,year,miles){
+            return new Car(model,year,miles);
+        }
+    })();
+
+    var Benz = new Car(&quot;Benz&quot;,2014,1000);
+    var Audi = new Car(&quot;Audi&quot;,2013,800);
+&lt;/script&gt;
+</code></pre><p>什么时候使用工厂模式?</p>
+<p>以下几种情景下工厂模式特别有用：</p>
+<p>对象的构建十分复杂<br>需要依赖具体环境创建不同实例<br>处理大量具有相同属性的小对象<br>元素、属性和方法<br>说到数组，我们常说其中包含的是元素，而当说到对象的时候，我们常会说其中包含的是属性。另外，对象的属性也可以是一个函数，因为函数本身也是一种数据，在这种情况下，我们会称该属性为方法：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var wolf = {
+        name :wolffy；
+        run:function(){
+            alert(&quot;￼wolf,wolf!&quot;);
+        }
+    }
+&lt;/script&gt;
+</code></pre><p>调用对象方法<br>    <script type="text/javascript"><br>        var parrot = {<br>            name : “bage”,<br>            hair : “brown”,<br>            say : function(){<br>                alert( ‘I am ‘ + parrot.name);<br>            }<br>        }<br>        parrot.say();<br>    </script><br>注：</p>
+<ol>
+<li>尽量使用点号表示法来访问对象的属性和方法。</li>
+<li><p>不要在对象中使用带引号的属性标示。<br>构造器函数<br>另外，我们还可以使用构造器函数的方式来创建对象。看下面一个例子：</p>
+<p><script type="text/javascript"></p>
+<pre><code>function Person(name,age,occupation){
+    this.name = name;
+    this.age = age;
+    this.occupation = occupation;
+    this.sayName = function(){
+        alert(this.name);
+    }
+}
+
+var person1 = new Person(&quot;trigkit4&quot;,21,&quot;student&quot;);
+var person2 = new Person(&quot;Jack&quot;,25,&quot;Engineer&quot;);
+</code></pre><p></script><br>优点</p>
+</li>
+</ol>
+<p>使用构造器函数的好处在于，它可以在创建对象时接收一些参数。按照惯例，构造函数的函数名应始终以一个大写字母开头，以区分普通函数。</p>
+<p>区别</p>
+<p>构造函数与普通函数的区别在于调用的方式不同，任何函数，只要通过new操作符来调用，那它就可以作为构造函数。</p>
+<p>缺点</p>
+<p>使用构造函数的主要问题是，每个方法都要在每个实例上重新创建一遍。</p>
+<p>扩展阅读：javascript学习总结（五）原型和原型链详解</p>
+<p>全局对象<br>事实上，程序所在的宿主环境一般都会为其提供一个全局对象，而所谓的全局变量其实都只不过是该对象的属性罢了。</p>
+<p>例如，当程序所在的宿主环境是web浏览器时，它所提供的全局对象就是window了。</p>
+<p>内建对象<br>内建对象大致分为三组：</p>
+<p>数据封装类对象——包括Object、Array、Boolean、Number和String。这些对象代表着javascript中不同的数据类型，并且都拥有各自不同的typeof返回值，以及undefined和null状态<br>工具类对象——包括Math、Date、RegExp等用于提供遍历的对象<br>错误类对象——包括一般性错误对象及其它各种更特殊的错误类对象<br>Object是js中所有对象的父级对象，这意味着我们创建的所有对象都继承于此。</p>
+<p>所谓的空对象实际上并不是完全无用的，它还是包含了一些属性和方法的：</p>
+<p>返回构造器函数的构造器属性<br>返回对象描述字符串的toString()方法<br>返回对象单值描述信息的valueOf()方法<br>例如：</p>
+<p>var o = new Object();<br>o.toString();//[object Object]<br>Array<br>Array()是一个用来构建数组的内建构造器函数。数组主要由如下三种创建方式：</p>
+<p>array = new Array()<br>array = new Array([size])<br>array = new Array(element0, element1, …, elementN)<br>Array 对象方法<br>方法                 描述</p>
+<p>concat()    连接两个或更多的数组，并返回结果。<br>join()      把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。<br>pop()       删除并返回数组的最后一个元素<br>push()      向数组的末尾添加一个或更多元素，并返回新的长度。<br>reverse()   颠倒数组中元素的顺序。<br>shift()     删除并返回数组的第一个元素<br>slice()     从某个已有的数组返回选定的元素<br>sort()      对数组的元素进行排序<br>splice()    删除元素，并向数组添加新元素。<br>toSource()  返回该对象的源代码。<br>toString()  把数组转换为字符串，并返回结果。<br>toLocaleString()    把数组转换为本地数组，并返回结果。<br>unshift()   向数组的开头添加一个或更多元素，并返回新的长度。<br>valueOf()   返回数组对象的原始值<br>concat()方法：合并数组</p>
+<p>[1,2]concat([3,4],[5,6]);//[1,2,3,4,5,6]<br>join()方法：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var a = [1,2,3];
+    a.join(&quot;&quot;);// =&gt;&quot;123&quot;
+&lt;/script&gt;
+//pop()方法：移除数组最后一个元素，并将其返回
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var fruits = [&apos;apple&apos;,&apos;banana&apos;,&apos;pineapple&apos;];
+    fruits.pop();// pineapple 
+    console.log(fruits);//[&quot;apple&quot;,&quot;banana&quot;]
+&lt;/script&gt;
+//shift()方法：删除并返回数组的第一个元素。
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var a = [1,2,3];
+    a.shift();//1
+    console.log(a);//[2,3]
+&lt;/script&gt;
+//slice(start,end)方法：截取数组的某一部分，不会对原数组进行任何修改
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+     var num = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;];
+     console.log(num.slice(1,4));//[&quot;b&quot;,&quot;c&quot;,&quot;d&quot;]
+     console.log(num);//[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;]
+&lt;/script&gt;
+//splice(start,delete_count,i1,i2…)方法：删除数组元素的同时添加新的元素。i1,i2为要插入的新元素
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var arr = [&apos;js&apos;,&apos;css&apos;,&apos;html&apos;,&apos;php&apos;,&apos;c&apos;];
+    arr.splice(1, 2,&apos;python&apos;,&apos;jquery&apos;);//[&quot;css&quot;,&quot;html&quot;]
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/JS面向对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-jquery（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/jquery（三）/">jquery（三）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/jquery（三）/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:56:29.937Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="8、类数组的操作"><a href="#8、类数组的操作" class="headerlink" title="8、类数组的操作"></a>8、类数组的操作</h4><p>jQuery选择器返回的是一个jQuery对象(该对象可能包括了多个dom节点),如果要对这些dom节点分别做不同的处理，就需要去遍历，需要调用jQuery对象提供的一些方法或者属性，称之为类数组的操作。类数组就是DOM节点数组</p>
+<p>1)each(fn(i)):循环遍历每一个元素,this代表被迭代的dom对象，$(this)代表被迭代的jQuery对象。（i根据实际情况选择要还是不要）。</p>
+<p>2)eq(index)：返回index+1位置处的jQuery对象</p>
+<p>3)index(obj)：返回下标，其中obj可以是dom对象或者jQuery对象。</p>
+<p>4)length属性：dom对象的个数</p>
+<p>5)get()：返回dom对象组成的数组</p>
+<p>6)get(index)：返回index+1个dom对象。</p>
+<pre><code>$(&apos;#b4&apos;).click(function(){
+
+$(&apos;#s2 option&apos;).each(function(){
+
+$(&apos;#s1&apos;).append($(this));
+
+});
+
+});
+
+$(function(){
+
+$(&apos;#b1&apos;).click(function(){
+
+var $obj = $(&apos;ul li&apos;);
+
+$obj.each(function(i){
+
+//i:表示正在被访问的那个节点的下标,
+
+//下标从0开始
+
+if(i == 0){
+
+$(this).css(&apos;font-size&apos;,&apos;50px&apos;);
+
+}else if(i==1){
+
+$(this).css(&apos;font-style&apos;,&apos;italic&apos;);
+
+}else{
+
+$(this).css(&apos;color&apos;,&apos;red&apos;).css(&apos;font-size&apos;,&apos;80px&apos;);
+
+}
+
+});
+
+});
+</code></pre><h4 id="9、jQuery对ajax编程的支持"><a href="#9、jQuery对ajax编程的支持" class="headerlink" title="9、jQuery对ajax编程的支持"></a>9、jQuery对ajax编程的支持</h4><p>(1)load方法:</p>
+<p>作用：是将服务器返回的数据直接添加到符合要求的节点之上，相当于obj.innerHTML = 返回的数据。</p>
+<p>语法:$obj.load(请求地址,[请求参数]);</p>
+<p>其中，请求参数可以有两种形式:</p>
+<p>第一种：请求字符串，比如 “username=zs”,或者“username=zs&amp;age=22”。</p>
+<p>第二种：javascript对象，比如 {‘username’:’zs’}，或者{‘username’:’zs’,’age’:22}</p>
+<p>load方法如果没有请求参数，会发送get请求，如果有请求参数，会发送post请求。</p>
+<p>(2)$.get方法</p>
+<p>作用：向服务器发送get请求</p>
+<p>语法:$.get(url,[data],[callback],[type]):</p>
+<p>url:请求地址</p>
+<p>data:请求参数,可以是请求字符串或者是js对象。格式为：{key,value}</p>
+<p>eg:{“name”:$(“#cost_name”).val()}</p>
+<p>callback: 是一个回调函数，用于处理服务器返回的数据，其格式 </p>
+<p>function(data,statusText),</p>
+<p>data是服务器返回的数据，如果服务器返回的是json字符串，$.get方法会自动将其转换成一个js对象或者js对象组成的数组。statusText是服务器处理的状态。</p>
+<p>type:服务器返回的数据类型:</p>
+<p>text : 文本字符串</p>
+<p>html : html内容</p>
+<p>xml: 返回dom兼容的xml对象</p>
+<p>json: json字符串</p>
+<p>script: javascript脚本</p>
+<pre><code>function quoto(){
+
+$(&apos;#tb1&apos;).empty();
+
+$.get(&apos;quoto.do?&apos; + Math.random(),function(data){
+
+//data:服务器返回的数据, 如果服务器
+
+//返回的是json字符串，$.get方法会自动
+
+//将其转换成一个js对象或者js对象组成的数组。
+
+for(i=0;i&lt;data.length;i++){
+
+$(&apos;#tb1&apos;).append(
+
+&apos;&lt;tr&gt;&lt;td&gt;&apos; + data[i].code 
+
++&apos;&lt;/td&gt;&lt;td&gt; &apos;+ data[i].name
+
+ + &apos;&lt;/td&gt;&lt;td&gt; &apos; + data[i].price
+
+  + &apos;&lt;/td&gt;&lt;/tr&gt;&apos;);
+
+}
+
+},&apos;json&apos;);
+
+}
+
+$.post()格式同上。
+
+$.put(url,[data],[callback],[type]):
+
+
+
+ //焦点离开资费名输入框进行ajax检测
+
+         $(function(){
+
+         $(&quot;#name&quot;).blur(function(){          
+
+             var name = $(this).val();
+
+         //发送ajax请求
+
+         $.post(
+
+         &quot;validFeeName.action&quot;,//请求url
+
+         {&quot;name&quot;:name},//提交参数
+
+         function(data){//data是服务器返回的ok值
+
+         if(data){//如果返回true             $(&quot;#name_error&quot;).removeClass(&quot;error_msg&quot;)
+
+               .html(&quot;资费名称可用&quot;);
+
+         }else{//如果返回false
+
+         $(&quot;#name_error&quot;).addClass(&quot;error_msg&quot;)
+
+                               .html(&quot;资费名称重复&quot;);
+
+         }
+
+         }
+
+         ,&quot;text&quot;);  
+
+         });
+
+        });
+</code></pre><p>(3)$.ajax方法</p>
+<p>作用：可以设置不同的参数，控制ajax对象向服务器发请求。</p>
+<p>语法:$.ajax(options): </p>
+<p>其中，options是一个形如 key1:value1,key2,value2…}的js对象，用于指定发送请求的选项。</p>
+<p>选项参数如下：</p>
+<p>url(string):请求地址</p>
+<p>type(string):GET/POST</p>
+<p>data(object/string):请求参数，可以是请求字符串或者js对象</p>
+<p>dataType(string) :服务器返回的数据类型</p>
+<p>success(function):请求成功后调用的回调函数，有两个参数：</p>
+<p>function(data,textStatus),其中，</p>
+<p>data是服务器返回的数据，</p>
+<p>textStatus 描述状态的字符串。</p>
+<p>error(function):请求失败时调用的函数，有三个参数</p>
+<p>function(xhr,textStatus,errorThrown),</p>
+<p>xhr: ajax对象，即XMLHttpRequest对象。</p>
+<p>textStatus和errorThrown，jQuery保证其中的一个参数可以获得异常的描述。</p>
+<p>async: true(缺省)/false</p>
+<pre><code>$(function(){
+
+$(&apos;#s1&apos;).change(function(){
+
+//先清空表格
+
+$(&apos;#tb1&apos;).empty();
+
+$.ajax({
+
+&apos;url&apos;:&apos;carInfo.do&apos;,
+
+&apos;type&apos;:&apos;post&apos;,
+
+&apos;data&apos;:&apos;carName=&apos; + $(&apos;#s1&apos;).val(),
+
+&apos;dataType&apos;:&apos;xml&apos;,
+
+&apos;success&apos;:function(data){
+
+//data:服务器返回的数据如果服务器返回的是xml, 浏览器不一样，则生成的dom树的结果也不一样，为了方便解析dom树，一般 我们使用$()函数将其转换成jQuery对象,然后进行遍历或者查找。
+
+$(&apos;#tb1&apos;).append(
+
+&apos;&lt;tr&gt;&lt;td&gt;价格:&apos; + $(data).find(&apos;price&apos;).text() 
+
++ &apos; 车重:&apos; + $(data).find(&apos;weight&apos;).text() 
+
++ &apos;&lt;/td&gt;&lt;td&gt;门数:&apos; 
+
++ $(data).find(&apos;doors&apos;).text() 
+
++ &apos; 长宽高:&apos; +  $(data).find(&apos;size&apos;).text() 
+
++ &apos;&lt;/td&gt;&lt;td&gt;排量:&apos; + $(data).find(&apos;vol&apos;).text() 
+
++ &apos; 加速性能:&apos; 
+
++ $(data).find(&apos;speed&apos;).text() + &apos;&lt;/td&gt;&lt;/tr&gt;&apos;);
+
+$(&apos;#d2&apos;).show();
+
+setTimeout(function(){
+
+$(&apos;#d2&apos;).fadeOut(&apos;slow&apos;);
+
+},3000);
+
+},
+
+&apos;error&apos;:function(){
+
+alert(&apos;服务暂时不可用&apos;);
+
+}
+
+});
+
+});
+
+});
+</code></pre><h4 id="10、给JQuery添加插件"><a href="#10、给JQuery添加插件" class="headerlink" title="10、给JQuery添加插件"></a>10、给JQuery添加插件</h4><p>可以把JQuery看做一个类，给JQuery添加插件就是给Jquery类中添加方法。相当于在Java中给String类增加方法（当然是不可以增加的），这样就可以用JQuery对象直接调用了，方便多次使用。</p>
+<p>使用场合：使用频率高的方法，</p>
+<p> JQuery经典总结</p>
+<p>eg:下面代码的作用是对指定的文本框(errorContent)进行非空验证，并输出（errorMsg）验证提示信息。</p>
+<p>   写法一：</p>
+<pre><code>$.fn.required = function(errorContent, errorMsg) {
+
+　　 var val = $(this).val();
+
+　　 if (val != null &amp;&amp; val.length &gt; 0) {
+
+　　 $(errorContent).text(&quot;&quot;);
+
+　　 return true;
+
+　　 } else {
+
+　　 $(errorContent).text(errorMsg);
+
+　　 return false;
+
+　　 }
+
+    　}
+</code></pre><p>写法二：</p>
+<pre><code>;(function($){
+
+$.fn.extend({
+
+   rangeLength:function(errorContent, errorMsg){
+
+var val = $(this).val();
+
+if (val != null &amp;&amp; val.length &gt; 0) {
+
+$(errorContent).text(&quot;&quot;);
+
+return true;
+
+} else {
+
+$(errorContent).text(errorMsg);
+
+return false;
+
+}
+
+   }
+
+});
+
+   })(jQuery)
+
+
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+   $(function() {
+
+     $(&quot;#submit&quot;).bind(&quot;click&quot;,function(){
+
+        var b1 = $(&quot;#adminCode&quot;)
+
+          .required($(&quot;#error_adminCode&quot;),&quot;账号必须填写&quot;);
+
+        var b2 = $(&quot;#password&quot;)
+
+          .required($(&quot;#error_password&quot;),&quot;密码必须填写&quot;)
+
+        if(b1 &amp;&amp; b3) {
+
+           $(&quot;#loginForm&quot;).submit();
+
+        }
+
+     });
+
+   });
+
+&lt;/script&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/jquery（三）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-jquery（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/jquery（二）/">jquery（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/jquery（二）/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:55:49.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2030-01-24 22:03:57 星期四</p>
+<h4 id="6、事件处理机制-event"><a href="#6、事件处理机制-event" class="headerlink" title="6、事件处理机制   event"></a>6、事件处理机制   event</h4><p>1)、事件绑订  </p>
+<pre><code>bind(type,fn)
+
+$(function(){
+
+$(&apos;#d1&apos;).bind(&apos;click&apos;,function(){
+
+$(this).html(&apos;hello java&apos;);
+
+});
+
+});
+</code></pre><p>2)、绑订方式的简写形式</p>
+<pre><code>$(function(){
+
+$(&apos;#d1&apos;).click(function(){
+
+$(this).html(&apos;hello java&apos;);
+
+});
+
+});
+</code></pre><p>3)、合成事件  </p>
+<p>hover(mouseenter,leave) : 模拟光标悬停事件，区别于CSS中的伪类</p>
+<pre><code>$(&apos;.s1&apos;).hover(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+},function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+});
+</code></pre><p>相当于以下连个函数的合成：</p>
+<pre><code>$(&apos;.s1&apos;).mouseenter(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+});
+
+$(&apos;.s1&apos;).mouseleave(function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+  });
+</code></pre><p>上面的mouseenter和mouseleave两个函数可以合并为：</p>
+<pre><code>$(&apos;.s1&apos;).mouseenter(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+}).mouseleave(function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+});
+</code></pre><p>toggle(fn1,fn2…)：模拟鼠标连续单击事件</p>
+<pre><code>$(&apos;#a1&apos;).toggle(function(){
+
+$(&apos;#d1&apos;).show(&apos;slow&apos;);
+
+},function(){
+
+$(&apos;#d1&apos;).hide(&apos;slow&apos;);
+
+});
+</code></pre><p>4)、事件冒泡</p>
+<p>(1)获得事件对象</p>
+<p>依据事件对象获得事件源(即哪一个节点产生了该事件，返回的是原始的DOM节点)，其中e不再是DOM对象，而是封装之后的JQuery对象。</p>
+<pre><code>var srcObj = e.srcElement;  //ie
+
+var srcObj = e.target; //firefox,chrome
+
+var srcObj = e.srcElement || e.target; //同时兼容ie,firefox,chrome
+
+alert(srcObj.innerHTML);
+</code></pre><p>依据事件对象获得鼠标点击的坐标（相对于屏幕）</p>
+<p>alert(e.clientX + ‘:’ + e.clientY);</p>
+<p>(2)事件对象的属性  </p>
+<p>event.type</p>
+<p>event.target:返回事件源(是dom对象)</p>
+<p>event.pageX/pageY   获得相对于当前浏览器页面的坐标</p>
+<p>(3)停止冒泡   </p>
+<p>event.stopPropagation()</p>
+<pre><code>function clickA(e){
+
+alert(&quot;你点击了一个链接&quot;);
+
+//取消冒泡
+
+e.stopPropagation();
+
+  }
+
+function clickDiv(e){
+
+alert(&quot;你点击了一个Div&quot;);
+
+}
+</code></pre><p>上列中，链接处于div中，当取消冒泡后，单击链接便不会触发div上面</p>
+<p>onlick事件的执行，上例中的输出结果为：你点击了一个链接</p>
+<p>(4)停止默认行为  </p>
+<pre><code>event.preventDefault()
+
+$(function(){
+
+$(&apos;#d1&apos;).click(function(e){
+
+var flag = confirm(&apos;确定删除吗&apos;);
+
+if(!flag){
+
+e.preventDefault();
+
+}
+
+});
+
+});
+</code></pre><p>设置停止了默认行为后，表单提交按钮便不会自动提交了。相当于：</p>
+<pre><code>&lt;input type=”submit” id=”d1” name=”username”  onclick=”return fonfirm(‘确定要删除吗’)”/&gt;
+</code></pre><p>5)、模拟操作 </p>
+<pre><code>trigger(&apos;click&apos;)
+
+$(function(){
+
+$(&apos;#b1&apos;).click(function(){
+
+//$(&apos;#username&apos;).trigger(&apos;focus&apos;);
+
+$(&apos;#username&apos;).focus();
+
+});
+
+});
+</code></pre><p>上列模拟了文本框控件获得焦点的行为，当点击按钮后，文本框便获得了焦点，表现为文本框内有光标闪动。</p>
+<p>mouseenter和mouseover效果一样，可以互换使用</p>
+<p>mouseout和mouseleave效果一样，可以互换使用</p>
+<h4 id="7、动画-animate"><a href="#7、动画-animate" class="headerlink" title="7、动画   animate"></a>7、动画   animate</h4><p>   1)show(), hide()  </p>
+<p>作用：通过同时改变元素的宽度与高度来实现显示和隐藏的效果。</p>
+<p>语法:show(速度,callback);</p>
+<p>速度:  ‘slow’,’normal’,’fast’ / 800(毫秒)</p>
+<p>callback: 在动画执行完毕之后，会执行这个函数</p>
+<pre><code>$(function(){
+
+$(&apos;#btn1&apos;).click(function(){
+
+$(&apos;#sp1&apos;).hide/show(500);
+
+$(&apos;#sp1&apos;).hide/show(500,function(){alert(&quot;H&quot;);});
+
+});
+
+});
+</code></pre><p>2)、fadeIn() fadeOut()</p>
+<p>作用， 通过改变元素的不透明度来实现显示和隐藏的效果。</p>
+<p>语法: fadeIn/fadeOut(速度,callback);</p>
+<pre><code>$(function(){
+
+$(&apos;#btn1&apos;).click(function(){
+
+$(&apos;#sp1&apos;).fadeIn/fadeOut(500);
+
+$(&apos;#sp1&apos;).fadeIn/fadeOut(500,function(){alert(&quot;H&quot;);});
+
+});
+
+});
+</code></pre><p>3)、slideUp() slideDown() </p>
+<p>作用：通过改变元素的高度来实现显示和隐藏的效果。</p>
+<p>语法: slideUp(速度,callback);</p>
+<pre><code>$(function(){
+
+$(&apos;#a1&apos;).toggle(function(){
+
+$(&apos;#d1&apos;).slideDown(&apos;slow&apos;);
+
+},function(){
+
+$(&apos;#d1&apos;).slideUp(&apos;slow&apos;);
+
+});
+
+});
+</code></pre><p>4)、自定义动画 animate(params,speed,callback) </p>
+<p>语法: JQuery经典总结</p>
+<p>params:是一个js对象，描述了动画执行结束时元素的样式，比如:</p>
+<p>{‘top’:’600px’,’left’:’200px’}</p>
+<p>speed:  毫秒</p>
+<p>callback: 在动画执行完毕之后，会执行这个函数</p>
+<pre><code>$(this).animate({&apos;left&apos;:&apos;500px&apos;},4000);
+
+$(this).animate({&apos;top&apos;:&apos;250px&apos;},2000).fadeOut(&apos;slow&apos;);
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/jquery（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-jquery（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/jquery（一）/">jquery（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/jquery（一）/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:54:57.706Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2030-01-22 22:20:00 星期二</p>
+<h4 id="jQuery基础"><a href="#jQuery基础" class="headerlink" title="jQuery基础"></a>jQuery基础</h4><p>1)dom对象 — &gt; jQuery对象</p>
+<p>var $obj = $(dom对象);</p>
+<pre><code>var $d = $(div);
+</code></pre><p>2)jQuery对象 —- &gt; dom对象</p>
+<p>第一种方式:   var obj = $obj.get(0);</p>
+<p>第二种方式:   var obj = $obj.get()[0];</p>
+<p>(3) jQuery与prototype如何同时使用？</p>
+<p>因为jQuery与prototype都使用$函数，需要使用</p>
+<p>var $a = jQuery.noConflict()将$函数改名为”$a”。</p>
+<h4 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h4><h5 id="1-、基本选择器-selector-a1-html"><a href="#1-、基本选择器-selector-a1-html" class="headerlink" title="1)、基本选择器   selector/a1.html"></a>1)、基本选择器   selector/a1.html</h5><ul>
+<li>——&gt; 匹配所有元素               #id ——&gt; 根据给定的ID匹配一个元素。<br>.class ——&gt;  根据给定的类匹配元素。 element ——&gt;根据给定的元素名匹配所有元素<br>selector1,selector2..selectorn ——&gt;将每一个选择器匹配到的元素合并</li>
+</ul>
+<h5 id="2-、层次选择器"><a href="#2-、层次选择器" class="headerlink" title="2)、层次选择器"></a>2)、层次选择器</h5><p>select1 select2——&gt;匹配select1下的所有儿子元素（不包含孙子元素）</p>
+<p>select1&gt;select2——&gt;匹配select1下的所有子元素（包含孙子元素）</p>
+<p>select1+select2——&gt;匹配紧跟在select1后的第一个兄弟元素（同辈元素）</p>
+<p>select1~select2——&gt;匹配select1后的所有兄弟元素（及找到所有的同</p>
+<h5 id="3-、过滤选择器"><a href="#3-、过滤选择器" class="headerlink" title="3)、过滤选择器"></a>3)、过滤选择器</h5><h6 id="a-基本过滤选择器-selector-a3-html"><a href="#a-基本过滤选择器-selector-a3-html" class="headerlink" title="a.基本过滤选择器 selector/ a3.html"></a>a.基本过滤选择器 selector/ a3.html</h6><p>:first——&gt;获取第一个元素</p>
+<p>:last——&gt;获取第一个元素</p>
+<p>:not(selector)——&gt;获取去除给定元素后的所有匹配元素</p>
+<p>:even——&gt;匹配所有索引值为偶数的元素，从 0 开始计数</p>
+<p>:odd——&gt;匹配所有索引值为奇数的元素，从 0 开始计数</p>
+<p>:eq(index)——&gt;匹配一个给定索引值的元素</p>
+<p>:gt(index)——&gt;匹配所有大于给定索引值的元素</p>
+<p>:lt(index)——&gt;匹配所有小于给定索引值的元素</p>
+<h6 id="b-内容过滤选择器-selector-a4-html"><a href="#b-内容过滤选择器-selector-a4-html" class="headerlink" title="b.内容过滤选择器  selector/ a4.html"></a>b.内容过滤选择器  selector/ a4.html</h6><p>:contains(text)——&gt;匹配包含给定文本的元素</p>
+<p>:empty   ——&gt;匹配没有子元素且文本为空的元素<br>:has(selector)——&gt;匹配含有选择器所匹配的元素的元素</p>
+<p>:parent ——&gt; 跟empty相反,即有子节点，或者内容不为空的节点。</p>
+<h6 id="c-可见性过滤选择器-selector-a5-html"><a href="#c-可见性过滤选择器-selector-a5-html" class="headerlink" title="c.可见性过滤选择器 selector/ a5.html"></a>c.可见性过滤选择器 selector/ a5.html</h6><p>:hidden——&gt;匹配所有不可见元素，或者type为hidden的元素</p>
+<p>:visible——&gt;匹配所有的可见元素</p>
+<h6 id="d-属性过滤选择器-selector-a6-html"><a href="#d-属性过滤选择器-selector-a6-html" class="headerlink" title="d.属性过滤选择器 selector/ a6.html"></a>d.属性过滤选择器 selector/ a6.html</h6><p>[attribute]——&gt;匹配包含给定属性的元素</p>
+<p>[attribute=value]——&gt;匹配给定的属性是某个特定值的元素</p>
+<p>[attribute!=value]——&gt;匹配属性不等于特定值的元素。</p>
+<h6 id="e-子元素过滤选择器-selector-a7-html"><a href="#e-子元素过滤选择器-selector-a7-html" class="headerlink" title="e.子元素过滤选择器 selector/ a7.html"></a>e.子元素过滤选择器 selector/ a7.html</h6><p>:nth-child(index/even/odd)——&gt;匹配其父元素下的第N个子或奇</p>
+<p>偶元素（即同辈中第N个元素）<br> :first-child——&gt;匹配其父元素下第一个子元素<br> :last-child——&gt;匹配其父元素下最后一个子元素</p>
+<p>f.表单对象属性过滤选择器</p>
+<p>:enabled——&gt;匹配所有可用元素</p>
+<p>:disabled——&gt;匹配所有不可用元素</p>
+<p>:checked——&gt;匹配复选框、单选按钮中被选中的元素</p>
+<p>:selected——&gt;匹配所有选中的option元素</p>
+<h5 id="4-、表单选择器"><a href="#4-、表单选择器" class="headerlink" title="4)、表单选择器"></a>4)、表单选择器</h5><p>:input——&gt;匹配所有 input, textarea, select 和 button 元素</p>
+<p>:text——&gt;匹配所有的单行文本框</p>
+<p>:pasword——&gt;匹配所有密码框</p>
+<p>:radio——&gt;匹配所有单选按钮</p>
+<p>:checkbox——&gt;匹配所有复选框</p>
+<p>:submit——&gt;匹配所有提交按钮</p>
+<p>:image——&gt;匹配所有图像域</p>
+<p>:reset——&gt;匹配所有重置按钮</p>
+<p>:button——&gt;匹配所有按钮</p>
+<p>:file——&gt;匹配所有文件域</p>
+<p>:hidden——&gt; 匹配所有不可见元素，或者type为hidden的元素</p>
+<h4 id="dom操作"><a href="#dom操作" class="headerlink" title="dom操作"></a>dom操作</h4><h5 id="1-、查询-dom-d1-html"><a href="#1-、查询-dom-d1-html" class="headerlink" title="1)、查询  dom / d1.html"></a>1)、查询  dom / d1.html</h5><p>利用选择器找到要操作的节点之后，访问节点的html内容、text内容、节点的值以及节点的属性值。除此之外，还可以修改这些值。</p>
+<p>a, html() : 相当于innerHTML</p>
+<p>b, text(): 获取div,p,span等元素内文本相当于innerText，</p>
+<p>c, val():获取文本框text、下拉列表select或选择框checkbox的值</p>
+<p>d, attr():获取或设置节点的属性值</p>
+<h5 id="2-、创建-dom-d2-html"><a href="#2-、创建-dom-d2-html" class="headerlink" title="2)、创建   dom / d2.html"></a>2)、创建   dom / d2.html</h5><pre><code>$(html);
+</code></pre><h5 id="3-、插入节点"><a href="#3-、插入节点" class="headerlink" title="3)、插入节点"></a>3)、插入节点</h5><p>append():向每个匹配的元素内部追加内容，当做最后一个儿子</p>
+<p>prepend():向每个匹配的元素内部前置内容。当做第一个儿子</p>
+<p>after():在每个匹配的元素之后插入内容，当做后一个兄弟 </p>
+<p>before():在每个匹配的元素之前插入内容，当做前一个兄弟</p>
+<pre><code>var $obj = $(&apos;&lt;div&gt;首先是培养兴趣，然后是多写代码&lt;/div&gt;&apos;);
+
+$(&apos;body&apos;).append($obj);
+</code></pre><p>也可以简化为</p>
+<pre><code>$(&apos;body&apos;).append(&apos;&lt;div&gt;首先是培养兴趣，然后是多写代码&lt;/div&gt;&apos;);
+</code></pre><h5 id="4-、删除节点-dom-d3-html"><a href="#4-、删除节点-dom-d3-html" class="headerlink" title="4)、删除节点 dom / d3.html"></a>4)、删除节点 dom / d3.html</h5><p>remove()：$(‘ul li:eq(1)’).remove();</p>
+<p>remove(selector)：$(‘ul li’).remove(‘#l1’);</p>
+<p>empty():清空节点：$(‘ul li:eq(1)’).empty();</p>
+<h5 id="5-、复制节点-dom-d6-html"><a href="#5-、复制节点-dom-d6-html" class="headerlink" title="5)、复制节点  dom / d6.html"></a>5)、复制节点  dom / d6.html</h5><p>clone():不复制行为</p>
+<p>clone(true):使复制的节点也具有行为</p>
+<h5 id="6-、属性操作-dom-d7-html"><a href="#6-、属性操作-dom-d7-html" class="headerlink" title="6)、属性操作  dom / d7.html"></a>6)、属性操作  dom / d7.html</h5><p>读取：attr(‘ ‘);     $(“img”).attr(“src”);</p>
+<p>设置： attr(‘ ‘,’ ‘) $(“img”).attr(‘src’, ‘test.jpg’); </p>
+<pre><code>s(&apos;#d1&apos;).attr(&apos;value&apos;,&apos;font-size:40px;color:red;&apos;);
+
+$(&apos;#form1 input:disabled&apos;).attr(&apos;disabled&apos;,false);
+</code></pre><p>或者一次设置多个 attr({“”:””,””:””});</p>
+<pre><code>eg:$(&apos;div&apos;).attr({&apos;class&apos;:&apos;s1&apos;,&apos;style&apos;:&apos;color:red;&apos;});
+</code></pre><p>删除：removeAttr(‘ ‘)</p>
+<h5 id="7-、样式操作-dom-d8-html"><a href="#7-、样式操作-dom-d8-html" class="headerlink" title="7)、样式操作  dom / d8.html"></a>7)、样式操作  dom / d8.html</h5><p>   获取和设置: attr(“class”,””), attr(“style”,””);</p>
+<pre><code>alert($(&apos;div&apos;).attr(&apos;class&apos;));
+
+$(&apos;div&apos;).attr(&apos;class&apos;,&apos;s1&apos;)
+
+$(&apos;div&apos;).attr(&apos;style&apos;,&apos;color:blue;&apos;);
+</code></pre><p>追加:addClass(‘’):$(‘div’).addClass(‘s2 s3’);</p>
+<p>移除:removeClass(‘’) :$(‘div’).removeClass(‘s3’);</p>
+<p>或者removeClass(‘s1 s2’) </p>
+<p>或者removeClass()//会删除所有样式</p>
+<p>切换样式：toggleClass:$(‘div’).toggleClass(‘s3’);</p>
+<p>是否有某个样式 hasClass(‘’):alert($(‘div’).hasClass(‘s3’));</p>
+<p>读取css(‘’)</p>
+<p>设置css(‘’,’’)或者css({‘’:’’,’’:’’})//设置多个样式</p>
+<pre><code>$(&apos;table tr:first&apos;).css(&apos;background-color&apos;,&apos;#cccccc&apos;);
+
+$(&apos;table tr:first&apos;).css({&apos;background-color&apos;:&apos;#cccccc&apos;,’width’:’3px’});
+</code></pre><h5 id="8-、遍历节点-dom-d9-html"><a href="#8-、遍历节点-dom-d9-html" class="headerlink" title="8)、遍历节点 dom / d9.html"></a>8)、遍历节点 dom / d9.html</h5><p>children()/children(selector):var $obj = $(‘#d0’).children(‘div’);</p>
+<p>只考虑子元素，不考虑其它后代元素。</p>
+<p>next(selector): 下一个兄弟$(‘#d2’).next()</p>
+<p>prev(selector):上一个兄弟$(‘#d2’).prev()</p>
+<p>siblings(selector):其它兄弟，</p>
+<pre><code>$(&apos;#d2&apos;).siblings(‘#id’)除#d2之外的其他兄弟节点
+
+也可以写成：$(‘#id’).siblings()
+</code></pre><p>parent():父节点,不是爷爷节点</p>
+<p>find(selector): 从当前节点开始，查找所有后代，包括孙子。</p>
+<h4 id="事件处理机制-event"><a href="#事件处理机制-event" class="headerlink" title="事件处理机制   event"></a>事件处理机制   event</h4><h5 id="1-、事件绑订-event-e1-html"><a href="#1-、事件绑订-event-e1-html" class="headerlink" title="1)、事件绑订  event/e1.html"></a>1)、事件绑订  event/e1.html</h5><pre><code>$(function(){
+
+$(&apos;#d1&apos;).bind(&apos;click&apos;,function(){
+
+$(this).html(&apos;hello java&apos;);
+
+});
+
+});
+</code></pre><h5 id="2-、绑订方式的简写形式"><a href="#2-、绑订方式的简写形式" class="headerlink" title="2)、绑订方式的简写形式"></a>2)、绑订方式的简写形式</h5><p>上个列子可以简写为：<br>    $(function(){</p>
+<pre><code>$(&apos;#d1&apos;).click(function(){
+
+$(this).html(&apos;hello java&apos;);
+
+});
+
+});
+</code></pre><h5 id="3-、合成事件-event-e2-html-e3-html"><a href="#3-、合成事件-event-e2-html-e3-html" class="headerlink" title="3)、合成事件  event/e2.html   e3.html"></a>3)、合成事件  event/e2.html   e3.html</h5><p>hover(mouseenter,leave) : 模拟光标悬停事件，区别于CSS中的伪类</p>
+<pre><code>$(&apos;.s1&apos;).hover(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+},function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+});
+</code></pre><p>相当于以下连个函数的合成：</p>
+<pre><code>$(&apos;.s1&apos;).mouseenter(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+});
+
+$(&apos;.s1&apos;).mouseleave(function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+  });
+</code></pre><p>上面的mouseenter和mouseleave两个函数可以合并为：</p>
+<pre><code>$(&apos;.s1&apos;).mouseenter(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+}).mouseleave(function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+});
+
+toggle(fn1,fn2...)：模拟鼠标连续单击事件
+ $(&apos;#a1&apos;).toggle(function(){
+
+$(&apos;#d1&apos;).show(&apos;slow&apos;);
+
+},function(){
+
+$(&apos;#d1&apos;).hide(&apos;slow&apos;);
+
+});
+</code></pre><h5 id="4-、事件冒泡"><a href="#4-、事件冒泡" class="headerlink" title="4)、事件冒泡"></a>4)、事件冒泡</h5><p>(1)获得事件对象  event/e4.html e5.html e6.html<br>    click(function(e){</p>
+<pre><code>});
+
+function f1(e){
+</code></pre><p>依据事件对象获得事件源(即哪一个节点产生了该事件，返回的是原始的DOM节点)，其中e不再是DOM对象，而是封装之后的JQuery对象。</p>
+<pre><code>var srcObj = e.srcElement;  //ie
+
+var srcObj = e.target; //firefox,chrome
+
+var srcObj = e.srcElement || e.target; //同时兼容ie,firefox,chrome
+
+alert(srcObj.innerHTML);
+</code></pre><p>依据事件对象获得鼠标点击的坐标（相对于屏幕）</p>
+<pre><code>alert(e.clientX + &apos;:&apos; + e.clientY);
+</code></pre><h5 id="2-事件对象的属性-event-e6-html"><a href="#2-事件对象的属性-event-e6-html" class="headerlink" title="(2)事件对象的属性  event/e6.html"></a>(2)事件对象的属性  event/e6.html</h5><p>event.type</p>
+<p>event.target:返回事件源(是dom对象)</p>
+<p>event.pageX/pageY   获得相对于当前浏览器页面的坐标</p>
+<h5 id="3-停止冒泡-event-e7-html"><a href="#3-停止冒泡-event-e7-html" class="headerlink" title="(3)停止冒泡   event / e7.html"></a>(3)停止冒泡   event / e7.html</h5><pre><code>event.stopPropagation()
+
+function clickA(e){
+
+alert(&quot;你点击了一个链接&quot;);
+
+//取消冒泡
+
+e.stopPropagation();
+
+  }
+
+function clickDiv(e){
+
+alert(&quot;你点击了一个Div&quot;);
+
+}
+</code></pre><p>上列中，链接处于div中，当取消冒泡后，单击链接便不会触发div上面</p>
+<p>onlick事件的执行，上例中的输出结果为：你点击了一个链接</p>
+<h5 id="4-停止默认行为-event-e8-html"><a href="#4-停止默认行为-event-e8-html" class="headerlink" title="(4)停止默认行为  event / e8.html"></a>(4)停止默认行为  event / e8.html</h5><pre><code>event.preventDefault()
+
+$(function(){
+
+$(&apos;#d1&apos;).click(function(e){
+
+var flag = confirm(&apos;确定删除吗&apos;);
+
+if(!flag){
+
+e.preventDefault();
+
+}
+
+});
+
+});
+</code></pre><p>设置停止了默认行为后，表单提交按钮便不会自动提交了。相当于：</p>
+<p>　　&lt;input type=”submit” id=”d1” name=”username” </p>
+<p>　　  onclick=”return fonfirm(‘确定要删除吗’)”/&gt;</p>
+<h5 id="5-、模拟操作-event-e9-html"><a href="#5-、模拟操作-event-e9-html" class="headerlink" title="5)、模拟操作  event / e9.html"></a>5)、模拟操作  event / e9.html</h5><pre><code>trigger(&apos;click&apos;)
+
+$(function(){
+
+$(&apos;#b1&apos;).click(function(){
+
+//$(&apos;#username&apos;).trigger(&apos;focus&apos;);
+
+$(&apos;#username&apos;).focus();
+
+});
+
+});
+</code></pre><p>上列模拟了文本框控件获得焦点的行为，当点击按钮后，文本框便获得了焦点，表现为文本框内有光标闪动。</p>
+<p>mouseenter和mouseover效果一样，可以互换使用</p>
+<p>mouseout和mouseleave效果一样，可以互换使用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/jquery（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/AJAX/">AJAX</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/AJAX/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:54:22.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1/22/2017 9:40:51 PM </p>
+<h5 id="原生JavaScript的AJAX"><a href="#原生JavaScript的AJAX" class="headerlink" title="原生JavaScript的AJAX"></a>原生JavaScript的AJAX</h5><p>首先，获取XHR对象，它被内嵌在浏览器中了，主要为了区别IE6这类特殊浏览器，不然直接调用XMLHttpRequest这个方法即可获取。成功获取对象之后使用open（）方法传入请求方法，请求url。这个onreadystatechange是一个回调函数，负责接收服务器响应数据的处理，这里类似将它重写，浏览器会调用这个方法处理返回数据。send方法在GET请求中只需要传入null，因为send方法是把数据放在请求体内，只有POST方式才会往send里写数据。<br>回调函数的写法是按照视频代码抄写的。在responseText可以获得服务端写来的数据。</p>
+<pre><code>var XHR=false;
+function createXHR(){
+     if(window.XMLHttpRequest){
+        XHR=new XMLHttpRequest();
+    }else{
+        XHR=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+}
+function checkUsername(){
+    var username=document.getElementById(&quot;check&quot;).value;
+    createXHR();
+    XHR.open(&quot;get&quot;,&quot;checkUsername?username=&quot;+username,true);
+    XHR.onreadystatechange=showMsgCallback;
+    XHR.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;); 
+    XHR.send();
+}
+function showMsgCallback(){
+    if(XHR.readyState==4){
+        if(XHR.status==200){
+            var text=XHR.responseText.toString(); 
+            alert(text==&apos;no&apos;);
+            console.log(text);
+            if(text==&quot;yes&quot;){
+                 alert(1);
+                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户名已注册!&quot;;
+            }
+            else if(text==&quot;no&quot;)
+            {
+                 alert(2);
+                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户可以注册&quot;;
+            }
+        }
+    }
+}
+</code></pre><h5 id="三种Jquery的ajax写法"><a href="#三种Jquery的ajax写法" class="headerlink" title="三种Jquery的ajax写法"></a>三种Jquery的ajax写法</h5><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;ajax交互&lt;/title&gt;
+&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    $(document).ready(function() {
+        $(&apos;#button1&apos;).click(function() {
+            var text = $(&apos;#msg1&apos;);
+            $.ajax({
+                type : &quot;POST&quot;,
+                url : &quot;jquery&quot;,
+                data : &quot;username=ssss&quot;,
+                dataType : &apos;text&apos;,
+                success : function(result) {
+
+                    if (result==&quot;success&quot;) {                   
+                        text.text(&quot;&quot;);
+                        text.append(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;&quot;);
+                        text.append(&quot;失败&quot;);
+                    }
+                },
+                error : function() {
+                    text.text(&quot;&quot;);
+                    text.append(&quot;操作出错&quot;);
+                }
+
+            });
+        });
+    });
+    $(document).ready(function(){
+        $(&apos;#button2&apos;).click(function(){
+            var text = $(&apos;#msg2&apos;);
+            $.post(&apos;jquery&apos;, &apos;username=xxxx&apos;,function(result){
+                if (result===&quot;success&quot;) {                  
+                        text.text(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;失败&quot;);
+                    }
+            },&apos;text&apos;);
+        });
+    });
+    $(document).ready(function(){
+        $(&apos;#button3&apos;).click(function(){
+            var text = $(&apos;#msg3&apos;);
+            $.get(&apos;jquery&apos;,&apos;username=zzzzz&apos;,function(result){
+                if (result===&quot;success&quot;) {                  
+                        text.text(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;失败&quot;);
+                    }
+            });
+        });
+    });
+
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id=&quot;button1&quot;&gt;点击使用$ajax发送&lt;/button&gt;
+    &lt;span id=&quot;msg1&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;button id=&quot;button2&quot;&gt;点击使用$post发送&lt;/button&gt;
+    &lt;span id=&quot;msg2&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;button id=&quot;button3&quot;&gt;点击使用$get发送&lt;/button&gt;
+    &lt;span id=&quot;msg3&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;%@ taglib prefix=&quot;s&quot; uri=&quot;/struts-tags&quot; %&gt;
+&lt;%@ taglib prefix=&quot;sx&quot; uri=&quot;/struts-dojo-tags&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;AJAX范例&lt;/title&gt;
+&lt;sx:head/&gt;
+&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+    $(&apos;#usrname&apos;).blur(function(){
+        $.ajax({
+            type : &quot;POST&quot;,
+            url : &quot;checkUsername&quot;,
+            data : &apos;name=&apos;+$(&apos;#usrname&apos;).val(),
+            dataType : &apos;text&apos;,
+            success:function(data){
+                if(data===&apos;yes&apos;)
+                    $(&apos;#msg&apos;).text(&apos;可以登录&apos;);
+                else if(data===&apos;no&apos;)
+                    $(&apos;#msg&apos;).text(&apos;无法登录&apos;);
+            }
+        });
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;
+    &lt;form action=&quot;&quot;&gt;
+            &lt;span id=&quot;msg&quot;&gt;&lt;/span&gt;&lt;br/&gt;
+        用户名:&lt;input id=&quot;usrname&quot; name=&quot;name&quot; type=&quot;text&quot;/&gt;
+        &lt;br/&gt;
+        密码：&lt;input name=&quot;password&quot; type=&quot;password&quot;/&gt;
+        &lt;br/&gt;
+        &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+        &lt;button type=&quot;reset&quot;&gt;重置&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新建,模板,小书匠</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/AJAX/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/DOM/">DOM</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/DOM/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:53:42.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017-01-21 22:29:04 星期一</p>
+<h5 id="DOM即文件对象模型（Document-Object-Model，简称DOM）"><a href="#DOM即文件对象模型（Document-Object-Model，简称DOM）" class="headerlink" title="DOM即文件对象模型（Document Object Model，简称DOM）"></a>DOM即文件对象模型（Document Object Model，简称DOM）</h5><p>HTML DOM 定义了访问和操作 HTML 文档的标准方法。<br>简言之：<br>  （1）其实它就是将 HTML 文档以节点（Node）为单位将其表达为等级明确、节构整齐的树节构，以便于简捷地操作文档的元素。<br>  （2）它在一定程度上对HTML（或XML）元素（节点）实现了“黑盒”访问和操作。例如，我们获得了一个节点对象，然后直接用它的parentNode属性获得它的父节点（如果父节点存在的话），进而访问或操作父节点对象，而我们无需知道它的父节点是什么类型的对象，它的id是什么等等，父节点就是封装好的一个“黑盒”，我们不知道它的id、name等所有属性，依然可以利用dom技术随意操作它。</p>
+<h5 id="DOM对节点（Node）的定义："><a href="#DOM对节点（Node）的定义：" class="headerlink" title="DOM对节点（Node）的定义："></a>DOM对节点（Node）的定义：</h5><p>Ø  整个文档是一个文档节点<br>Ø  每个 HTML 标签是一个元素节点<br>Ø  包含在 HTML 元素中的文本是文本节点<br>Ø  每一个 HTML 属性是一个属性节点<br>Ø  注释属于注释节点</p>
+<h5 id="DOM中节点的层级关系"><a href="#DOM中节点的层级关系" class="headerlink" title="DOM中节点的层级关系"></a>DOM中节点的层级关系</h5><p>层级关系很明确也很简单，根据节点之间的关系将其分为三种：父（parent）、子（child）、同胞（sibling）</p>
+<h5 id="DOM对象树"><a href="#DOM对象树" class="headerlink" title="DOM对象树"></a>DOM对象树</h5><p>DOM将每一个HTML或XML的文档都看待成内存中的一个对象树<br>浏览器中的一个页面对应一个HTML文档，因此有一颗与之对应的HTML的DOM树。<br>浏览器中一个页面可能处理很多个XML的文档，因此可能有很多颗XML的DOM树。</p>
+<h5 id="DOM对象树种的常用节点"><a href="#DOM对象树种的常用节点" class="headerlink" title="DOM对象树种的常用节点"></a>DOM对象树种的常用节点</h5><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>nodeType常量（IE不支持）</th>
+<th>nodeType值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>Node.ELEMENT_NODE</td>
+<td>1</td>
+<td>元素节点（标签）</td>
+</tr>
+<tr>
+<td>Atrr</td>
+<td>Node.ATTRIBUTE_NODE</td>
+<td>2</td>
+<td>属性节点（属性）</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Node.TEXT_NODE</td>
+<td>3</td>
+<td>文本节点（文本）</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td>Node.COMMENT_NODE</td>
+<td>8</td>
+<td>注释节点（注释）</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>Node.DOCUMENT_NODE</td>
+<td>9</td>
+<td>文本根节点</td>
+</tr>
+</tbody>
+</table>
+<h5 id="DOM对象树不同节点的名值对比"><a href="#DOM对象树不同节点的名值对比" class="headerlink" title="DOM对象树不同节点的名值对比"></a>DOM对象树不同节点的名值对比</h5><table>
+<thead>
+<tr>
+<th>节点</th>
+<th>nodeName（节点名）</th>
+<th>nodeValue(节点值)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element元素节点</td>
+<td>对应标签名的大写形式如：HTML</td>
+<td>Null</td>
+</tr>
+<tr>
+<td>Attr属性节点</td>
+<td>文档中定义的属性名如：type</td>
+<td>文档中定义的属性值如：button</td>
+</tr>
+<tr>
+<td>Text文本节点</td>
+<td>#text</td>
+<td>文本内容如：133</td>
+</tr>
+<tr>
+<td>Comment注释节点</td>
+<td>#comment</td>
+<td>注释内容如：comment</td>
+</tr>
+<tr>
+<td>Document根节点</td>
+<td>#document</td>
+<td>Null</td>
+</tr>
+</tbody>
+</table>
+<h5 id="根节点的属性和方法："><a href="#根节点的属性和方法：" class="headerlink" title="根节点的属性和方法："></a>根节点的属性和方法：</h5><pre><code>&lt;script type=&quot;text/javascript&quot; &gt;  
+
+            function testapi(){  
+
+                //获得根节点元素  
+
+                var htmlrootElement=document.documentElement;  
+
+                //获得指定的元素节点  
+
+                var divNode=document.getElementById(&quot;div1&quot;);  
+
+                //获得整个页面所有的div元素节点  
+
+                var divNodes=document.getElementsByTagName(&quot;div&quot;);  
+
+                //创建元素节点  
+
+                var newdivNode=document.createElement(&quot;div&quot;);  
+
+
+
+                //创建文本节点  
+
+                var newTextNode=document.createTextNode(&quot;aaaa&quot;);  
+
+            }  
+
+&lt;/script&gt;  
+</code></pre><h5 id="元素节点的属性和方法"><a href="#元素节点的属性和方法" class="headerlink" title="元素节点的属性和方法"></a>元素节点的属性和方法</h5><pre><code>//根据标签名获得元素节点  
+
+var divNode2=document.getElementById(&quot;div2&quot;);  
+
+var divNodes2=divNode2.getElementsByTagName(&quot;div&quot;);  
+
+
+
+//操作属性  
+
+var inputtext=document.getElementById(&quot;inputtext&quot;);  
+
+var flag=inputtext.hasAttribute(&quot;value&quot;);  
+
+inputtext.setAttribute(&quot;value&quot;, &quot;aaacede&quot;);  
+
+var textValue=inputtext.getAttribute(&quot;value&quot;);  
+
+flag=inputtext.hasAttribute(&quot;value&quot;);   
+
+inputtext.removeAttribute(&quot;value&quot;);  
+
+alert(&quot;完成&quot;);  
+</code></pre><h5 id="所有节点（Node）都拥有的属性和方法"><a href="#所有节点（Node）都拥有的属性和方法" class="headerlink" title="所有节点（Node）都拥有的属性和方法"></a>所有节点（Node）都拥有的属性和方法</h5><pre><code> //返回元素节点包含的属性节点  
+
+ var attributes=inputtext.attributes;  
+
+ //nodeName nodeValue nodeType  
+
+ var inputName=inputtext.nodeName;  
+
+ var nodetype=inputtext.nodeType;  
+
+ var nodevalue=inputtext.nodeValue;  
+
+
+
+ //获取所有的子节点  
+
+ var childs=divNode2.childNodes;  
+
+ //获取父节点  
+
+ var parent=divNode2.parentNode;  
+
+ //获取第一个子节点和最后一个子节点  
+
+ var first=divNode2.firstChild;  
+
+ var last=divNode2.lastChild;  
+
+
+
+ //获取兄弟节点  
+
+ var next=divNode2.nextSibling;  
+
+ var last=divNode2.previousSibling;  
+
+
+
+ //判断是否有子节点  
+
+ var flag2=divNode2.hasChildNodes();  
+
+ //追加节点  
+
+ newdivNode.appendChild(newTextNode);  
+
+ divNode2.appendChild(newdivNode);  
+
+ var new2=document.createElement(&quot;div&quot;);  
+
+ var text2=document.createTextNode(&quot;insert&quot;);  
+
+ new2.appendChild(text2);  
+
+ divNode2.insertBefore(new2,divNode2.firstChild);  
+
+
+
+ var new3=document.createElement(&quot;div&quot;);  
+
+ var text3=document.createTextNode(&quot;insert3&quot;);  
+
+ new3.appendChild(text3);  
+
+ divNode2.insertBefore(new3, null);  
+
+ divNode2.insertBefore(new3,divNode2.firstChild);  
+
+
+
+ //移除节点  
+
+ var remove=divNode2.removeChild(new3);  
+
+ var new4=document.createElement(&quot;div&quot;);  
+
+ var text4=document.createTextNode(&quot;insert4&quot;);  
+
+ new4.appendChild(text4);  
+
+ //如果第一个参数曾经是当前节点的子节点，那么这个参数对应的节点会被移动到第二个参数对应的节点的位置。  
+
+ //第二个参数对应的节点被删除了。  
+
+ var replace=divNode2.replaceChild(new4,divNode2.getElementsByTagName(&quot;div&quot;)[0]);  
+
+
+
+//clone节点  
+
+var clone1=divNode2.cloneNode(true);  
+
+var clone2=divNode2.cloneNode(false);  
+</code></pre><h5 id="AJAX-DOM-和javascript的关系"><a href="#AJAX-DOM-和javascript的关系" class="headerlink" title="AJAX,DOM 和javascript的关系"></a>AJAX,DOM 和javascript的关系</h5><p>DOM能够为javascript引擎公开网页。通过DOM，可以采用编程的方式操作文档的结构。Web页面的DOM表示是一个树状结构，由元素或点组成。节点可以包含很多子节点。javascript通过全局变量document公开当前Webde根节点，这个变量是所有DOM操作的起点。DOM使用容器的属性来做索引，而不是使用数字做索引。DOM中元素的关系可以看作是HTML清单的镜像。这种关系可以是双向的，修改DOM将改变HTML标记，随之会反映在页面的现实上。<br>用一个简单一点的关系表示就是：<br>DOM–数据–&gt;jQuery–利用–&gt;Ajax–请求–&gt;后台<br>后台–回应Ajax请求–&gt;Jquery–操作dom变现请求–&gt;dom</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/DOM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-flag" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/flag/">flag</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/flag/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:52:45.629Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017-01-20 21:34:57 星期日<br>今天没学习 该打 偶然看到入门前端学习路线 立个flag 静心 慢慢学吧~</p>
+<h5 id="一、学习HTML5和CSS3基础"><a href="#一、学习HTML5和CSS3基础" class="headerlink" title="一、学习HTML5和CSS3基础"></a>一、学习HTML5和CSS3基础</h5><p>随着这移动互联网快速发展的时代，尤其是4G时代，HTML5+CSS3已然成为新一代的web前端技术。</p>
+<p>随着HTML5的发展和普及，了解 HTML5 也将成为 Web开发人员的必修课。涉及到网页外观时，就需要学习 CSS 了，它可以帮你把网页做得更美观。</p>
+<p>利用 HTML5 和 CSS3 模拟一些你所见过的网站的排版和布局（色彩，图片，文字样式等等）。</p>
+<p>如：京东首页的实现</p>
+<p>当然，达内Web前端开发课程第一阶段还会学习 PS设计工具使用和互联网UI设计理论。在阶段项目实战中，大家常见的京东详情页、360专题页、淘宝首页都可以实现。</p>
+<h5 id="二、学习JavaScript，了解DOM"><a href="#二、学习JavaScript，了解DOM" class="headerlink" title="二、学习JavaScript，了解DOM"></a>二、学习JavaScript，了解DOM</h5><p>JavaScript 是一种能让你的网页更加生动活泼的程序语言。学习 JavaScript 的基本语法，学会用 JavaScript 操作网页中 DOM 元素。</p>
+<p>在达内 Web前端开发课程第二阶段完全可以实现大家平常喜欢玩的 2048 游戏。（是不是感觉挺有意思）</p>
+<p>接着学习使用一些 JavaScript 库，比如 Jquery 是大部分 Web开发人员都喜欢用的，通过 Jquery 可以有效的提高 JavaScript 的开发效率。</p>
+<h5 id="三、学习Web前端核心"><a href="#三、学习Web前端核心" class="headerlink" title="三、学习Web前端核心"></a>三、学习Web前端核心</h5><p>学习 Jquery 之后，大家就要学习 HTML5 高级阶段（HTML5 Canvas 绘图、HTML5 SVG、音频和视频处理、表单处理、表单验证…等）</p>
+<p>达内培训每学习一个阶段，都是让学员真正进行项目实战，在熟悉和消化所学习知识的同时，增加自己的项目经验和团队协作能力。</p>
+<p>在学习 Jquery 和 HTML5 学习结束后，就可以完成飞机大战、飞扬的小鸟以及复杂订单的实现。</p>
+<h5 id="四、学习HTTP协议及Server端技术"><a href="#四、学习HTTP协议及Server端技术" class="headerlink" title="四、学习HTTP协议及Server端技术"></a>四、学习HTTP协议及Server端技术</h5><p>服务器端脚本编程（后台开发）也是Web开发人员的基本功之一，达内学员现在学习的是最流行的php。</p>
+<p>要构建动态页面通常会使用到数据库，通常PHP使用Oracle、MySQL数据库。</p>
+<p>对于Web服务器来说，Apache 一个就已经是了。那么Apache、php、数据库，该怎么理解它们的关系？</p>
+<p>1、Apache是服务器基础，php和数据库都需要Apache来协调工作</p>
+<p>2、php是脚本解释，如果不用php，那么Apache出来的东西就只是静态的，而不能在服务器实现功能</p>
+<p>3、数据库完全可以单独使用，但是和Apache、php一起，则是由php代码调用数据库接口，而apache就负责解释php代码，让他能真正地实现对数据库的调用</p>
+<p>这个阶段的项目实战是实现京东订单页和个人论坛。</p>
+<h5 id="五、学习Web前端高级技术"><a href="#五、学习Web前端高级技术" class="headerlink" title="五、学习Web前端高级技术"></a>五、学习Web前端高级技术</h5><p>当你掌握了HTML5，CSS3，JavaScript等技术之后，就应该找一个Web框架加快你的Web开发速度，使用框架可以节约你很多时间。</p>
+<p>在达内学习的Bootstrap是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷，是web前端开发者最喜欢，也是现在企业里最常用的前端框架。</p>
+<p>Angular JS是一款优秀的前端JS框架，已经被用于Google的多款产品当中。AngularJS有着诸多特性，最为核心的是：MVC编程、模块化、控制器、路由、事件绑定等等。</p>
+<p>AngularJS通过为开发者呈现一个更高层次的抽象来简化应用的开发。如同其他的抽象技术一样，这也会损失一部分灵活性。换句话说，并不是所有的应用都适合用AngularJS来做。AngularJS主要考虑的是构建CRUD应用。幸运的是，至少90%的WEB应用都是CRUD应用。但是要了解什么适合用AngularJS构建，就得了解什么不适合用AngularJS构建。</p>
+<p>从最简单的HTML5基础到Web前端高级技术，内容还是不少滴！要想精通这里的每一样技术，都得下苦功夫才行。四个月的时间，在达内讲师的指导下，足够你对Web前端开发产生一个有效的认识，并且找到理想的工作。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/flag/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -300,6 +2225,26 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Node.Js</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

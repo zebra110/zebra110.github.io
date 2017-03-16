@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/3 | zebra110</title>
+  <title>js表单搜索、编辑操作 | zebra110</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="neng">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zebra110">
-<meta property="og:url" content="http://yoursite.com/archives/2017/03/index.html">
+  <meta name="description" content="在页面上实现表单数据的添加、搜索等功能一.添加表单内容，隔行变色oTab.tBodies[0].removeChild(this.parentNode.parentNode)1.这里的tBodies相当于document.getElementByTagName(“tbody”)2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。3.parentNode，同理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js表单搜索、编辑操作">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/js表单搜索、编辑操作/index.html">
 <meta property="og:site_name" content="zebra110">
-<meta property="og:description" content="neng">
+<meta property="og:description" content="在页面上实现表单数据的添加、搜索等功能一.添加表单内容，隔行变色oTab.tBodies[0].removeChild(this.parentNode.parentNode)1.这里的tBodies相当于document.getElementByTagName(“tbody”)2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。3.parentNode，同理">
+<meta property="og:updated_time" content="2017-03-16T07:48:00.312Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zebra110">
-<meta name="twitter:description" content="neng">
+<meta name="twitter:title" content="js表单搜索、编辑操作">
+<meta name="twitter:description" content="在页面上实现表单数据的添加、搜索等功能一.添加表单内容，隔行变色oTab.tBodies[0].removeChild(this.parentNode.parentNode)1.这里的tBodies相当于document.getElementByTagName(“tbody”)2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。3.parentNode，同理">
   
     <link rel="alternative" href="/atom.xml" title="zebra110" type="application/atom+xml">
   
@@ -152,150 +153,227 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js表单搜索、编辑操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js表单搜索、编辑操作
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/js表单搜索、编辑操作/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:48:00.288Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在页面上实现表单数据的添加、搜索等功能"><a href="#在页面上实现表单数据的添加、搜索等功能" class="headerlink" title="在页面上实现表单数据的添加、搜索等功能"></a>在页面上实现表单数据的添加、搜索等功能</h3><h4 id="一-添加表单内容，隔行变色"><a href="#一-添加表单内容，隔行变色" class="headerlink" title="一.添加表单内容，隔行变色"></a>一.添加表单内容，隔行变色</h4><p>oTab.tBodies[0].removeChild(this.parentNode.parentNode)<br>1.这里的tBodies相当于document.getElementByTagName(“tbody”)<br>2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。<br>3.parentNode，同理，获取父级节点。<br>4.昨天的innerHTML就是把某个值设置到该标签里去，看这句就能理解了–&gt; oTd.innerHTML=oAge.value;<br>5.var oID=oTab.tBodies[0].rows.length+1; oTd.innerHTML=oID++;这两句实现了ID不重用（和数据库里的ID一个道理）</p>
+<p>下面是表单数据增加，隔行变色的实现代码。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;script&gt;
+    window.onload=function(){
+        var oTab=document.getElementById(&quot;tab1&quot;);
+
+        var oBtn=document.getElementById(&quot;btn1&quot;);
+        var oName=document.getElementById(&quot;name&quot;);
+        var oAge=document.getElementById(&quot;age&quot;);
+        var oID=oTab.tBodies[0].rows.length+1;
+        oBtn.onclick=function () {
+            var oTr=document.createElement(&quot;tr&quot;);
+            var oTd=document.createElement(&quot;td&quot;);
+            oTd.innerHTML=oID++;
+            oTr.appendChild(oTd);
+
+            var oTd=document.createElement(&quot;td&quot;);
+            oTd.innerHTML=oName.value;
+            oTr.appendChild(oTd);
+
+            var oTd=document.createElement(&quot;td&quot;);
+            oTd.innerHTML=oAge.value;
+            oTr.appendChild(oTd);
+
+            var oTd=document.createElement(&quot;td&quot;);
+            oTd.innerHTML=&quot;&lt;a href=&quot;javascript:;&quot;&gt;删除&lt;/a&gt;&quot;;
+
+            oTd.getElementsByTagName(&quot;a&quot;)[0].onclick=function () {
+                oTab.tBodies[0].removeChild(this.parentNode.parentNode)
+            }
+            oTr.appendChild(oTd);
+
+            oTab.tBodies[0].appendChild(tr);
+        }
+        var oldColor=&quot;&quot;;
+        for(var i=0;i&lt;oTab.tBodies[0].rows.length;i++){
+            oTab.tBodies[0].rows[i].onmouseover=function () {
+            oldColor=this.style.background;
+            this.style.background=&quot;red&quot;;
+            }
+            oTab.tBodies[0].rows[i].onmouseout=function () {
+                this.style.background=oldColor;
+            }
+            if(i%2){
+                oTab.tBodies[0].rows[i].style.background=&quot;#ccc&quot;;
+            }
+            else {
+                oTab.tBodies[0].rows[i].style.background=&quot;&quot;;
+
+            }
+        }
+    }
+&lt;/script&gt;
+&lt;body&gt;
+姓名：&lt;input id=&quot;name&quot; type=&quot;text&quot; /&gt;
+年龄：&lt;input id=&quot;age&quot; type=&quot;text&quot; /&gt;
+&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;添加&quot;/&gt;
+&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;操作&quot;/&gt;
+&lt;table border=&quot;5px&quot; width=&quot;500px&quot; ID=&quot;tab1&quot;&gt;
+    &lt;thead&gt;
+    &lt;th&gt;ID&lt;/th&gt;
+    &lt;th&gt;姓名&lt;/th&gt;
+    &lt;th&gt;年龄&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;张三&lt;/td&gt;
+            &lt;td&gt;20&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;2&lt;/td&gt;
+            &lt;td&gt;李四&lt;/td&gt;
+            &lt;td&gt;21&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td&gt;王五&lt;/td&gt;
+            &lt;td&gt;18&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;4&lt;/td&gt;
+            &lt;td&gt;BLUE&lt;/td&gt;
+            &lt;td&gt;15&lt;/td&gt;
+            &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="二-搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase-、search"><a href="#二-搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase-、search" class="headerlink" title="二. 搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase()、search()."></a>二. 搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase()、search().</h4><p>(oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()).search(oName.value.toLowerCase())!=-1</p>
+<p>完整代码如下</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;script&gt;
+    window.onload=function(){
+        var oTab=document.getElementById(&quot;tab1&quot;);
+        var oBtn=document.getElementById(&quot;btn1&quot;);
+        var oName=document.getElementById(&quot;name&quot;);
+        oBtn.onclick=function () {
+           for(var i=0;i&lt;oTab.tBodies[0].rows.length;i++){
+               if((oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()).search(oName.value.toLowerCase())!=-1){
+                   oTab.tBodies[0].rows[i].style.background=&quot;yellow&quot;;
+               }
+               else{
+                   oTab.tBodies[0].rows[i].style.background=&quot;&quot;;
+               }
+           }
+        }
+    }
+&lt;/script&gt;
+&lt;body&gt;
+姓名：&lt;input id=&quot;name&quot; type=&quot;text&quot; /&gt;
+&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;搜索&quot;/&gt;
+&lt;table border=&quot;5px&quot; width=&quot;500px&quot; ID=&quot;tab1&quot;&gt;
+    &lt;thead&gt;
+    &lt;th&gt;ID&lt;/th&gt;
+    &lt;th&gt;姓名&lt;/th&gt;
+    &lt;th&gt;年龄&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;张三&lt;/td&gt;
+        &lt;td&gt;20&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;李四&lt;/td&gt;
+        &lt;td&gt;21&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;3&lt;/td&gt;
+        &lt;td&gt;王五&lt;/td&gt;
+        &lt;td&gt;18&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;4&lt;/td&gt;
+        &lt;td&gt;BLUE&lt;/td&gt;
+        &lt;td&gt;15&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h6 id="在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？"><a href="#在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？" class="headerlink" title="在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？"></a>在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？</h6>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃冰淇淋<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/关于异步/" class="archive-article-date">
-  	<time datetime="2017-03-16T08:00:10.898Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/关于异步/">关于异步</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Node.Js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/CSS3（一）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:59:16.446Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/CSS3（一）/">CSS3（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/HTML5新特性/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:58:31.887Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/HTML5新特性/">HTML5新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTML5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/JS面向对象/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:57:11.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/JS面向对象/">JS面向对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -307,251 +385,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/16/js表单搜索、编辑操作/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/jquery（三）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:56:29.937Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jquery（三）/">jquery（三）</a>
-    </h1>
+    <a href="/2017/03/16/js悬浮框的实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js悬浮框的实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/16/CSS3 2D3D转换/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS3 2D3D转换</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="js表单搜索、编辑操作" data-title="js表单搜索、编辑操作" data-url="http://yoursite.com/2017/03/16/js表单搜索、编辑操作/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zebra110"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/jquery（二）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:55:49.158Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jquery（二）/">jquery（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/jquery（一）/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:54:57.706Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jquery（一）/">jquery（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/AJAX/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:54:22.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/AJAX/">AJAX</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新建,模板,小书匠</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/DOM/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:53:42.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/DOM/">DOM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/16/flag/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:52:45.629Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/flag/">flag</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/03/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -574,8 +516,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
