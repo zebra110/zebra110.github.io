@@ -6,18 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>js表单搜索、编辑操作 | zebra110</title>
+  <title>节点测试 | zebra110</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在页面上实现表单数据的添加、搜索等功能一.添加表单内容，隔行变色oTab.tBodies[0].removeChild(this.parentNode.parentNode)1.这里的tBodies相当于document.getElementByTagName(“tbody”)2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。3.parentNode，同理">
+  <meta name="description" content="####首先了解一下DOM中有三大节点，分别是 元素节点，文本节点，属性节点
+元素节点：构成了DOM的基础。文档结构中，是根元素，代表整个文档，其他的还有,,,等等。元素节点之间可以相互包含(当然遵循一定的规则)
+文本节点：包含在元素节点中。
+属性节点：元素都可以包含一些属性，属性的作用是对元素做出更具体的描述，比如id,name之类的。
+以下面的demo为例：
+&amp;lt;script&amp;gt;
+wi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js表单搜索、编辑操作">
-<meta property="og:url" content="http://yoursite.com/2017/03/16/js表单搜索、编辑操作/index.html">
+<meta property="og:title" content="节点测试">
+<meta property="og:url" content="http://yoursite.com/2017/03/17/节点测试/index.html">
 <meta property="og:site_name" content="zebra110">
-<meta property="og:description" content="在页面上实现表单数据的添加、搜索等功能一.添加表单内容，隔行变色oTab.tBodies[0].removeChild(this.parentNode.parentNode)1.这里的tBodies相当于document.getElementByTagName(“tbody”)2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。3.parentNode，同理">
-<meta property="og:updated_time" content="2017-03-16T07:48:00.312Z">
+<meta property="og:description" content="####首先了解一下DOM中有三大节点，分别是 元素节点，文本节点，属性节点
+元素节点：构成了DOM的基础。文档结构中，是根元素，代表整个文档，其他的还有,,,等等。元素节点之间可以相互包含(当然遵循一定的规则)
+文本节点：包含在元素节点中。
+属性节点：元素都可以包含一些属性，属性的作用是对元素做出更具体的描述，比如id,name之类的。
+以下面的demo为例：
+&amp;lt;script&amp;gt;
+wi">
+<meta property="og:updated_time" content="2017-03-17T07:35:55.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js表单搜索、编辑操作">
-<meta name="twitter:description" content="在页面上实现表单数据的添加、搜索等功能一.添加表单内容，隔行变色oTab.tBodies[0].removeChild(this.parentNode.parentNode)1.这里的tBodies相当于document.getElementByTagName(“tbody”)2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。3.parentNode，同理">
+<meta name="twitter:title" content="节点测试">
+<meta name="twitter:description" content="####首先了解一下DOM中有三大节点，分别是 元素节点，文本节点，属性节点
+元素节点：构成了DOM的基础。文档结构中，是根元素，代表整个文档，其他的还有,,,等等。元素节点之间可以相互包含(当然遵循一定的规则)
+文本节点：包含在元素节点中。
+属性节点：元素都可以包含一些属性，属性的作用是对元素做出更具体的描述，比如id,name之类的。
+以下面的demo为例：
+&amp;lt;script&amp;gt;
+wi">
   
     <link rel="alternative" href="/atom.xml" title="zebra110" type="application/atom+xml">
   
@@ -153,189 +171,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js表单搜索、编辑操作" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-节点测试" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js表单搜索、编辑操作
+      节点测试
     </h1>
   
 
         
-        <a href="/2017/03/16/js表单搜索、编辑操作/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:48:00.288Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+        <a href="/2017/03/17/节点测试/" class="archive-article-date">
+  	<time datetime="2017-03-17T07:35:55.741Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在页面上实现表单数据的添加、搜索等功能"><a href="#在页面上实现表单数据的添加、搜索等功能" class="headerlink" title="在页面上实现表单数据的添加、搜索等功能"></a>在页面上实现表单数据的添加、搜索等功能</h3><h4 id="一-添加表单内容，隔行变色"><a href="#一-添加表单内容，隔行变色" class="headerlink" title="一.添加表单内容，隔行变色"></a>一.添加表单内容，隔行变色</h4><p>oTab.tBodies[0].removeChild(this.parentNode.parentNode)<br>1.这里的tBodies相当于document.getElementByTagName(“tbody”)<br>2.removeChild该对象指的是它的子标签，比如tr包着td,那td就是tr的子元素。<br>3.parentNode，同理，获取父级节点。<br>4.昨天的innerHTML就是把某个值设置到该标签里去，看这句就能理解了–&gt; oTd.innerHTML=oAge.value;<br>5.var oID=oTab.tBodies[0].rows.length+1; oTd.innerHTML=oID++;这两句实现了ID不重用（和数据库里的ID一个道理）</p>
-<p>下面是表单数据增加，隔行变色的实现代码。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;script&gt;
-    window.onload=function(){
-        var oTab=document.getElementById(&quot;tab1&quot;);
-
-        var oBtn=document.getElementById(&quot;btn1&quot;);
-        var oName=document.getElementById(&quot;name&quot;);
-        var oAge=document.getElementById(&quot;age&quot;);
-        var oID=oTab.tBodies[0].rows.length+1;
-        oBtn.onclick=function () {
-            var oTr=document.createElement(&quot;tr&quot;);
-            var oTd=document.createElement(&quot;td&quot;);
-            oTd.innerHTML=oID++;
-            oTr.appendChild(oTd);
-
-            var oTd=document.createElement(&quot;td&quot;);
-            oTd.innerHTML=oName.value;
-            oTr.appendChild(oTd);
-
-            var oTd=document.createElement(&quot;td&quot;);
-            oTd.innerHTML=oAge.value;
-            oTr.appendChild(oTd);
-
-            var oTd=document.createElement(&quot;td&quot;);
-            oTd.innerHTML=&quot;&lt;a href=&quot;javascript:;&quot;&gt;删除&lt;/a&gt;&quot;;
-
-            oTd.getElementsByTagName(&quot;a&quot;)[0].onclick=function () {
-                oTab.tBodies[0].removeChild(this.parentNode.parentNode)
-            }
-            oTr.appendChild(oTd);
-
-            oTab.tBodies[0].appendChild(tr);
-        }
-        var oldColor=&quot;&quot;;
-        for(var i=0;i&lt;oTab.tBodies[0].rows.length;i++){
-            oTab.tBodies[0].rows[i].onmouseover=function () {
-            oldColor=this.style.background;
-            this.style.background=&quot;red&quot;;
-            }
-            oTab.tBodies[0].rows[i].onmouseout=function () {
-                this.style.background=oldColor;
-            }
-            if(i%2){
-                oTab.tBodies[0].rows[i].style.background=&quot;#ccc&quot;;
-            }
-            else {
-                oTab.tBodies[0].rows[i].style.background=&quot;&quot;;
-
-            }
-        }
-    }
+        <p>####首先了解一下DOM中有三大节点，分别是 元素节点，文本节点，属性节点</p>
+<p>元素节点：构成了DOM的基础。文档结构中，<html>是根元素，代表整个文档，其他的还有<head>,</head><body>,<p>,<span>等等。元素节点之间可以相互包含(当然遵循一定的规则)</span></p>
+<p>文本节点：包含在元素节点中。</p>
+<p>属性节点：元素都可以包含一些属性，属性的作用是对元素做出更具体的描述，比如id,name之类的。</p>
+<p>以下面的demo为例：</p>
+<pre><code>&lt;script&gt;
+window.onload = function(){
+  　　var element = document.getElementById(&quot;span&quot;);
+  　　var text = element.firstChild;
+  　　var property=document.getElementById(&quot;span&quot;).getAttributeNode(&quot;id&quot;);
+}
 &lt;/script&gt;
+
 &lt;body&gt;
-姓名：&lt;input id=&quot;name&quot; type=&quot;text&quot; /&gt;
-年龄：&lt;input id=&quot;age&quot; type=&quot;text&quot; /&gt;
-&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;添加&quot;/&gt;
-&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;操作&quot;/&gt;
-&lt;table border=&quot;5px&quot; width=&quot;500px&quot; ID=&quot;tab1&quot;&gt;
-    &lt;thead&gt;
-    &lt;th&gt;ID&lt;/th&gt;
-    &lt;th&gt;姓名&lt;/th&gt;
-    &lt;th&gt;年龄&lt;/th&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td&gt;1&lt;/td&gt;
-            &lt;td&gt;张三&lt;/td&gt;
-            &lt;td&gt;20&lt;/td&gt;
-            &lt;td&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;2&lt;/td&gt;
-            &lt;td&gt;李四&lt;/td&gt;
-            &lt;td&gt;21&lt;/td&gt;
-            &lt;td&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;3&lt;/td&gt;
-            &lt;td&gt;王五&lt;/td&gt;
-            &lt;td&gt;18&lt;/td&gt;
-            &lt;td&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;4&lt;/td&gt;
-            &lt;td&gt;BLUE&lt;/td&gt;
-            &lt;td&gt;15&lt;/td&gt;
-            &lt;td&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h4 id="二-搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase-、search"><a href="#二-搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase-、search" class="headerlink" title="二. 搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase()、search()."></a>二. 搜索：主要是关键字和忽略大小写的两个函数的使用toLowerCase()、search().</h4><p>(oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()).search(oName.value.toLowerCase())!=-1</p>
-<p>完整代码如下</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-&lt;/head&gt;
-&lt;script&gt;
-    window.onload=function(){
-        var oTab=document.getElementById(&quot;tab1&quot;);
-        var oBtn=document.getElementById(&quot;btn1&quot;);
-        var oName=document.getElementById(&quot;name&quot;);
-        oBtn.onclick=function () {
-           for(var i=0;i&lt;oTab.tBodies[0].rows.length;i++){
-               if((oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase()).search(oName.value.toLowerCase())!=-1){
-                   oTab.tBodies[0].rows[i].style.background=&quot;yellow&quot;;
-               }
-               else{
-                   oTab.tBodies[0].rows[i].style.background=&quot;&quot;;
-               }
-           }
-        }
-    }
-&lt;/script&gt;
-&lt;body&gt;
-姓名：&lt;input id=&quot;name&quot; type=&quot;text&quot; /&gt;
-&lt;input id=&quot;btn1&quot; type=&quot;button&quot; value=&quot;搜索&quot;/&gt;
-&lt;table border=&quot;5px&quot; width=&quot;500px&quot; ID=&quot;tab1&quot;&gt;
-    &lt;thead&gt;
-    &lt;th&gt;ID&lt;/th&gt;
-    &lt;th&gt;姓名&lt;/th&gt;
-    &lt;th&gt;年龄&lt;/th&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-        &lt;td&gt;1&lt;/td&gt;
-        &lt;td&gt;张三&lt;/td&gt;
-        &lt;td&gt;20&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;2&lt;/td&gt;
-        &lt;td&gt;李四&lt;/td&gt;
-        &lt;td&gt;21&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;3&lt;/td&gt;
-        &lt;td&gt;王五&lt;/td&gt;
-        &lt;td&gt;18&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;4&lt;/td&gt;
-        &lt;td&gt;BLUE&lt;/td&gt;
-        &lt;td&gt;15&lt;/td&gt;
-        &lt;td&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h6 id="在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？"><a href="#在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？" class="headerlink" title="在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？"></a>在家学习不静心，学着学着就出去吃东西，哎喂，你说，为什么垃圾食品那么好吃？</h6>
+　　&lt;div&gt;
+　  　　&lt;span id=&quot;span&quot;&gt;文本节点&lt;/span&gt;
+　　&lt;/div&gt;
+&lt;/body&gt;　
+</code></pre><h4 id="一-nodeName-属性含有某个节点的名称。"><a href="#一-nodeName-属性含有某个节点的名称。" class="headerlink" title="(一)nodeName 属性含有某个节点的名称。"></a>(一)nodeName 属性含有某个节点的名称。</h4><p>元素节点的 nodeName 是标签名称（返回的名称是大写的）</p>
+<p>属性节点的 nodeName 是属性名称（返回的名称是大写的）</p>
+<p>文本节点的 nodeName 永远是 #text</p>
+<p>文档节点的 nodeName 永远是 #document</p>
+<p>注释：nodeName 所包含的 XML 元素的标签名称永远是大写的</p>
+<p>alert(“这是元素节点的返回值：”+ element.nodeName);//返回的标签名SPAN,注意是大写的<br>alert(“这是文本节点的返回值：”+ text.nodeName);//返回的#text<br>alert(“这是属性节点的返回值：”+ property.nodeName);//返回的是属性名，这里是id</p>
+<h4 id="二-nodeValue"><a href="#二-nodeValue" class="headerlink" title="(二)nodeValue"></a>(二)nodeValue</h4><p>对于文本节点，nodeValue 属性包含文本。</p>
+<p>对于属性节点，nodeValue 属性包含属性值。</p>
+<p>nodeValue 属性对于文档节点和元素节点是不可用的。</p>
+<p>alert(“这是元素节点的返回值：”+ element.nodeValue);//本身就没有意义，这里是试验下的，返回的是null<br>alert(“这是文本节点的返回值：”+ text.nodeValue);//返回的是文本值  文本节点<br>alert(“这是属性节点的返回值：”+ property.nodeValue);//返回的是属性值，这里是id的属性值span</p>
+<h4 id="三-nodeType"><a href="#三-nodeType" class="headerlink" title="(三)nodeType"></a>(三)nodeType</h4><p>nodeType 属性可返回节点的类型。</p>
+<p>我们常用的3中类型：<br>nodeType == 1  ： 元素节点<br>nodeType == 2  ： 属性节点<br>nodeType == 3  ： 文本节点</p>
+<p>注释 comments   8</p>
+<p>文档 document   9</p>
+<p>  alert(“这是元素节点的返回值：”+ element.nodeType);//元素节点返回1<br>  alert(“这是文本节点的返回值：”+ text.nodeType);//文本节点返回3<br>  alert(“这是属性节点的返回值：”+ property.nodeType);//属性节点返回2</p>
+</body></html></p>
       
 
       
@@ -435,7 +324,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/16/js表单搜索、编辑操作/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/17/节点测试/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -449,18 +338,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/16/js悬浮框的实现/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/19/JavaScript 最新面试题/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          js悬浮框的实现
+          JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）
         
       </div>
     </a>
   
   
-    <a href="/2017/03/16/CSS3 2D3D转换/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSS3 2D3D转换</div>
+    <a href="/2017/03/17/JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -474,7 +363,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="js表单搜索、编辑操作" data-title="js表单搜索、编辑操作" data-url="http://yoursite.com/2017/03/16/js表单搜索、编辑操作/"></div>
+	<div class="ds-thread" data-thread-key="节点测试" data-title="节点测试" data-url="http://yoursite.com/2017/03/17/节点测试/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

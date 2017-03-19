@@ -154,6 +154,596 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/AJAX/">AJAX</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/AJAX/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:54:22.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1/22/2017 9:40:51 PM </p>
+<h5 id="原生JavaScript的AJAX"><a href="#原生JavaScript的AJAX" class="headerlink" title="原生JavaScript的AJAX"></a>原生JavaScript的AJAX</h5><p>首先，获取XHR对象，它被内嵌在浏览器中了，主要为了区别IE6这类特殊浏览器，不然直接调用XMLHttpRequest这个方法即可获取。成功获取对象之后使用open（）方法传入请求方法，请求url。这个onreadystatechange是一个回调函数，负责接收服务器响应数据的处理，这里类似将它重写，浏览器会调用这个方法处理返回数据。send方法在GET请求中只需要传入null，因为send方法是把数据放在请求体内，只有POST方式才会往send里写数据。<br>回调函数的写法是按照视频代码抄写的。在responseText可以获得服务端写来的数据。</p>
+<pre><code>var XHR=false;
+function createXHR(){
+     if(window.XMLHttpRequest){
+        XHR=new XMLHttpRequest();
+    }else{
+        XHR=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+}
+function checkUsername(){
+    var username=document.getElementById(&quot;check&quot;).value;
+    createXHR();
+    XHR.open(&quot;get&quot;,&quot;checkUsername?username=&quot;+username,true);
+    XHR.onreadystatechange=showMsgCallback;
+    XHR.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;); 
+    XHR.send();
+}
+function showMsgCallback(){
+    if(XHR.readyState==4){
+        if(XHR.status==200){
+            var text=XHR.responseText.toString(); 
+            alert(text==&apos;no&apos;);
+            console.log(text);
+            if(text==&quot;yes&quot;){
+                 alert(1);
+                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户名已注册!&quot;;
+            }
+            else if(text==&quot;no&quot;)
+            {
+                 alert(2);
+                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户可以注册&quot;;
+            }
+        }
+    }
+}
+</code></pre><h5 id="三种Jquery的ajax写法"><a href="#三种Jquery的ajax写法" class="headerlink" title="三种Jquery的ajax写法"></a>三种Jquery的ajax写法</h5><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;ajax交互&lt;/title&gt;
+&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    $(document).ready(function() {
+        $(&apos;#button1&apos;).click(function() {
+            var text = $(&apos;#msg1&apos;);
+            $.ajax({
+                type : &quot;POST&quot;,
+                url : &quot;jquery&quot;,
+                data : &quot;username=ssss&quot;,
+                dataType : &apos;text&apos;,
+                success : function(result) {
+
+                    if (result==&quot;success&quot;) {                   
+                        text.text(&quot;&quot;);
+                        text.append(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;&quot;);
+                        text.append(&quot;失败&quot;);
+                    }
+                },
+                error : function() {
+                    text.text(&quot;&quot;);
+                    text.append(&quot;操作出错&quot;);
+                }
+
+            });
+        });
+    });
+    $(document).ready(function(){
+        $(&apos;#button2&apos;).click(function(){
+            var text = $(&apos;#msg2&apos;);
+            $.post(&apos;jquery&apos;, &apos;username=xxxx&apos;,function(result){
+                if (result===&quot;success&quot;) {                  
+                        text.text(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;失败&quot;);
+                    }
+            },&apos;text&apos;);
+        });
+    });
+    $(document).ready(function(){
+        $(&apos;#button3&apos;).click(function(){
+            var text = $(&apos;#msg3&apos;);
+            $.get(&apos;jquery&apos;,&apos;username=zzzzz&apos;,function(result){
+                if (result===&quot;success&quot;) {                  
+                        text.text(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;失败&quot;);
+                    }
+            });
+        });
+    });
+
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id=&quot;button1&quot;&gt;点击使用$ajax发送&lt;/button&gt;
+    &lt;span id=&quot;msg1&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;button id=&quot;button2&quot;&gt;点击使用$post发送&lt;/button&gt;
+    &lt;span id=&quot;msg2&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;button id=&quot;button3&quot;&gt;点击使用$get发送&lt;/button&gt;
+    &lt;span id=&quot;msg3&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;%@ taglib prefix=&quot;s&quot; uri=&quot;/struts-tags&quot; %&gt;
+&lt;%@ taglib prefix=&quot;sx&quot; uri=&quot;/struts-dojo-tags&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;AJAX范例&lt;/title&gt;
+&lt;sx:head/&gt;
+&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+    $(&apos;#usrname&apos;).blur(function(){
+        $.ajax({
+            type : &quot;POST&quot;,
+            url : &quot;checkUsername&quot;,
+            data : &apos;name=&apos;+$(&apos;#usrname&apos;).val(),
+            dataType : &apos;text&apos;,
+            success:function(data){
+                if(data===&apos;yes&apos;)
+                    $(&apos;#msg&apos;).text(&apos;可以登录&apos;);
+                else if(data===&apos;no&apos;)
+                    $(&apos;#msg&apos;).text(&apos;无法登录&apos;);
+            }
+        });
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;
+    &lt;form action=&quot;&quot;&gt;
+            &lt;span id=&quot;msg&quot;&gt;&lt;/span&gt;&lt;br/&gt;
+        用户名:&lt;input id=&quot;usrname&quot; name=&quot;name&quot; type=&quot;text&quot;/&gt;
+        &lt;br/&gt;
+        密码：&lt;input name=&quot;password&quot; type=&quot;password&quot;/&gt;
+        &lt;br/&gt;
+        &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+        &lt;button type=&quot;reset&quot;&gt;重置&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新建,模板,小书匠</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/AJAX/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/DOM/">DOM</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/DOM/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:53:42.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017-01-21 22:29:04 星期一</p>
+<h5 id="DOM即文件对象模型（Document-Object-Model，简称DOM）"><a href="#DOM即文件对象模型（Document-Object-Model，简称DOM）" class="headerlink" title="DOM即文件对象模型（Document Object Model，简称DOM）"></a>DOM即文件对象模型（Document Object Model，简称DOM）</h5><p>HTML DOM 定义了访问和操作 HTML 文档的标准方法。<br>简言之：<br>  （1）其实它就是将 HTML 文档以节点（Node）为单位将其表达为等级明确、节构整齐的树节构，以便于简捷地操作文档的元素。<br>  （2）它在一定程度上对HTML（或XML）元素（节点）实现了“黑盒”访问和操作。例如，我们获得了一个节点对象，然后直接用它的parentNode属性获得它的父节点（如果父节点存在的话），进而访问或操作父节点对象，而我们无需知道它的父节点是什么类型的对象，它的id是什么等等，父节点就是封装好的一个“黑盒”，我们不知道它的id、name等所有属性，依然可以利用dom技术随意操作它。</p>
+<h5 id="DOM对节点（Node）的定义："><a href="#DOM对节点（Node）的定义：" class="headerlink" title="DOM对节点（Node）的定义："></a>DOM对节点（Node）的定义：</h5><p>Ø  整个文档是一个文档节点<br>Ø  每个 HTML 标签是一个元素节点<br>Ø  包含在 HTML 元素中的文本是文本节点<br>Ø  每一个 HTML 属性是一个属性节点<br>Ø  注释属于注释节点</p>
+<h5 id="DOM中节点的层级关系"><a href="#DOM中节点的层级关系" class="headerlink" title="DOM中节点的层级关系"></a>DOM中节点的层级关系</h5><p>层级关系很明确也很简单，根据节点之间的关系将其分为三种：父（parent）、子（child）、同胞（sibling）</p>
+<h5 id="DOM对象树"><a href="#DOM对象树" class="headerlink" title="DOM对象树"></a>DOM对象树</h5><p>DOM将每一个HTML或XML的文档都看待成内存中的一个对象树<br>浏览器中的一个页面对应一个HTML文档，因此有一颗与之对应的HTML的DOM树。<br>浏览器中一个页面可能处理很多个XML的文档，因此可能有很多颗XML的DOM树。</p>
+<h5 id="DOM对象树种的常用节点"><a href="#DOM对象树种的常用节点" class="headerlink" title="DOM对象树种的常用节点"></a>DOM对象树种的常用节点</h5><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>nodeType常量（IE不支持）</th>
+<th>nodeType值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>Node.ELEMENT_NODE</td>
+<td>1</td>
+<td>元素节点（标签）</td>
+</tr>
+<tr>
+<td>Atrr</td>
+<td>Node.ATTRIBUTE_NODE</td>
+<td>2</td>
+<td>属性节点（属性）</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Node.TEXT_NODE</td>
+<td>3</td>
+<td>文本节点（文本）</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td>Node.COMMENT_NODE</td>
+<td>8</td>
+<td>注释节点（注释）</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>Node.DOCUMENT_NODE</td>
+<td>9</td>
+<td>文本根节点</td>
+</tr>
+</tbody>
+</table>
+<h5 id="DOM对象树不同节点的名值对比"><a href="#DOM对象树不同节点的名值对比" class="headerlink" title="DOM对象树不同节点的名值对比"></a>DOM对象树不同节点的名值对比</h5><table>
+<thead>
+<tr>
+<th>节点</th>
+<th>nodeName（节点名）</th>
+<th>nodeValue(节点值)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element元素节点</td>
+<td>对应标签名的大写形式如：HTML</td>
+<td>Null</td>
+</tr>
+<tr>
+<td>Attr属性节点</td>
+<td>文档中定义的属性名如：type</td>
+<td>文档中定义的属性值如：button</td>
+</tr>
+<tr>
+<td>Text文本节点</td>
+<td>#text</td>
+<td>文本内容如：133</td>
+</tr>
+<tr>
+<td>Comment注释节点</td>
+<td>#comment</td>
+<td>注释内容如：comment</td>
+</tr>
+<tr>
+<td>Document根节点</td>
+<td>#document</td>
+<td>Null</td>
+</tr>
+</tbody>
+</table>
+<h5 id="根节点的属性和方法："><a href="#根节点的属性和方法：" class="headerlink" title="根节点的属性和方法："></a>根节点的属性和方法：</h5><pre><code>&lt;script type=&quot;text/javascript&quot; &gt;  
+
+            function testapi(){  
+
+                //获得根节点元素  
+
+                var htmlrootElement=document.documentElement;  
+
+                //获得指定的元素节点  
+
+                var divNode=document.getElementById(&quot;div1&quot;);  
+
+                //获得整个页面所有的div元素节点  
+
+                var divNodes=document.getElementsByTagName(&quot;div&quot;);  
+
+                //创建元素节点  
+
+                var newdivNode=document.createElement(&quot;div&quot;);  
+
+
+
+                //创建文本节点  
+
+                var newTextNode=document.createTextNode(&quot;aaaa&quot;);  
+
+            }  
+
+&lt;/script&gt;  
+</code></pre><h5 id="元素节点的属性和方法"><a href="#元素节点的属性和方法" class="headerlink" title="元素节点的属性和方法"></a>元素节点的属性和方法</h5><pre><code>//根据标签名获得元素节点  
+
+var divNode2=document.getElementById(&quot;div2&quot;);  
+
+var divNodes2=divNode2.getElementsByTagName(&quot;div&quot;);  
+
+
+
+//操作属性  
+
+var inputtext=document.getElementById(&quot;inputtext&quot;);  
+
+var flag=inputtext.hasAttribute(&quot;value&quot;);  
+
+inputtext.setAttribute(&quot;value&quot;, &quot;aaacede&quot;);  
+
+var textValue=inputtext.getAttribute(&quot;value&quot;);  
+
+flag=inputtext.hasAttribute(&quot;value&quot;);   
+
+inputtext.removeAttribute(&quot;value&quot;);  
+
+alert(&quot;完成&quot;);  
+</code></pre><h5 id="所有节点（Node）都拥有的属性和方法"><a href="#所有节点（Node）都拥有的属性和方法" class="headerlink" title="所有节点（Node）都拥有的属性和方法"></a>所有节点（Node）都拥有的属性和方法</h5><pre><code> //返回元素节点包含的属性节点  
+
+ var attributes=inputtext.attributes;  
+
+ //nodeName nodeValue nodeType  
+
+ var inputName=inputtext.nodeName;  
+
+ var nodetype=inputtext.nodeType;  
+
+ var nodevalue=inputtext.nodeValue;  
+
+
+
+ //获取所有的子节点  
+
+ var childs=divNode2.childNodes;  
+
+ //获取父节点  
+
+ var parent=divNode2.parentNode;  
+
+ //获取第一个子节点和最后一个子节点  
+
+ var first=divNode2.firstChild;  
+
+ var last=divNode2.lastChild;  
+
+
+
+ //获取兄弟节点  
+
+ var next=divNode2.nextSibling;  
+
+ var last=divNode2.previousSibling;  
+
+
+
+ //判断是否有子节点  
+
+ var flag2=divNode2.hasChildNodes();  
+
+ //追加节点  
+
+ newdivNode.appendChild(newTextNode);  
+
+ divNode2.appendChild(newdivNode);  
+
+ var new2=document.createElement(&quot;div&quot;);  
+
+ var text2=document.createTextNode(&quot;insert&quot;);  
+
+ new2.appendChild(text2);  
+
+ divNode2.insertBefore(new2,divNode2.firstChild);  
+
+
+
+ var new3=document.createElement(&quot;div&quot;);  
+
+ var text3=document.createTextNode(&quot;insert3&quot;);  
+
+ new3.appendChild(text3);  
+
+ divNode2.insertBefore(new3, null);  
+
+ divNode2.insertBefore(new3,divNode2.firstChild);  
+
+
+
+ //移除节点  
+
+ var remove=divNode2.removeChild(new3);  
+
+ var new4=document.createElement(&quot;div&quot;);  
+
+ var text4=document.createTextNode(&quot;insert4&quot;);  
+
+ new4.appendChild(text4);  
+
+ //如果第一个参数曾经是当前节点的子节点，那么这个参数对应的节点会被移动到第二个参数对应的节点的位置。  
+
+ //第二个参数对应的节点被删除了。  
+
+ var replace=divNode2.replaceChild(new4,divNode2.getElementsByTagName(&quot;div&quot;)[0]);  
+
+
+
+//clone节点  
+
+var clone1=divNode2.cloneNode(true);  
+
+var clone2=divNode2.cloneNode(false);  
+</code></pre><h5 id="AJAX-DOM-和javascript的关系"><a href="#AJAX-DOM-和javascript的关系" class="headerlink" title="AJAX,DOM 和javascript的关系"></a>AJAX,DOM 和javascript的关系</h5><p>DOM能够为javascript引擎公开网页。通过DOM，可以采用编程的方式操作文档的结构。Web页面的DOM表示是一个树状结构，由元素或点组成。节点可以包含很多子节点。javascript通过全局变量document公开当前Webde根节点，这个变量是所有DOM操作的起点。DOM使用容器的属性来做索引，而不是使用数字做索引。DOM中元素的关系可以看作是HTML清单的镜像。这种关系可以是双向的，修改DOM将改变HTML标记，随之会反映在页面的现实上。<br>用一个简单一点的关系表示就是：<br>DOM–数据–&gt;jQuery–利用–&gt;Ajax–请求–&gt;后台<br>后台–回应Ajax请求–&gt;Jquery–操作dom变现请求–&gt;dom</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/DOM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-flag" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/flag/">flag</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/flag/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:52:45.629Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017-01-20 21:34:57 星期日<br>今天没学习 该打 偶然看到入门前端学习路线 立个flag 静心 慢慢学吧~</p>
+<h5 id="一、学习HTML5和CSS3基础"><a href="#一、学习HTML5和CSS3基础" class="headerlink" title="一、学习HTML5和CSS3基础"></a>一、学习HTML5和CSS3基础</h5><p>随着这移动互联网快速发展的时代，尤其是4G时代，HTML5+CSS3已然成为新一代的web前端技术。</p>
+<p>随着HTML5的发展和普及，了解 HTML5 也将成为 Web开发人员的必修课。涉及到网页外观时，就需要学习 CSS 了，它可以帮你把网页做得更美观。</p>
+<p>利用 HTML5 和 CSS3 模拟一些你所见过的网站的排版和布局（色彩，图片，文字样式等等）。</p>
+<p>如：京东首页的实现</p>
+<p>当然，达内Web前端开发课程第一阶段还会学习 PS设计工具使用和互联网UI设计理论。在阶段项目实战中，大家常见的京东详情页、360专题页、淘宝首页都可以实现。</p>
+<h5 id="二、学习JavaScript，了解DOM"><a href="#二、学习JavaScript，了解DOM" class="headerlink" title="二、学习JavaScript，了解DOM"></a>二、学习JavaScript，了解DOM</h5><p>JavaScript 是一种能让你的网页更加生动活泼的程序语言。学习 JavaScript 的基本语法，学会用 JavaScript 操作网页中 DOM 元素。</p>
+<p>在达内 Web前端开发课程第二阶段完全可以实现大家平常喜欢玩的 2048 游戏。（是不是感觉挺有意思）</p>
+<p>接着学习使用一些 JavaScript 库，比如 Jquery 是大部分 Web开发人员都喜欢用的，通过 Jquery 可以有效的提高 JavaScript 的开发效率。</p>
+<h5 id="三、学习Web前端核心"><a href="#三、学习Web前端核心" class="headerlink" title="三、学习Web前端核心"></a>三、学习Web前端核心</h5><p>学习 Jquery 之后，大家就要学习 HTML5 高级阶段（HTML5 Canvas 绘图、HTML5 SVG、音频和视频处理、表单处理、表单验证…等）</p>
+<p>达内培训每学习一个阶段，都是让学员真正进行项目实战，在熟悉和消化所学习知识的同时，增加自己的项目经验和团队协作能力。</p>
+<p>在学习 Jquery 和 HTML5 学习结束后，就可以完成飞机大战、飞扬的小鸟以及复杂订单的实现。</p>
+<h5 id="四、学习HTTP协议及Server端技术"><a href="#四、学习HTTP协议及Server端技术" class="headerlink" title="四、学习HTTP协议及Server端技术"></a>四、学习HTTP协议及Server端技术</h5><p>服务器端脚本编程（后台开发）也是Web开发人员的基本功之一，达内学员现在学习的是最流行的php。</p>
+<p>要构建动态页面通常会使用到数据库，通常PHP使用Oracle、MySQL数据库。</p>
+<p>对于Web服务器来说，Apache 一个就已经是了。那么Apache、php、数据库，该怎么理解它们的关系？</p>
+<p>1、Apache是服务器基础，php和数据库都需要Apache来协调工作</p>
+<p>2、php是脚本解释，如果不用php，那么Apache出来的东西就只是静态的，而不能在服务器实现功能</p>
+<p>3、数据库完全可以单独使用，但是和Apache、php一起，则是由php代码调用数据库接口，而apache就负责解释php代码，让他能真正地实现对数据库的调用</p>
+<p>这个阶段的项目实战是实现京东订单页和个人论坛。</p>
+<h5 id="五、学习Web前端高级技术"><a href="#五、学习Web前端高级技术" class="headerlink" title="五、学习Web前端高级技术"></a>五、学习Web前端高级技术</h5><p>当你掌握了HTML5，CSS3，JavaScript等技术之后，就应该找一个Web框架加快你的Web开发速度，使用框架可以节约你很多时间。</p>
+<p>在达内学习的Bootstrap是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷，是web前端开发者最喜欢，也是现在企业里最常用的前端框架。</p>
+<p>Angular JS是一款优秀的前端JS框架，已经被用于Google的多款产品当中。AngularJS有着诸多特性，最为核心的是：MVC编程、模块化、控制器、路由、事件绑定等等。</p>
+<p>AngularJS通过为开发者呈现一个更高层次的抽象来简化应用的开发。如同其他的抽象技术一样，这也会损失一部分灵活性。换句话说，并不是所有的应用都适合用AngularJS来做。AngularJS主要考虑的是构建CRUD应用。幸运的是，至少90%的WEB应用都是CRUD应用。但是要了解什么适合用AngularJS构建，就得了解什么不适合用AngularJS构建。</p>
+<p>从最简单的HTML5基础到Web前端高级技术，内容还是不少滴！要想精通这里的每一样技术，都得下苦功夫才行。四个月的时间，在达内讲师的指导下，足够你对Web前端开发产生一个有效的认识，并且找到理想的工作。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/flag/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-js鼠标事件改变样式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1272,19 +1862,19 @@ arr.splice(2,2,&apos;x&apos;,&apos;y&apos;);
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">

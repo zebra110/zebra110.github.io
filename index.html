@@ -154,6 +154,596 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript 最新面试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/19/JavaScript 最新面试题/">JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/19/JavaScript 最新面试题/" class="archive-article-date">
+  	<time datetime="2017-03-19T09:10:59.298Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PS：偏基础，红色是重点、蓝色是扩展；无答案，请自行总结</p>
+<h2 id="1、js数据类型有哪些？如何判断一个变量的数据类型？-怎么判断一个变量是被什么创造出来的？"><a href="#1、js数据类型有哪些？如何判断一个变量的数据类型？-怎么判断一个变量是被什么创造出来的？" class="headerlink" title="1、js数据类型有哪些？如何判断一个变量的数据类型？ 怎么判断一个变量是被什么创造出来的？"></a>1、js数据类型有哪些？如何判断一个变量的数据类型？ 怎么判断一个变量是被什么创造出来的？</h2><p>判断js中的数据类型有一下几种方法：typeof、instanceof、 constructor、 prototype、 $.type()/jquery.type(),接下来主要比较一下这几种方法的异同。</p>
+<p>先举几个例子：</p>
+<p>var a = “iamstring.”;<br>var b = 222;<br>var c= [1,2,3];<br>var d = new Date();<br>var e = function(){alert(111);};<br>var f = function(){this.name=”22”;};</p>
+<h3 id="1、最常见的判断方法：typeof"><a href="#1、最常见的判断方法：typeof" class="headerlink" title="1、最常见的判断方法：typeof"></a>1、最常见的判断方法：typeof</h3><p>alert(typeof a)   ————&gt; string<br>alert(typeof b)   ————&gt; number<br>alert(typeof c)   ————&gt; object<br>alert(typeof d)   ————&gt; object<br>alert(typeof e)   ————&gt; function<br>alert(typeof f)   ————&gt; function<br>其中typeof返回的类型都是字符串形式，需注意，例如：<br>alert(typeof a == “string”) ————-&gt; true<br>alert(typeof a == String) —————&gt; false<br>另外typeof 可以判断function的类型；在判断除Object类型的对象时比较方便。</p>
+<h3 id="2、判断已知对象类型的方法：-instanceof"><a href="#2、判断已知对象类型的方法：-instanceof" class="headerlink" title="2、判断已知对象类型的方法： instanceof"></a>2、判断已知对象类型的方法： instanceof</h3><p>alert(c instanceof Array) —————&gt; true<br>alert(d instanceof Date)<br>alert(f instanceof Function) ————&gt; true<br>alert(f instanceof function) ————&gt; false<br>注意：instanceof 后面一定要是对象类型，并且大小写不能错，该方法适合一些条件选择或分支。</p>
+<h3 id="3、根据对象的constructor判断：-constructor"><a href="#3、根据对象的constructor判断：-constructor" class="headerlink" title="3、根据对象的constructor判断： constructor"></a>3、根据对象的constructor判断： constructor</h3><p>alert(c.constructor === Array) ———-&gt; true<br>alert(d.constructor === Date) ———–&gt; true<br>alert(e.constructor === Function) ——-&gt; true<br>注意： constructor 在类继承时会出错<br>eg：<br>      function A(){};<br>      function B(){};<br>      A.prototype = new B(); //A继承自B<br>      var aObj = new A();<br>      alert(aobj.constructor === B) ———–&gt; true;<br>      alert(aobj.constructor === A) ———–&gt; false;<br>而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true：<br>      alert(aobj instanceof B) —————-&gt; true;<br>      alert(aobj instanceof B) —————-&gt; true;<br>言归正传，解决construtor的问题通常是让对象的constructor手动指向自己：<br>      aobj.constructor = A; //将自己的类赋值给对象的constructor属性<br>      alert(aobj.constructor === A) ———–&gt; true;<br>      alert(aobj.constructor === B) ———–&gt; false; //基类不会报true了;</p>
+<h3 id="4、通用但很繁琐的方法：-prototype"><a href="#4、通用但很繁琐的方法：-prototype" class="headerlink" title="4、通用但很繁琐的方法： prototype"></a>4、通用但很繁琐的方法： prototype</h3><p>alert(Object.prototype.toString.call(a) === ‘[object String]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(b) === ‘[object Number]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(c) === ‘[object Array]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(d) === ‘[object Date]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(e) === ‘[object Function]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(f) === ‘[object Function]’) ——-&gt; true;<br>大小写不能写错，比较麻烦，但胜在通用。</p>
+<h3 id="5、无敌万能的方法：jquery-type"><a href="#5、无敌万能的方法：jquery-type" class="headerlink" title="5、无敌万能的方法：jquery.type()"></a>5、无敌万能的方法：jquery.type()</h3><p>如果对象是undefined或null，则返回相应的“undefined”或“null”。<br>jQuery.type( undefined ) === “undefined”<br>jQuery.type() === “undefined”<br>jQuery.type( window.notDefined ) === “undefined”<br>jQuery.type( null ) === “null”<br>如果对象有一个内部的[[Class]]和一个浏览器的内置对象的 [[Class]] 相同，我们返回相应的 [[Class]] 名字。 (有关此技术的更多细节。 )<br>jQuery.type( true ) === “boolean”<br>jQuery.type( 3 ) === “number”<br>jQuery.type( “test” ) === “string”<br>jQuery.type( function(){} ) === “function”<br>jQuery.type( [] ) === “array”<br>jQuery.type( new Date() ) === “date”<br>jQuery.type( new Error() ) === “error” // as of jQuery 1.9<br>jQuery.type( /test/ ) === “regexp”<br>其他一切都将返回它的类型“object”。<br>通常情况下用typeof 判断就可以了，遇到预知Object类型的情况可以选用instanceof或constructor方法,实在没辙就使用$.type()方法。</p>
+<h2 id="2、判断有几种？-什么是判断嵌套？请举例-switch写法是什么？break有何作用？"><a href="#2、判断有几种？-什么是判断嵌套？请举例-switch写法是什么？break有何作用？" class="headerlink" title="2、判断有几种？ 什么是判断嵌套？请举例 switch写法是什么？break有何作用？"></a>2、判断有几种？ 什么是判断嵌套？请举例 switch写法是什么？break有何作用？</h2><h2 id="3、循环有几种？常用的有哪几种？break和continue有何作用？"><a href="#3、循环有几种？常用的有哪几种？break和continue有何作用？" class="headerlink" title="3、循环有几种？常用的有哪几种？break和continue有何作用？"></a>3、循环有几种？常用的有哪几种？break和continue有何作用？</h2><p>Break: 跳出循环，不再执行循环中的内容<br>Continue: 跳出本次循环，开始下一次循环</p>
+<h2 id="4、function是什么？定义一个功能有哪几种写法？return有什么用？"><a href="#4、function是什么？定义一个功能有哪几种写法？return有什么用？" class="headerlink" title="4、function是什么？定义一个功能有哪几种写法？return有什么用？"></a>4、function是什么？定义一个功能有哪几种写法？return有什么用？</h2><p>函数，是一种方法；    return：中断函数，返回调用者期望返回的值<br>一．function 函数名(){}<br>二．var 函数名 = function(){}<br>三．function(){} : 匿名函数</p>
+<h2 id="5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）"><a href="#5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）" class="headerlink" title="5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）"></a>5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）</h2><p>不需要外部调用，立即运行(function(){})()</p>
+<h2 id="6、什么是递归？有什么用？和循环有什么区别？（自行百度）"><a href="#6、什么是递归？有什么用？和循环有什么区别？（自行百度）" class="headerlink" title="6、什么是递归？有什么用？和循环有什么区别？（自行百度）"></a>6、什么是递归？有什么用？和循环有什么区别？（自行百度）</h2><h2 id="7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）"><a href="#7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）" class="headerlink" title="7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）"></a>7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）</h2><p>快速排序的思想很简单，整个排序过程只需要三步：</p>
+<ol>
+<li>在数据集中，选择一个元素作为“基准”(pivot) </li>
+<li>所有小于“基准”的元素，都移到“基准”的左边，所有大于“基准”的元素，都移到右边。</li>
+<li>对“基准”左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止</li>
+</ol>
+<p>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var quickSort = function(arr) &#123;</div><div class="line">    if(arr.length &lt;= 1) return arr;             // 递归停止条件</div><div class="line">    // 选取基准值</div><div class="line">    var pivotIndex = Math.ceil(arr.length / 2);</div><div class="line">    var pivot = arr.splice(pivotIndex, 1)[0];   // 基准值</div><div class="line">    var left = [], right = [];</div><div class="line"></div><div class="line">    // 如果大于基准值，移到数组right中；小于基准的值，移到数组left中</div><div class="line">    for(var i=0; i&lt; arr.length; i++) &#123;</div><div class="line">        arr[i] &gt; pivot ? right.push(arr[i]) : left.push(arr[i]);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return quickSort(left).concat([pivot], quickSort(right));</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串"><a href="#8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串" class="headerlink" title="8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串"></a>8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串</h2><h2 id="9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）"><a href="#9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）" class="headerlink" title="9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）"></a>9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）</h2><h2 id="10、列举出你知道的数组方法，怎么将数组乱序？"><a href="#10、列举出你知道的数组方法，怎么将数组乱序？" class="headerlink" title="10、列举出你知道的数组方法，怎么将数组乱序？"></a>10、列举出你知道的数组方法，怎么将数组乱序？</h2><h2 id="11、知道数组新增的一些方法吗？foreach、map、reduce等"><a href="#11、知道数组新增的一些方法吗？foreach、map、reduce等" class="headerlink" title="11、知道数组新增的一些方法吗？foreach、map、reduce等"></a>11、知道数组新增的一些方法吗？foreach、map、reduce等</h2><p>学习连接：<a href="http://www.zhangxinxu.com/wordpress/?p=3220" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/?p=3220</a></p>
+<h2 id="12、怎么使用js跳转页面？"><a href="#12、怎么使用js跳转页面？" class="headerlink" title="12、怎么使用js跳转页面？"></a>12、怎么使用js跳转页面？</h2><h2 id="13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？"><a href="#13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？" class="headerlink" title="13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？"></a>13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？</h2><h2 id="14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？"><a href="#14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？" class="headerlink" title="14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？"></a>14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？</h2><p>在我们常使用的控件中，我们经常可以自己为元素定义一些属性来达到想要的效果。</p>
+<p>例如：</p>
+<p>我们想要给按钮设定一个值，这个值对每个按钮都要相同的效果。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">        window.onload=function()&#123;</div><div class="line">            var aBtn=document.getElementsByTagName("input");</div><div class="line">            var arr=['A','B','C','D'];</div><div class="line">              </div><div class="line">            for(i=0;i&lt;aBtn.length;i++)&#123;</div><div class="line">                aBtn[i].num=0;</div><div class="line">                aBtn[i].onclick=function()&#123;</div><div class="line">                    this.value=arr[this.num];</div><div class="line">                    this.num++;</div><div class="line">                    if(this.num===arr.length)&#123;</div><div class="line">                        this.num=0;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;input type="button" value="0" /&gt;</div><div class="line">        &lt;input type="button" value="0" /&gt;</div><div class="line">        &lt;input type="button" value="0" /&gt;</div><div class="line">    &lt;/body&gt;</div></pre></td></tr></table></figure>
+<p>15、js中常见的事件有哪些？给元素添加事件的形式有哪几种？（3种）</p>
+<pre><code>1、在html中，使用onclick属性
+2、在javascript中，使用onclick属性
+3、在javascipt中，使用addEvenListener()方法
+</code></pre><p>16、什么是事件流？有那几个过程？什么是事件对象？什么是事件源？<br>当onmousemove事件发生时，就会产生一个事件对象，就是程序中的event对象，我们只能在这个匿名函数中访问到这个event对象，在函数外面是访问不到的，同样我们也无法手动创建这个event对象；</p>
+<p>如何获取事件对象那？？</p>
+<p>var e = event || window.event;这句话就是定义了一个变量来获取事件对象，因为不同的浏览器获取事件对象的方法有点不太一样，IE下是window.event，标准下是event，为了兼容所以写了event || window.event.</p>
+<p>事件对象也分为：</p>
+<p>鼠标事件对象，键盘事件对象等，顾名思义鼠标事件发生时产生鼠标事件对象，键盘事件发生时产生键盘事件对象；既然是对象，就必然有一些属性方法啥的。</p>
+<p>鼠标事件对象上的常用属性：</p>
+<p>clientX，clientY，screenX，screenY，offsetX，offsetY<br>键盘事件对象上的属性有：</p>
+<p>keyCode: 用来获取键盘码的;比如空格的键盘是32，回车13等</p>
+<p>cltkey: 判断alt键是否被按下，按下是true，反之false</p>
+<p>Ctrlkey: 判断Ctrlkey键是否被按下，按下是true，反之false</p>
+<p>Shiftkey : 判断Shiftkey 键是否被按下，按下是true，反之false</p>
+<p>说到这里相信大家应该理解“事件对象”了吧！接着说一说事件源。</p>
+<p>事件源：</p>
+<p>在事件中，当前操作的那个元素就是事件源。比如网页元素中a标签和input都有onclick事件，当点击a发生onclick事件时，事件源就是a标签，当点击input发送onclic事件是，事件源就是input。</p>
+<p>如何获取事件源那？？</p>
+<p>IE下：window.event.srcElement  </p>
+<p>标准下：event.target</p>
+<p>由此可见，我们是通过事件对象获取到的事件源。</p>
+<h3 id="什么是事件流"><a href="#什么是事件流" class="headerlink" title="什么是事件流"></a>什么是事件流</h3><p>流：用术语说流是对输入输出设备的抽象。以程序的角度说，流是具有方向的数据。</p>
+<p>事件流：从页面中接收事件的顺序。也就是说当一个事件产生时，这个事件的传播过程，就是事件流。</p>
+<p>事件：用户或者浏览器自身执行的某个动作，比如load，click，mousemove等</p>
+<p>事件处理程序：相应处理某个事件的函数叫做事件处理函数（也叫做事件侦听器）</p>
+<p>理解DOM中的事件流</p>
+<p>当浏览器发展到第四代时（IE4和NetscapeCommunicator4）,浏览器团队遇到一个很有意思的问题：页面的哪一部分会拥有特定的事件？想象下在一张纸上有一组同心圆，如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是一组圆。两家公司的开发团队在看待浏览器事件方面还是一致的。如果你单击了某个按钮，那么同时你也单击了按钮的容器元素，甚至整个页面。<br>事件流描述的是从页面中接受事件的顺序。但有意思的是，IE和Netscape开发团队居然提出了两个截然相反的事件流概念。IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流。</p>
+<p>IE提出的事件冒泡</p>
+<p>事件冒泡即事件开始时，由最具体的元素接收（也就是事件发生所在的节点），然后逐级传播到较为不具体的节点。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;button id="click"&gt;点击&lt;/button&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        (function()&#123;</div><div class="line">            var btn = document.getElementById("click");</div><div class="line">            btn.onclick = function()&#123;</div><div class="line">                console.log("1. button");</div><div class="line">            &#125;</div><div class="line">            document.body.onclick = function()&#123;</div><div class="line">                console.log("2. document.body");</div><div class="line">            &#125;</div><div class="line">            document.onclick = function()&#123;</div><div class="line">                console.log("3. document");</div><div class="line">            &#125;</div><div class="line">            window.onclick = function()&#123;</div><div class="line">                console.log("4. window");</div><div class="line">            &#125;</div><div class="line">        &#125;)()</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在代码所示的页面中，如果点击了button，那么这个点击事件会得到如下的结果：<br>![enter description here][1]</p>
+<p>也就是说，click事件首先在button元素上发生，然后逐级向上传播。这就是事件冒泡。</p>
+<p>netscape提出的事件捕获</p>
+<p>事件捕获的概念，与事件冒泡正好相反。它认为当某个事件发生时，父元素应该更早接收到事件，具体元素则最后接收到事件。比如说刚才的demo，如果是事件捕获的话，事件发生顺序会是刚好与上面相反的。即window,document,document.body,button。</p>
+<p>虽然事件捕获是Netscape唯一支持的事件流模型，但IE9、Safari、Chrome、Opera和Firefox目前也都支持这种事件流模型。但由于老版本的浏览器不支持，因此很少有人使用事件捕获。</p>
+<p>所以放心的使用事件冒泡，有特殊需要再使用事件捕获即可。</p>
+<p>DOM事件流</p>
+<p>DOM事件流可以分为下面3个阶段： </p>
+<ol>
+<li>事件捕获阶段 </li>
+<li>处于目标阶段 </li>
+<li>事件冒泡阶段<br>![enter description here][2]</li>
+</ol>
+<p>事件捕获阶段</p>
+<p>也就是说，当事件发生时，首先发生的是事件捕获，为父元素截获事件提供了机会。<br>例如，我把上面的Demo中，window点击事件更改为使用事件捕获模式。</p>
+<p>addEventListener最后一个参数，为true则代表使用事件捕获模式，false则表示使用事件冒泡模式。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    (function()&#123;</div><div class="line">        var btn = document.getElementById("click");</div><div class="line">        btn.addEventListener("click",function()&#123;</div><div class="line">            console.log("1. button");</div><div class="line">        &#125;,true)</div><div class="line">        //省略document.body和document</div><div class="line">       .....</div><div class="line">        window.addEventListener("click",function()&#123;</div><div class="line">            console.log("4. window");</div><div class="line">        &#125;,true)</div><div class="line">    &#125;)()</div><div class="line">    &lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>![enter description here][3]<br>可以看到，点击事件先被父元素截获了，且该函数只在事件捕获阶段起作用。</p>
+<p>在DOM事件流中，事件的目标在捕获阶段不会接受到事件。这意味着在捕获阶段，事件从document到body后就定停止了。下一个阶段是处于目标阶段，于是事件在button上发生，并在事件处理中被看成冒泡阶段的一部分。然后，冒泡阶段发生，事件又传播回document。</p>
+<p>但是：我们的各大浏览器总是不喜欢按照规范来，IE9，Safari，chrome，firefox及其更高的版本中都会在捕获阶段出发事件对象上的事件，最后导致有两个机会在目标对象上操作事件。</p>
+<p>处于目标与事件冒泡阶段</p>
+<p>事件到了具体元素时，在具体元素上发生，并且被看成冒泡阶段的一部分。<br>随后，冒泡阶段发生，事件开始冒泡。</p>
+<p>阻止事件冒泡</p>
+<p>件冒泡过程，是可以被阻止的。防止事件冒泡而带来不必要的错误和困扰。</p>
+<p>这个方法就是:stopPropagation()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    var btn = document.getElementById(&quot;click&quot;);</div><div class="line">    btn.addEventListener(&quot;click&quot;,function(event)&#123;</div><div class="line">        console.log(&quot;1. button&quot;);</div><div class="line">        event.stopPropagation();</div><div class="line">        console.log(&apos;Stop Propagation!&apos;);</div><div class="line">    &#125;,false)</div><div class="line">    //省略document.body和document</div><div class="line">       .....</div><div class="line">    window.addEventListener(&quot;click&quot;,function()&#123;</div><div class="line">        console.log(&quot;4. window&quot;);</div><div class="line">    &#125;,false)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>最后结果是：1.button，Stop Propagation!。通过stopPropagation();阻止了事件的冒泡。</p>
+<p>事件处理程序类别</p>
+<p>刚刚我们已经讲了事件处理程序就是相应处理某个事假的函数。它可以分为几个类别：</p>
+<p>html事件处理程序</p>
+<p>某个元素支持的某个事件可以用与事件处理程序同名的html特性来指定，该特性的值是能够执行的JavaScript代码,这也是我们最初学js，最开始的方法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    function show()&#123;</div><div class="line">        alert('我被点击了');</div><div class="line">    &#125;</div><div class="line">/*</div><div class="line">  点击后也会弹出 '我被点击了'</div><div class="line">*/</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;input type="button" value="点击" onclick="show()" /&gt;</div></pre></td></tr></table></figure>
+<p>优点：简单明了，省去获取元素等一系列前提操作</p>
+<p>缺点：html代码与js代码高度耦合，不符合分离原则</p>
+<p>DOM0级别事件处理函数</p>
+<p>DOM0级别事件处理函数，使用 element.on[eventname]=fn的方式给元素添加事件</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">优点：简单明了，省去获取元素等一系列前提操作</div><div class="line"></div><div class="line">缺点：html代码与js代码高度耦合，不符合分离原则</div><div class="line"></div><div class="line">DOM0级别事件处理函数</div><div class="line"></div><div class="line">DOM0级别事件处理函数，使用 element<span class="selector-class">.on</span>[eventname]=fn的方式给元素添加事件</div></pre></td></tr></table></figure>
+<p>DOM2级事件处理程序</p>
+<p>DOM2级添加了addEventListener（添加事件处理程序）和removeEventListener(移除事件处理程序),也就是我们刚刚讲的上面的DOM2例子。</p>
+<p>添加事件处理函数addEventListener</p>
+<p>参数1 指定事件名称…click mouseover mouseout<br>参数2 事件处理程序（匿名函数或者有名函数）<br>参数3 true（捕获阶段发生） or false（冒泡阶段发生）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;input type="button" value="点击" id="click" /&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var oBtn=document.getElementById('click');</div><div class="line">    oBtn.addEventListener('click',function()&#123;</div><div class="line">        alert(this.id)//click  this指的是该元素作用域内</div><div class="line">    &#125;,false)</div><div class="line">    //注意该种方式可以给一个函数添加多个事件处理函数，执行顺序与添加顺序相同</div><div class="line">    oBtn.addEventListener('click',function()&#123;</div><div class="line">        alert('Hello World')//click</div><div class="line">    &#125;,false)         </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>移除事件处理函数removeEventListener</p>
+<p>如果事件处理函数是有名函数，则可以通过名字来移除，匿名函数无法移除。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;input type="button" value="点击" id="click" /&gt;</div><div class="line">&lt;script&gt;</div><div class="line"> var oBtn=document.getElementById('click');</div><div class="line">function showId()&#123;</div><div class="line">    alert(this.id);</div><div class="line">&#125;;</div><div class="line">function HelloWorld()&#123;</div><div class="line">    alert('HellowWorld');</div><div class="line">&#125;</div><div class="line">oBtn.addEventListener("click",showId,false);</div><div class="line">oBtn.addEventListener("click",HelloWorld,false);</div><div class="line">oBtn.removeEventListener('click',showId,false)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>最后只能弹出HellowWorld</p>
+<p>IE事件处理程序attachEvent,detachEvent<br>ie实现了与dom类似的两个方法，attachEvent（添加），detachEvent（删除）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> oBtn.attachEvent('onclick',showId);//这时候会报错，因为这里的是在window的作用域内</div><div class="line">//修改如下</div><div class="line">oBtn.detachEvent('onclick',showId) ;//点击没有任何反应</div></pre></td></tr></table></figure>
+<p>Mozilla中： </p>
+<p>addEventListener的使用方式： </p>
+<p>target.addEventListener(type, listener, useCapture); </p>
+<p>target： 文档节点、document、window 或 XMLHttpRequest。<br>type： 字符串，事件名称，不含“on”，比如“click”、“mouseover”、“keydown”等。<br>listener ：实现了 EventListener 接口或者是 JavaScript 中的函数。<br>useCapture ：是否使用捕捉，一般用 false 。例如：document.getElementById(“testText”).addEventListener(“keydown”, function (event) { alert(event.keyCode); }, false); </p>
+<p>IE中： </p>
+<p>target.attachEvent(type, listener);<br>target： 文档节点、document、window 或 XMLHttpRequest。<br>type： 字符串，事件名称，含“on”，比如“onclick”、“onmouseover”、“onkeydown”等。<br>listener ：实现了 EventListener 接口或者是 JavaScript 中的函数。 例如：document.getElementById(“txt”).attachEvent(“onclick”,function(event){alert(event.keyCode);}); </p>
+<p>W3C 及 IE 同时支持移除指定的事件, 用途是移除设定的事件, 格式分别如下: </p>
+<p>W3C格式: </p>
+<p>removeEventListener(event,function,capture/bubble); </p>
+<p>Windows IE的格式如下: </p>
+<p>detachEvent(event,function); </p>
+<p>target.addEventListener(type, listener, useCapture);<br>target 文档节点、document、window 或 XMLHttpRequest。<br>type 字符串，事件名称，不含“on”，比如“click”、“mouseover”、“keydown”等。<br>listener 实现了 EventListener 接口或者是 JavaScript 中的函数。<br>useCapture 是否使用捕捉，看了后面的事件流一节后就明白了，一般用 false<br>事件触发时，会将一个 Event 对象传递给事件处理程序，比如：<br>document.getElementById(“testText”).addEventListener(“keydown”, function (event) { alert(event.keyCode); }, false);<br>适应的浏览器版本不同，同时在使用的过程中要注意<br>attachEvent方法 按钮onclick IE中使用<br>addEventListener方法 按钮click fox中使用<br>两者使用的原理：可对执行的优先级不一样，下面实例讲解如下：<br>attachEvent方法，为某一事件附加其它的处理事件。（不支持Mozilla系列）<br>addEventListener方法 用于 Mozilla系列<br>举例: document.getElementById(“btn”).onclick = method1;<br>document.getElementById(“btn”).onclick = method2;<br>document.getElementById(“btn”).onclick = method3;如果这样写,那么将会只有medhot3被执行<br>写成这样：<br>var btn1Obj = document.getElementById(“btn1”); //object.attachEvent(event,function);<br>btn1Obj.attachEvent(“onclick”,method1);<br>btn1Obj.attachEvent(“onclick”,method2);<br>btn1Obj.attachEvent(“onclick”,method3);执行顺序为method3-&gt;method2-&gt;method1<br>如果是Mozilla系列，并不支持该方法，需要用到addEventListener var btn1Obj = document.getElementById(“btn1”);<br>//element.addEventListener(type,listener,useCapture);<br>btn1Obj.addEventListener(“click”,method1,false);<br>btn1Obj.addEventListener(“click”,method2,false);<br>btn1Obj.addEventListener(“click”,method3,false);执行顺序为method1-&gt;method2-&gt;method3<br>实例：(要注意的是div必须放到js前面才行) </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">&lt;html&gt; </div><div class="line">&lt;head&gt; </div><div class="line">&lt;/head&gt; </div><div class="line">&lt;body&gt; </div><div class="line">&lt;div id="name1" style="border:1px solid red;padding:10px 10px 10px 10px;" style="border:1px solid red;padding:10px 10px 10px 10px;"&gt; </div><div class="line">&lt;div id="name2" style="border:1px solid green;padding:10px 10px 10px 10px;" style="border:1px solid green;padding:10px 10px 10px 10px;"&gt;点击&lt;/div&gt; </div><div class="line">&lt;/div&gt; </div><div class="line">&lt;div id="info"&gt;&lt;/div&gt; </div><div class="line">&lt;script type="text/javascript"&gt;&lt;!-- </div><div class="line">var name1=document.getElementById('name1'); //要注意 </div><div class="line">var name2=document.getElementById('name2'); //要注意 </div><div class="line">var info=document.getElementById('info'); </div><div class="line">if(name1.attachEvent)&#123; //对于attachEvent前面的target我们一定要保证不为空 </div><div class="line">name1.attachEvent('onclick',function () &#123; info.innerHTML += "红色" + "&lt;br&gt;"; &#125;); </div><div class="line">name2.attachEvent('onclick',function () &#123; info.innerHTML += "绿色" + "&lt;br&gt;"; &#125;); </div><div class="line">&#125;else&#123; </div><div class="line">name1.addEventListener('click',function () &#123; info.innerHTML += "红色" + "&lt;br&gt;"; &#125;,false); </div><div class="line">name2.addEventListener('click',function () &#123; info.innerHTML += "绿色" + "&lt;br&gt;"; &#125;,false); </div><div class="line">&#125; </div><div class="line">// --&gt;&lt;/script&gt; </div><div class="line">&lt;/body&gt; </div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？"><a href="#17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？" class="headerlink" title="17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？"></a>17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？</h2><p>事件委托原理：事件冒泡机制。<br>优点：1.可以大量节省内存占用，减少事件注册。比如ul上代理所有li的click事件就很不错。<br>2.可以实现当新增子对象时，无需再对其进行事件绑定，对于动态内容部分尤为合适<br>缺点：事件代理的常用应用应该仅限于上述需求，如果把所有事件都用事件代理，可能会出现事件误判。即本不该被触发的事件被绑定上了事件。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;ul id="ul1"&gt;</div><div class="line">    &lt;li&gt;111&lt;/li&gt;</div><div class="line">    &lt;li&gt;222&lt;/li&gt;</div><div class="line">    &lt;li&gt;333&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var oUl1 = document.getElementById('ul1');</div><div class="line">    myAddEvent(oUl1,'click',function(e)&#123;</div><div class="line">        var e = e || window.event;</div><div class="line">        var target = e.target || e.srcElement;</div><div class="line">        if(target.nodeName === 'LI')&#123;</div><div class="line">            alert(target.innerHTML);</div><div class="line">            target.style.background = 'red';</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    // 事件绑定封装成js函数</div><div class="line">    function myAddEvent(obj, ev, fn)&#123;</div><div class="line">        if(obj.attachEvent)&#123; // ie</div><div class="line">            obj.attachEvent('on'+ev, fn);</div><div class="line">        &#125;else&#123;</div><div class="line">            obj.addEventListener(ev, fn, false);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>18、怎么给未来元素绑定事件？（刚开始页面上不存在的元素，后续通过js添加）</p>
+<p>19、你是怎么理解this的？</p>
+<h2 id="20、什么是异步和同步？简述ajax的流程"><a href="#20、什么是异步和同步？简述ajax的流程" class="headerlink" title="20、什么是异步和同步？简述ajax的流程"></a>20、什么是异步和同步？简述ajax的流程</h2><p>![enter description here][2]</p>
+<p>![enter description here][3]</p>
+<p>一、ajax概述</p>
+<p>1、Ajax是Asynchronous（[ə’sɪŋkrənəs） JavaScript XML的简写，不是一门新技术，而是对现有技术的综合利用。这一技术能够向服务器请求额外数据而无需刷新页面，带来了更好的用户体验</p>
+<p>2、Ajax技术的核心是XMLHttpRequest对象（简称XHR），这是由微软首先引入的一个特性。在XHR出现之前，Ajax式的通信必须借助一些hack手段来实现，大多数是使用隐藏的框架或内嵌框架。</p>
+<p>3、XHR为向服务器发送请求和解析服务器响应提供了流畅的接口。能够以异步的方式从服务器取得更多的信息，意味着用户单击后，可以不必刷新页面也能获取新数据。也就是说可以使用XHR对象取得新数据，然后再通过DOM将新数据插入到页面中</p>
+<p>4、虽然Ajax名字中有XML的成分，但是呢，Ajax通信与数据格式无关，这种技术就是无须刷新页面即可从服务器取得数据，但不一定是XML数据</p>
+<p>二、操作：原生ajax和jQuery中封装的ajax</p>
+<p>1、原生ajax：</p>
+<p>ajax作用：发送请求（设置请求setRequest） 接收响应(getResponse)</p>
+<p>A、ajax原生方式发送请求：</p>
+<p>Ajax中最重要也是最固定的部分就是http请求。</p>
+<p>1)建立连接：（IE7及以上版本都支持XMLHttpRequest）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest(); //创建异步请求对象</div></pre></td></tr></table></figure>
+<p>2)Get请求：格式必须是（url?name1=value1&amp;name2=value2）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open("get","01-register.php?name="+name);//初始化异步get请求</div><div class="line">xhr.send(null); //与服务器建立连接</div></pre></td></tr></table></figure>
+<p>3)Post请求</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open('post','01-XMLHTTPRequest-test.php');//请求报文行</div><div class="line">xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded'); /*post请求设置请求头*/</div><div class="line">xhr.send('name=rose&amp;age=20'); //请求报文体</div></pre></td></tr></table></figure>
+<p>4)get和post请求的区别：</p>
+<p>★get不需要设置请求头，而post需要设置请求头</p>
+<p>★get的数据传递通过url进行，而post的数据在send方法中传递</p>
+<p>B、ajax原生方式接收响应：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*监听服务器的响应*/</div><div class="line">xhr.onreadystatechange=function()&#123;</div><div class="line">/*判断当前的响应是否成功 1.服务器做出了响应 2.响应的结果是正确的*/</div><div class="line"> if(xhr.status==200 &amp;&amp; xhr.readyState==4)&#123;</div><div class="line"> var result=xhr.responseText;</div><div class="line"> console.log(result); //输出从服务器中获取到的数据</div><div class="line"> //接下来就可以对数据进行相应的处理了</div><div class="line"> &#125;</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<p>C、处理响应数据：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/*监听*/</div><div class="line">xhr.onreadystatechange=function()&#123;</div><div class="line">if(xhr.status==200 &amp;&amp; xhr.readyState==4)&#123; /*判断状态*/</div><div class="line">var result;</div><div class="line">/*获取响应报文中的Content-Type*/</div><div class="line">var ct=xhr.getResponseHeader("Content-Type");</div><div class="line">/*判断Content-Type,进行数据的解析*/</div><div class="line">if(ct.indexOf("xml") != -1)&#123;</div><div class="line">result=xhr.responseXML;</div><div class="line">&#125;</div><div class="line">else if(ct.indexOf("json") !=-1)&#123;</div><div class="line">result=JSON.parse(xhr.responseText);</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">result=xhr.responseText;</div><div class="line">&#125;</div><div class="line">/*调用回调函数--委托--代理*/</div><div class="line">success &amp;&amp; success(result);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p> jQuery中封装的ajax</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">type: 请求方式(get/post),</div><div class="line">url: "register.php",</div><div class="line">data: 发送请求数据,</div><div class="line">beforeSend:function()&#123;返回false可以取消本次ajax请求&#125;,</div><div class="line">success:function(result)&#123; 成功响应后调用 &#125;,</div><div class="line">error:function(err)&#123; 错误响应时调用 &#125;,</div><div class="line">complete:function()&#123; 响应完成时调用(包括成功和失败) &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>jQuery中提供了专门的方法来序列化表单：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'form'</span>).serialize():   <span class="comment">//序列化表单(即格式化key=val &amp; key=val);</span></div></pre></td></tr></table></figure>
+<p>三、响应</p>
+<p>我们需要监听服务器的响应状态，然后对从服务器中获取的数据做相应的处理。</p>
+<p>1)    onreadystatechange是JavaScript事件中的一种，用于监听XMLHttpRequest的状态</p>
+<p>2)    readystate：响应状态，返回XMLHTTP请求的当前状态</p>
+<p>readyState 状态</p>
+<p>状态说明</p>
+<p>(0)未初始化</p>
+<p>此阶段确认XMLHttpRequest对象是否创建，并为调用open()方法进行未初始化作好准备。值为0表示对象已经存在，否则浏览器会报错－－对象不存在。</p>
+<p>(1)载入</p>
+<p>此阶段对XMLHttpRequest对象进行初始化，即调用open()方法，根据参数(method,url,true)完成对象状态的设置。并调用send()方法开始向服务端发送请求。值为1表示正在向服务端发送请求。</p>
+<p>(2)载入完成</p>
+<p>此阶段接收服务器端的响应数据。但获得的还只是服务端响应的原始数据，并不能直接在客户端使用。值为2表示已经接收完全部响应数据。并为下一阶段对数据解析作好准备。</p>
+<p>(3)交互</p>
+<p>此阶段解析接收到的服务器端响应数据。即根据服务器端响应头部返回的MIME类型把数据转换成能通过responseBody、responseText或responseXML属性存取的格式，为在客户端调用作好准备。状态3表示正在解析数据。</p>
+<p>(4)完成</p>
+<p>此阶段确认全部数据都已经解析为客户端可用的格式，解析已经完成。值为4表示数据解析完毕，可以通过XMLHttpRequest对象的相应属性取得数据。</p>
+<h2 id="web服务器响应码"><a href="#web服务器响应码" class="headerlink" title="web服务器响应码"></a>web服务器响应码</h2><p>401 UNAUTHORIZED </p>
+<p>　　表示您必须有一个正确的用户名称及密码才能得到对方网页（unauthorized site）的使用权，例如浏览一些收费网页时就会出现这个信息。 </p>
+<p>　　403 FORBIDDEN </p>
+<p>　　可能是因为您未在对方网站注册，一般情况下可在网上进行即时注册，但一些完全”封闭”的网站都会产生以上的信息。 </p>
+<p>　　404 NOT FOUND </p>
+<p>　　最常见的出错信息，其实这是因为您的WWW浏览器不能找到您所要的文件（即网页），该文件可能被移到别的地方去了、或者根本就不复存在。 </p>
+<p>　　409 Fire flood and Pestilence </p>
+<p>　　无意义。 解决办法：重新连接。 </p>
+<p>　　500 SERVER ERROR </p>
+<p>　　这个信息通常是对方网页程序设计错误而产生的，您等待对方网页纠正错误后再上吧。 </p>
+<p>　　503 SERVICE UNAVAILABLE </p>
+<p>　　这个信息表示不能连上对方网站、是因为网络线路非常繁忙。过一会儿（比如三分钟后）再试试吧。 </p>
+<h2 id="21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？"><a href="#21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？" class="headerlink" title="21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？"></a>21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？</h2><p>22、什么是面向对象和面向过程？对象中什么是属性？什么是方法？</p>
+<h2 id="23、怎么获取person对象的age属性？有几种写法？"><a href="#23、怎么获取person对象的age属性？有几种写法？" class="headerlink" title="23、怎么获取person对象的age属性？有几种写法？"></a>23、怎么获取person对象的age属性？有几种写法？</h2><p>遍历一个JS对象中的所有属性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">var obj = &#123;a:1,b:2,c:3&#125;</div><div class="line">for(var s in obj)</div><div class="line">alert(obj[s]);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>24、什么是类？js怎么定义类？什么是原型？有什么用？<br>javascript的方法可以分为三类：</p>
+<p>类方法<br>对象方法<br>原型方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function People(name)</div><div class="line">&#123;</div><div class="line">  this.name=name;</div><div class="line">  //对象方法</div><div class="line">  this.Introduce=function()&#123;</div><div class="line">    alert("My name is "+this.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//类方法</div><div class="line">People.Run=function()&#123;</div><div class="line">  alert("I can run");</div><div class="line">&#125;</div><div class="line">//原型方法</div><div class="line">People.prototype.IntroduceChinese=function()&#123;</div><div class="line">  alert("我的名字是"+this.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//测试</div><div class="line"></div><div class="line">var p1=new People("Windking");</div><div class="line"></div><div class="line">p1.Introduce();</div><div class="line"></div><div class="line">People.Run();</div><div class="line"></div><div class="line">p1.IntroduceChinese();</div></pre></td></tr></table></figure>
+<p>25、什么是原型链？实现继承的方式有几种？</p>
+<p>26、call和apply是什么？有什么用</p>
+<p>27、什么是插件？自己封装过插件吗？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/19/JavaScript 最新面试题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-节点测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/节点测试/">节点测试</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/17/节点测试/" class="archive-article-date">
+  	<time datetime="2017-03-17T07:35:55.741Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####首先了解一下DOM中有三大节点，分别是 元素节点，文本节点，属性节点</p>
+<p>元素节点：构成了DOM的基础。文档结构中，<html>是根元素，代表整个文档，其他的还有<head>,</head><body>,<p>,<span>等等。元素节点之间可以相互包含(当然遵循一定的规则)</span></p>
+<p>文本节点：包含在元素节点中。</p>
+<p>属性节点：元素都可以包含一些属性，属性的作用是对元素做出更具体的描述，比如id,name之类的。</p>
+<p>以下面的demo为例：</p>
+<pre><code>&lt;script&gt;
+window.onload = function(){
+  　　var element = document.getElementById(&quot;span&quot;);
+  　　var text = element.firstChild;
+  　　var property=document.getElementById(&quot;span&quot;).getAttributeNode(&quot;id&quot;);
+}
+&lt;/script&gt;
+
+&lt;body&gt;
+　　&lt;div&gt;
+　  　　&lt;span id=&quot;span&quot;&gt;文本节点&lt;/span&gt;
+　　&lt;/div&gt;
+&lt;/body&gt;　
+</code></pre><h4 id="一-nodeName-属性含有某个节点的名称。"><a href="#一-nodeName-属性含有某个节点的名称。" class="headerlink" title="(一)nodeName 属性含有某个节点的名称。"></a>(一)nodeName 属性含有某个节点的名称。</h4><p>元素节点的 nodeName 是标签名称（返回的名称是大写的）</p>
+<p>属性节点的 nodeName 是属性名称（返回的名称是大写的）</p>
+<p>文本节点的 nodeName 永远是 #text</p>
+<p>文档节点的 nodeName 永远是 #document</p>
+<p>注释：nodeName 所包含的 XML 元素的标签名称永远是大写的</p>
+<p>alert(“这是元素节点的返回值：”+ element.nodeName);//返回的标签名SPAN,注意是大写的<br>alert(“这是文本节点的返回值：”+ text.nodeName);//返回的#text<br>alert(“这是属性节点的返回值：”+ property.nodeName);//返回的是属性名，这里是id</p>
+<h4 id="二-nodeValue"><a href="#二-nodeValue" class="headerlink" title="(二)nodeValue"></a>(二)nodeValue</h4><p>对于文本节点，nodeValue 属性包含文本。</p>
+<p>对于属性节点，nodeValue 属性包含属性值。</p>
+<p>nodeValue 属性对于文档节点和元素节点是不可用的。</p>
+<p>alert(“这是元素节点的返回值：”+ element.nodeValue);//本身就没有意义，这里是试验下的，返回的是null<br>alert(“这是文本节点的返回值：”+ text.nodeValue);//返回的是文本值  文本节点<br>alert(“这是属性节点的返回值：”+ property.nodeValue);//返回的是属性值，这里是id的属性值span</p>
+<h4 id="三-nodeType"><a href="#三-nodeType" class="headerlink" title="(三)nodeType"></a>(三)nodeType</h4><p>nodeType 属性可返回节点的类型。</p>
+<p>我们常用的3中类型：<br>nodeType == 1  ： 元素节点<br>nodeType == 2  ： 属性节点<br>nodeType == 3  ： 文本节点</p>
+<p>注释 comments   8</p>
+<p>文档 document   9</p>
+<p>  alert(“这是元素节点的返回值：”+ element.nodeType);//元素节点返回1<br>  alert(“这是文本节点的返回值：”+ text.nodeType);//文本节点返回3<br>  alert(“这是属性节点的返回值：”+ property.nodeType);//属性节点返回2</p>
+</body></html></p>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/节点测试/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/17/JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）/">JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/17/JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）/" class="archive-article-date">
+  	<time datetime="2017-03-17T03:27:24.633Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PS：偏基础，红色是重点、蓝色是扩展；无答案，请自行总结</p>
+<h2 id="1、js数据类型有哪些？如何判断一个变量的数据类型？-怎么判断一个变量是被什么创造出来的？"><a href="#1、js数据类型有哪些？如何判断一个变量的数据类型？-怎么判断一个变量是被什么创造出来的？" class="headerlink" title="1、js数据类型有哪些？如何判断一个变量的数据类型？ 怎么判断一个变量是被什么创造出来的？"></a>1、js数据类型有哪些？如何判断一个变量的数据类型？ 怎么判断一个变量是被什么创造出来的？</h2><p>判断js中的数据类型有一下几种方法：typeof、instanceof、 constructor、 prototype、 $.type()/jquery.type(),接下来主要比较一下这几种方法的异同。</p>
+<p>先举几个例子：</p>
+<p>var a = “iamstring.”;<br>var b = 222;<br>var c= [1,2,3];<br>var d = new Date();<br>var e = function(){alert(111);};<br>var f = function(){this.name=”22”;};</p>
+<h3 id="1、最常见的判断方法：typeof"><a href="#1、最常见的判断方法：typeof" class="headerlink" title="1、最常见的判断方法：typeof"></a>1、最常见的判断方法：typeof</h3><p>alert(typeof a)   ————&gt; string<br>alert(typeof b)   ————&gt; number<br>alert(typeof c)   ————&gt; object<br>alert(typeof d)   ————&gt; object<br>alert(typeof e)   ————&gt; function<br>alert(typeof f)   ————&gt; function<br>其中typeof返回的类型都是字符串形式，需注意，例如：<br>alert(typeof a == “string”) ————-&gt; true<br>alert(typeof a == String) —————&gt; false<br>另外typeof 可以判断function的类型；在判断除Object类型的对象时比较方便。</p>
+<h3 id="2、判断已知对象类型的方法：-instanceof"><a href="#2、判断已知对象类型的方法：-instanceof" class="headerlink" title="2、判断已知对象类型的方法： instanceof"></a>2、判断已知对象类型的方法： instanceof</h3><p>alert(c instanceof Array) —————&gt; true<br>alert(d instanceof Date)<br>alert(f instanceof Function) ————&gt; true<br>alert(f instanceof function) ————&gt; false<br>注意：instanceof 后面一定要是对象类型，并且大小写不能错，该方法适合一些条件选择或分支。</p>
+<h3 id="3、根据对象的constructor判断：-constructor"><a href="#3、根据对象的constructor判断：-constructor" class="headerlink" title="3、根据对象的constructor判断： constructor"></a>3、根据对象的constructor判断： constructor</h3><p>alert(c.constructor === Array) ———-&gt; true<br>alert(d.constructor === Date) ———–&gt; true<br>alert(e.constructor === Function) ——-&gt; true<br>注意： constructor 在类继承时会出错<br>eg：<br>      function A(){};<br>      function B(){};<br>      A.prototype = new B(); //A继承自B<br>      var aObj = new A();<br>      alert(aobj.constructor === B) ———–&gt; true;<br>      alert(aobj.constructor === A) ———–&gt; false;<br>而instanceof方法不会出现该问题，对象直接继承和间接继承的都会报true：<br>      alert(aobj instanceof B) —————-&gt; true;<br>      alert(aobj instanceof B) —————-&gt; true;<br>言归正传，解决construtor的问题通常是让对象的constructor手动指向自己：<br>      aobj.constructor = A; //将自己的类赋值给对象的constructor属性<br>      alert(aobj.constructor === A) ———–&gt; true;<br>      alert(aobj.constructor === B) ———–&gt; false; //基类不会报true了;</p>
+<h3 id="4、通用但很繁琐的方法：-prototype"><a href="#4、通用但很繁琐的方法：-prototype" class="headerlink" title="4、通用但很繁琐的方法： prototype"></a>4、通用但很繁琐的方法： prototype</h3><p>alert(Object.prototype.toString.call(a) === ‘[object String]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(b) === ‘[object Number]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(c) === ‘[object Array]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(d) === ‘[object Date]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(e) === ‘[object Function]’) ——-&gt; true;<br>alert(Object.prototype.toString.call(f) === ‘[object Function]’) ——-&gt; true;<br>大小写不能写错，比较麻烦，但胜在通用。</p>
+<h3 id="5、无敌万能的方法：jquery-type"><a href="#5、无敌万能的方法：jquery-type" class="headerlink" title="5、无敌万能的方法：jquery.type()"></a>5、无敌万能的方法：jquery.type()</h3><p>如果对象是undefined或null，则返回相应的“undefined”或“null”。<br>jQuery.type( undefined ) === “undefined”<br>jQuery.type() === “undefined”<br>jQuery.type( window.notDefined ) === “undefined”<br>jQuery.type( null ) === “null”<br>如果对象有一个内部的[[Class]]和一个浏览器的内置对象的 [[Class]] 相同，我们返回相应的 [[Class]] 名字。 (有关此技术的更多细节。 )<br>jQuery.type( true ) === “boolean”<br>jQuery.type( 3 ) === “number”<br>jQuery.type( “test” ) === “string”<br>jQuery.type( function(){} ) === “function”<br>jQuery.type( [] ) === “array”<br>jQuery.type( new Date() ) === “date”<br>jQuery.type( new Error() ) === “error” // as of jQuery 1.9<br>jQuery.type( /test/ ) === “regexp”<br>其他一切都将返回它的类型“object”。<br>通常情况下用typeof 判断就可以了，遇到预知Object类型的情况可以选用instanceof或constructor方法,实在没辙就使用$.type()方法。</p>
+<h2 id="2、判断有几种？-什么是判断嵌套？请举例-switch写法是什么？break有何作用？"><a href="#2、判断有几种？-什么是判断嵌套？请举例-switch写法是什么？break有何作用？" class="headerlink" title="2、判断有几种？ 什么是判断嵌套？请举例 switch写法是什么？break有何作用？"></a>2、判断有几种？ 什么是判断嵌套？请举例 switch写法是什么？break有何作用？</h2><h2 id="3、循环有几种？常用的有哪几种？break和continue有何作用？"><a href="#3、循环有几种？常用的有哪几种？break和continue有何作用？" class="headerlink" title="3、循环有几种？常用的有哪几种？break和continue有何作用？"></a>3、循环有几种？常用的有哪几种？break和continue有何作用？</h2><p>Break: 跳出循环，不再执行循环中的内容<br>Continue: 跳出本次循环，开始下一次循环</p>
+<h2 id="4、function是什么？定义一个功能有哪几种写法？return有什么用？"><a href="#4、function是什么？定义一个功能有哪几种写法？return有什么用？" class="headerlink" title="4、function是什么？定义一个功能有哪几种写法？return有什么用？"></a>4、function是什么？定义一个功能有哪几种写法？return有什么用？</h2><p>函数，是一种方法；    return：中断函数，返回调用者期望返回的值<br>一．function 函数名(){}<br>二．var 函数名 = function(){}<br>三．function(){} : 匿名函数</p>
+<h2 id="5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）"><a href="#5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）" class="headerlink" title="5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）"></a>5、什么是函数自运行？怎么写？你什么地方使用过？（循环时怎么保留i的值）</h2><p>不需要外部调用，立即运行(function(){})()</p>
+<h2 id="6、什么是递归？有什么用？和循环有什么区别？（自行百度）"><a href="#6、什么是递归？有什么用？和循环有什么区别？（自行百度）" class="headerlink" title="6、什么是递归？有什么用？和循环有什么区别？（自行百度）"></a>6、什么是递归？有什么用？和循环有什么区别？（自行百度）</h2><h2 id="7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）"><a href="#7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）" class="headerlink" title="7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）"></a>7、排序算法你知道几种？什么是冒泡排序？什么是快排？（自行百度）</h2><p>快速排序的思想很简单，整个排序过程只需要三步：</p>
+<ol>
+<li>在数据集中，选择一个元素作为“基准”(pivot) </li>
+<li>所有小于“基准”的元素，都移到“基准”的左边，所有大于“基准”的元素，都移到右边。</li>
+<li>对“基准”左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止</li>
+</ol>
+<p>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var quickSort = function(arr) &#123;</div><div class="line">    if(arr.length &lt;= 1) return arr;             // 递归停止条件</div><div class="line">    // 选取基准值</div><div class="line">    var pivotIndex = Math.ceil(arr.length / 2);</div><div class="line">    var pivot = arr.splice(pivotIndex, 1)[0];   // 基准值</div><div class="line">    var left = [], right = [];</div><div class="line"></div><div class="line">    // 如果大于基准值，移到数组right中；小于基准的值，移到数组left中</div><div class="line">    for(var i=0; i&lt; arr.length; i++) &#123;</div><div class="line">        arr[i] &gt; pivot ? right.push(arr[i]) : left.push(arr[i]);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return quickSort(left).concat([pivot], quickSort(right));</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串"><a href="#8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串" class="headerlink" title="8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串"></a>8、列出自己知道的字符串对象的方法，怎么查找？怎么替换？怎么转化为数组？数组怎么转化为字符串</h2><h2 id="9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）"><a href="#9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）" class="headerlink" title="9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）"></a>9、列出自己知道的时间对象的方法，怎么获取年月日时分秒星期几？怎么获取当前时间戳？怎么定义一个未来时间？（当前时间和倒计时）</h2><h2 id="10、列举出你知道的数组方法，怎么将数组乱序？"><a href="#10、列举出你知道的数组方法，怎么将数组乱序？" class="headerlink" title="10、列举出你知道的数组方法，怎么将数组乱序？"></a>10、列举出你知道的数组方法，怎么将数组乱序？</h2><h2 id="11、知道数组新增的一些方法吗？foreach、map、reduce等"><a href="#11、知道数组新增的一些方法吗？foreach、map、reduce等" class="headerlink" title="11、知道数组新增的一些方法吗？foreach、map、reduce等"></a>11、知道数组新增的一些方法吗？foreach、map、reduce等</h2><p>学习连接：<a href="http://www.zhangxinxu.com/wordpress/?p=3220" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/?p=3220</a></p>
+<h2 id="12、怎么使用js跳转页面？"><a href="#12、怎么使用js跳转页面？" class="headerlink" title="12、怎么使用js跳转页面？"></a>12、怎么使用js跳转页面？</h2><h2 id="13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？"><a href="#13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？" class="headerlink" title="13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？"></a>13、js获取页面元素的方法有哪几种？怎么创建、删除、克隆、插入元素？</h2><h2 id="14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？"><a href="#14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？" class="headerlink" title="14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？"></a>14、什么是自定义属性？页面元素添和js对象的自定义属性一样吗？自定义属性一般有什么用？</h2><p>在我们常使用的控件中，我们经常可以自己为元素定义一些属性来达到想要的效果。</p>
+<p>例如：</p>
+<p>我们想要给按钮设定一个值，这个值对每个按钮都要相同的效果。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">        window.onload=function()&#123;</div><div class="line">            var aBtn=document.getElementsByTagName("input");</div><div class="line">            var arr=['A','B','C','D'];</div><div class="line">              </div><div class="line">            for(i=0;i&lt;aBtn.length;i++)&#123;</div><div class="line">                aBtn[i].num=0;</div><div class="line">                aBtn[i].onclick=function()&#123;</div><div class="line">                    this.value=arr[this.num];</div><div class="line">                    this.num++;</div><div class="line">                    if(this.num===arr.length)&#123;</div><div class="line">                        this.num=0;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">    &lt;body&gt;</div><div class="line">        &lt;input type="button" value="0" /&gt;</div><div class="line">        &lt;input type="button" value="0" /&gt;</div><div class="line">        &lt;input type="button" value="0" /&gt;</div><div class="line">    &lt;/body&gt;</div></pre></td></tr></table></figure>
+<p>15、js中常见的事件有哪些？给元素添加事件的形式有哪几种？（3种）</p>
+<pre><code>1、在html中，使用onclick属性
+2、在javascript中，使用onclick属性
+3、在javascipt中，使用addEvenListener()方法
+</code></pre><p>16、什么是事件流？有那几个过程？什么是事件对象？什么是事件源？<br>当onmousemove事件发生时，就会产生一个事件对象，就是程序中的event对象，我们只能在这个匿名函数中访问到这个event对象，在函数外面是访问不到的，同样我们也无法手动创建这个event对象；</p>
+<p>如何获取事件对象那？？</p>
+<p>var e = event || window.event;这句话就是定义了一个变量来获取事件对象，因为不同的浏览器获取事件对象的方法有点不太一样，IE下是window.event，标准下是event，为了兼容所以写了event || window.event.</p>
+<p>事件对象也分为：</p>
+<p>鼠标事件对象，键盘事件对象等，顾名思义鼠标事件发生时产生鼠标事件对象，键盘事件发生时产生键盘事件对象；既然是对象，就必然有一些属性方法啥的。</p>
+<p>鼠标事件对象上的常用属性：</p>
+<p>clientX，clientY，screenX，screenY，offsetX，offsetY<br>键盘事件对象上的属性有：</p>
+<p>keyCode: 用来获取键盘码的;比如空格的键盘是32，回车13等</p>
+<p>cltkey: 判断alt键是否被按下，按下是true，反之false</p>
+<p>Ctrlkey: 判断Ctrlkey键是否被按下，按下是true，反之false</p>
+<p>Shiftkey : 判断Shiftkey 键是否被按下，按下是true，反之false</p>
+<p>说到这里相信大家应该理解“事件对象”了吧！接着说一说事件源。</p>
+<p>事件源：</p>
+<p>在事件中，当前操作的那个元素就是事件源。比如网页元素中a标签和input都有onclick事件，当点击a发生onclick事件时，事件源就是a标签，当点击input发送onclic事件是，事件源就是input。</p>
+<p>如何获取事件源那？？</p>
+<p>IE下：window.event.srcElement  </p>
+<p>标准下：event.target</p>
+<p>由此可见，我们是通过事件对象获取到的事件源。</p>
+<h3 id="什么是事件流"><a href="#什么是事件流" class="headerlink" title="什么是事件流"></a>什么是事件流</h3><p>流：用术语说流是对输入输出设备的抽象。以程序的角度说，流是具有方向的数据。</p>
+<p>事件流：从页面中接收事件的顺序。也就是说当一个事件产生时，这个事件的传播过程，就是事件流。</p>
+<p>事件：用户或者浏览器自身执行的某个动作，比如load，click，mousemove等</p>
+<p>事件处理程序：相应处理某个事件的函数叫做事件处理函数（也叫做事件侦听器）</p>
+<p>理解DOM中的事件流</p>
+<p>当浏览器发展到第四代时（IE4和NetscapeCommunicator4）,浏览器团队遇到一个很有意思的问题：页面的哪一部分会拥有特定的事件？想象下在一张纸上有一组同心圆，如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是一组圆。两家公司的开发团队在看待浏览器事件方面还是一致的。如果你单击了某个按钮，那么同时你也单击了按钮的容器元素，甚至整个页面。<br>事件流描述的是从页面中接受事件的顺序。但有意思的是，IE和Netscape开发团队居然提出了两个截然相反的事件流概念。IE的事件流是事件冒泡流，而Netscape的事件流是事件捕获流。</p>
+<p>IE提出的事件冒泡</p>
+<p>事件冒泡即事件开始时，由最具体的元素接收（也就是事件发生所在的节点），然后逐级传播到较为不具体的节点。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;button id="click"&gt;点击&lt;/button&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        (function()&#123;</div><div class="line">            var btn = document.getElementById("click");</div><div class="line">            btn.onclick = function()&#123;</div><div class="line">                console.log("1. button");</div><div class="line">            &#125;</div><div class="line">            document.body.onclick = function()&#123;</div><div class="line">                console.log("2. document.body");</div><div class="line">            &#125;</div><div class="line">            document.onclick = function()&#123;</div><div class="line">                console.log("3. document");</div><div class="line">            &#125;</div><div class="line">            window.onclick = function()&#123;</div><div class="line">                console.log("4. window");</div><div class="line">            &#125;</div><div class="line">        &#125;)()</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在代码所示的页面中，如果点击了button，那么这个点击事件会得到如下的结果：<br>![enter description here][1]</p>
+<p>也就是说，click事件首先在button元素上发生，然后逐级向上传播。这就是事件冒泡。</p>
+<p>netscape提出的事件捕获</p>
+<p>事件捕获的概念，与事件冒泡正好相反。它认为当某个事件发生时，父元素应该更早接收到事件，具体元素则最后接收到事件。比如说刚才的demo，如果是事件捕获的话，事件发生顺序会是刚好与上面相反的。即window,document,document.body,button。</p>
+<p>虽然事件捕获是Netscape唯一支持的事件流模型，但IE9、Safari、Chrome、Opera和Firefox目前也都支持这种事件流模型。但由于老版本的浏览器不支持，因此很少有人使用事件捕获。</p>
+<p>所以放心的使用事件冒泡，有特殊需要再使用事件捕获即可。</p>
+<p>DOM事件流</p>
+<p>DOM事件流可以分为下面3个阶段： </p>
+<ol>
+<li>事件捕获阶段 </li>
+<li>处于目标阶段 </li>
+<li>事件冒泡阶段<br>![enter description here][2]</li>
+</ol>
+<p>事件捕获阶段</p>
+<p>也就是说，当事件发生时，首先发生的是事件捕获，为父元素截获事件提供了机会。<br>例如，我把上面的Demo中，window点击事件更改为使用事件捕获模式。</p>
+<p>addEventListener最后一个参数，为true则代表使用事件捕获模式，false则表示使用事件冒泡模式。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    (function()&#123;</div><div class="line">        var btn = document.getElementById("click");</div><div class="line">        btn.addEventListener("click",function()&#123;</div><div class="line">            console.log("1. button");</div><div class="line">        &#125;,true)</div><div class="line">        //省略document.body和document</div><div class="line">       .....</div><div class="line">        window.addEventListener("click",function()&#123;</div><div class="line">            console.log("4. window");</div><div class="line">        &#125;,true)</div><div class="line">    &#125;)()</div><div class="line">    &lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>![enter description here][3]<br>可以看到，点击事件先被父元素截获了，且该函数只在事件捕获阶段起作用。</p>
+<p>在DOM事件流中，事件的目标在捕获阶段不会接受到事件。这意味着在捕获阶段，事件从document到body后就定停止了。下一个阶段是处于目标阶段，于是事件在button上发生，并在事件处理中被看成冒泡阶段的一部分。然后，冒泡阶段发生，事件又传播回document。</p>
+<p>但是：我们的各大浏览器总是不喜欢按照规范来，IE9，Safari，chrome，firefox及其更高的版本中都会在捕获阶段出发事件对象上的事件，最后导致有两个机会在目标对象上操作事件。</p>
+<p>处于目标与事件冒泡阶段</p>
+<p>事件到了具体元素时，在具体元素上发生，并且被看成冒泡阶段的一部分。<br>随后，冒泡阶段发生，事件开始冒泡。</p>
+<p>阻止事件冒泡</p>
+<p>件冒泡过程，是可以被阻止的。防止事件冒泡而带来不必要的错误和困扰。</p>
+<p>这个方法就是:stopPropagation()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">(function()&#123;</div><div class="line">    var btn = document.getElementById(&quot;click&quot;);</div><div class="line">    btn.addEventListener(&quot;click&quot;,function(event)&#123;</div><div class="line">        console.log(&quot;1. button&quot;);</div><div class="line">        event.stopPropagation();</div><div class="line">        console.log(&apos;Stop Propagation!&apos;);</div><div class="line">    &#125;,false)</div><div class="line">    //省略document.body和document</div><div class="line">       .....</div><div class="line">    window.addEventListener(&quot;click&quot;,function()&#123;</div><div class="line">        console.log(&quot;4. window&quot;);</div><div class="line">    &#125;,false)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>最后结果是：1.button，Stop Propagation!。通过stopPropagation();阻止了事件的冒泡。</p>
+<p>事件处理程序类别</p>
+<p>刚刚我们已经讲了事件处理程序就是相应处理某个事假的函数。它可以分为几个类别：</p>
+<p>html事件处理程序</p>
+<p>某个元素支持的某个事件可以用与事件处理程序同名的html特性来指定，该特性的值是能够执行的JavaScript代码,这也是我们最初学js，最开始的方法。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    function show()&#123;</div><div class="line">        alert('我被点击了');</div><div class="line">    &#125;</div><div class="line">/*</div><div class="line">  点击后也会弹出 '我被点击了'</div><div class="line">*/</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;input type="button" value="点击" onclick="show()" /&gt;</div></pre></td></tr></table></figure>
+<p>优点：简单明了，省去获取元素等一系列前提操作</p>
+<p>缺点：html代码与js代码高度耦合，不符合分离原则</p>
+<p>DOM0级别事件处理函数</p>
+<p>DOM0级别事件处理函数，使用 element.on[eventname]=fn的方式给元素添加事件</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">优点：简单明了，省去获取元素等一系列前提操作</div><div class="line"></div><div class="line">缺点：html代码与js代码高度耦合，不符合分离原则</div><div class="line"></div><div class="line">DOM0级别事件处理函数</div><div class="line"></div><div class="line">DOM0级别事件处理函数，使用 element<span class="selector-class">.on</span>[eventname]=fn的方式给元素添加事件</div></pre></td></tr></table></figure>
+<p>DOM2级事件处理程序</p>
+<p>DOM2级添加了addEventListener（添加事件处理程序）和removeEventListener(移除事件处理程序),也就是我们刚刚讲的上面的DOM2例子。</p>
+<p>添加事件处理函数addEventListener</p>
+<p>参数1 指定事件名称…click mouseover mouseout<br>参数2 事件处理程序（匿名函数或者有名函数）<br>参数3 true（捕获阶段发生） or false（冒泡阶段发生）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;input type="button" value="点击" id="click" /&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var oBtn=document.getElementById('click');</div><div class="line">    oBtn.addEventListener('click',function()&#123;</div><div class="line">        alert(this.id)//click  this指的是该元素作用域内</div><div class="line">    &#125;,false)</div><div class="line">    //注意该种方式可以给一个函数添加多个事件处理函数，执行顺序与添加顺序相同</div><div class="line">    oBtn.addEventListener('click',function()&#123;</div><div class="line">        alert('Hello World')//click</div><div class="line">    &#125;,false)         </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>移除事件处理函数removeEventListener</p>
+<p>如果事件处理函数是有名函数，则可以通过名字来移除，匿名函数无法移除。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;input type="button" value="点击" id="click" /&gt;</div><div class="line">&lt;script&gt;</div><div class="line"> var oBtn=document.getElementById('click');</div><div class="line">function showId()&#123;</div><div class="line">    alert(this.id);</div><div class="line">&#125;;</div><div class="line">function HelloWorld()&#123;</div><div class="line">    alert('HellowWorld');</div><div class="line">&#125;</div><div class="line">oBtn.addEventListener("click",showId,false);</div><div class="line">oBtn.addEventListener("click",HelloWorld,false);</div><div class="line">oBtn.removeEventListener('click',showId,false)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>最后只能弹出HellowWorld</p>
+<p>IE事件处理程序attachEvent,detachEvent<br>ie实现了与dom类似的两个方法，attachEvent（添加），detachEvent（删除）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> oBtn.attachEvent('onclick',showId);//这时候会报错，因为这里的是在window的作用域内</div><div class="line">//修改如下</div><div class="line">oBtn.detachEvent('onclick',showId) ;//点击没有任何反应</div></pre></td></tr></table></figure>
+<p>Mozilla中： </p>
+<p>addEventListener的使用方式： </p>
+<p>target.addEventListener(type, listener, useCapture); </p>
+<p>target： 文档节点、document、window 或 XMLHttpRequest。<br>type： 字符串，事件名称，不含“on”，比如“click”、“mouseover”、“keydown”等。<br>listener ：实现了 EventListener 接口或者是 JavaScript 中的函数。<br>useCapture ：是否使用捕捉，一般用 false 。例如：document.getElementById(“testText”).addEventListener(“keydown”, function (event) { alert(event.keyCode); }, false); </p>
+<p>IE中： </p>
+<p>target.attachEvent(type, listener);<br>target： 文档节点、document、window 或 XMLHttpRequest。<br>type： 字符串，事件名称，含“on”，比如“onclick”、“onmouseover”、“onkeydown”等。<br>listener ：实现了 EventListener 接口或者是 JavaScript 中的函数。 例如：document.getElementById(“txt”).attachEvent(“onclick”,function(event){alert(event.keyCode);}); </p>
+<p>W3C 及 IE 同时支持移除指定的事件, 用途是移除设定的事件, 格式分别如下: </p>
+<p>W3C格式: </p>
+<p>removeEventListener(event,function,capture/bubble); </p>
+<p>Windows IE的格式如下: </p>
+<p>detachEvent(event,function); </p>
+<p>target.addEventListener(type, listener, useCapture);<br>target 文档节点、document、window 或 XMLHttpRequest。<br>type 字符串，事件名称，不含“on”，比如“click”、“mouseover”、“keydown”等。<br>listener 实现了 EventListener 接口或者是 JavaScript 中的函数。<br>useCapture 是否使用捕捉，看了后面的事件流一节后就明白了，一般用 false<br>事件触发时，会将一个 Event 对象传递给事件处理程序，比如：<br>document.getElementById(“testText”).addEventListener(“keydown”, function (event) { alert(event.keyCode); }, false);<br>适应的浏览器版本不同，同时在使用的过程中要注意<br>attachEvent方法 按钮onclick IE中使用<br>addEventListener方法 按钮click fox中使用<br>两者使用的原理：可对执行的优先级不一样，下面实例讲解如下：<br>attachEvent方法，为某一事件附加其它的处理事件。（不支持Mozilla系列）<br>addEventListener方法 用于 Mozilla系列<br>举例: document.getElementById(“btn”).onclick = method1;<br>document.getElementById(“btn”).onclick = method2;<br>document.getElementById(“btn”).onclick = method3;如果这样写,那么将会只有medhot3被执行<br>写成这样：<br>var btn1Obj = document.getElementById(“btn1”); //object.attachEvent(event,function);<br>btn1Obj.attachEvent(“onclick”,method1);<br>btn1Obj.attachEvent(“onclick”,method2);<br>btn1Obj.attachEvent(“onclick”,method3);执行顺序为method3-&gt;method2-&gt;method1<br>如果是Mozilla系列，并不支持该方法，需要用到addEventListener var btn1Obj = document.getElementById(“btn1”);<br>//element.addEventListener(type,listener,useCapture);<br>btn1Obj.addEventListener(“click”,method1,false);<br>btn1Obj.addEventListener(“click”,method2,false);<br>btn1Obj.addEventListener(“click”,method3,false);执行顺序为method1-&gt;method2-&gt;method3<br>实例：(要注意的是div必须放到js前面才行) </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">&lt;html&gt; </div><div class="line">&lt;head&gt; </div><div class="line">&lt;/head&gt; </div><div class="line">&lt;body&gt; </div><div class="line">&lt;div id="name1" style="border:1px solid red;padding:10px 10px 10px 10px;" style="border:1px solid red;padding:10px 10px 10px 10px;"&gt; </div><div class="line">&lt;div id="name2" style="border:1px solid green;padding:10px 10px 10px 10px;" style="border:1px solid green;padding:10px 10px 10px 10px;"&gt;点击&lt;/div&gt; </div><div class="line">&lt;/div&gt; </div><div class="line">&lt;div id="info"&gt;&lt;/div&gt; </div><div class="line">&lt;script type="text/javascript"&gt;&lt;!-- </div><div class="line">var name1=document.getElementById('name1'); //要注意 </div><div class="line">var name2=document.getElementById('name2'); //要注意 </div><div class="line">var info=document.getElementById('info'); </div><div class="line">if(name1.attachEvent)&#123; //对于attachEvent前面的target我们一定要保证不为空 </div><div class="line">name1.attachEvent('onclick',function () &#123; info.innerHTML += "红色" + "&lt;br&gt;"; &#125;); </div><div class="line">name2.attachEvent('onclick',function () &#123; info.innerHTML += "绿色" + "&lt;br&gt;"; &#125;); </div><div class="line">&#125;else&#123; </div><div class="line">name1.addEventListener('click',function () &#123; info.innerHTML += "红色" + "&lt;br&gt;"; &#125;,false); </div><div class="line">name2.addEventListener('click',function () &#123; info.innerHTML += "绿色" + "&lt;br&gt;"; &#125;,false); </div><div class="line">&#125; </div><div class="line">// --&gt;&lt;/script&gt; </div><div class="line">&lt;/body&gt; </div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？"><a href="#17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？" class="headerlink" title="17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？"></a>17、什么是事件委托？原理是什么？（自行举例并测试）有什么好处？</h2><p>事件委托原理：事件冒泡机制。<br>优点：1.可以大量节省内存占用，减少事件注册。比如ul上代理所有li的click事件就很不错。<br>2.可以实现当新增子对象时，无需再对其进行事件绑定，对于动态内容部分尤为合适<br>缺点：事件代理的常用应用应该仅限于上述需求，如果把所有事件都用事件代理，可能会出现事件误判。即本不该被触发的事件被绑定上了事件。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;ul id="ul1"&gt;</div><div class="line">    &lt;li&gt;111&lt;/li&gt;</div><div class="line">    &lt;li&gt;222&lt;/li&gt;</div><div class="line">    &lt;li&gt;333&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var oUl1 = document.getElementById('ul1');</div><div class="line">    myAddEvent(oUl1,'click',function(e)&#123;</div><div class="line">        var e = e || window.event;</div><div class="line">        var target = e.target || e.srcElement;</div><div class="line">        if(target.nodeName === 'LI')&#123;</div><div class="line">            alert(target.innerHTML);</div><div class="line">            target.style.background = 'red';</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    // 事件绑定封装成js函数</div><div class="line">    function myAddEvent(obj, ev, fn)&#123;</div><div class="line">        if(obj.attachEvent)&#123; // ie</div><div class="line">            obj.attachEvent('on'+ev, fn);</div><div class="line">        &#125;else&#123;</div><div class="line">            obj.addEventListener(ev, fn, false);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>18、怎么给未来元素绑定事件？（刚开始页面上不存在的元素，后续通过js添加）</p>
+<p>19、你是怎么理解this的？</p>
+<h2 id="20、什么是异步和同步？简述ajax的流程"><a href="#20、什么是异步和同步？简述ajax的流程" class="headerlink" title="20、什么是异步和同步？简述ajax的流程"></a>20、什么是异步和同步？简述ajax的流程</h2><p>![enter description here][2]</p>
+<p>![enter description here][3]</p>
+<p>一、ajax概述</p>
+<p>1、Ajax是Asynchronous（[ə’sɪŋkrənəs） JavaScript XML的简写，不是一门新技术，而是对现有技术的综合利用。这一技术能够向服务器请求额外数据而无需刷新页面，带来了更好的用户体验</p>
+<p>2、Ajax技术的核心是XMLHttpRequest对象（简称XHR），这是由微软首先引入的一个特性。在XHR出现之前，Ajax式的通信必须借助一些hack手段来实现，大多数是使用隐藏的框架或内嵌框架。</p>
+<p>3、XHR为向服务器发送请求和解析服务器响应提供了流畅的接口。能够以异步的方式从服务器取得更多的信息，意味着用户单击后，可以不必刷新页面也能获取新数据。也就是说可以使用XHR对象取得新数据，然后再通过DOM将新数据插入到页面中</p>
+<p>4、虽然Ajax名字中有XML的成分，但是呢，Ajax通信与数据格式无关，这种技术就是无须刷新页面即可从服务器取得数据，但不一定是XML数据</p>
+<p>二、操作：原生ajax和jQuery中封装的ajax</p>
+<p>1、原生ajax：</p>
+<p>ajax作用：发送请求（设置请求setRequest） 接收响应(getResponse)</p>
+<p>A、ajax原生方式发送请求：</p>
+<p>Ajax中最重要也是最固定的部分就是http请求。</p>
+<p>1)建立连接：（IE7及以上版本都支持XMLHttpRequest）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest(); //创建异步请求对象</div></pre></td></tr></table></figure>
+<p>2)Get请求：格式必须是（url?name1=value1&amp;name2=value2）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open("get","01-register.php?name="+name);//初始化异步get请求</div><div class="line">xhr.send(null); //与服务器建立连接</div></pre></td></tr></table></figure>
+<p>3)Post请求</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open('post','01-XMLHTTPRequest-test.php');//请求报文行</div><div class="line">xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded'); /*post请求设置请求头*/</div><div class="line">xhr.send('name=rose&amp;age=20'); //请求报文体</div></pre></td></tr></table></figure>
+<p>4)get和post请求的区别：</p>
+<p>★get不需要设置请求头，而post需要设置请求头</p>
+<p>★get的数据传递通过url进行，而post的数据在send方法中传递</p>
+<p>B、ajax原生方式接收响应：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*监听服务器的响应*/</div><div class="line">xhr.onreadystatechange=function()&#123;</div><div class="line">/*判断当前的响应是否成功 1.服务器做出了响应 2.响应的结果是正确的*/</div><div class="line"> if(xhr.status==200 &amp;&amp; xhr.readyState==4)&#123;</div><div class="line"> var result=xhr.responseText;</div><div class="line"> console.log(result); //输出从服务器中获取到的数据</div><div class="line"> //接下来就可以对数据进行相应的处理了</div><div class="line"> &#125;</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<p>C、处理响应数据：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/*监听*/</div><div class="line">xhr.onreadystatechange=function()&#123;</div><div class="line">if(xhr.status==200 &amp;&amp; xhr.readyState==4)&#123; /*判断状态*/</div><div class="line">var result;</div><div class="line">/*获取响应报文中的Content-Type*/</div><div class="line">var ct=xhr.getResponseHeader("Content-Type");</div><div class="line">/*判断Content-Type,进行数据的解析*/</div><div class="line">if(ct.indexOf("xml") != -1)&#123;</div><div class="line">result=xhr.responseXML;</div><div class="line">&#125;</div><div class="line">else if(ct.indexOf("json") !=-1)&#123;</div><div class="line">result=JSON.parse(xhr.responseText);</div><div class="line">&#125;</div><div class="line">else&#123;</div><div class="line">result=xhr.responseText;</div><div class="line">&#125;</div><div class="line">/*调用回调函数--委托--代理*/</div><div class="line">success &amp;&amp; success(result);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p> jQuery中封装的ajax</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">type: 请求方式(get/post),</div><div class="line">url: "register.php",</div><div class="line">data: 发送请求数据,</div><div class="line">beforeSend:function()&#123;返回false可以取消本次ajax请求&#125;,</div><div class="line">success:function(result)&#123; 成功响应后调用 &#125;,</div><div class="line">error:function(err)&#123; 错误响应时调用 &#125;,</div><div class="line">complete:function()&#123; 响应完成时调用(包括成功和失败) &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>jQuery中提供了专门的方法来序列化表单：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'form'</span>).serialize():   <span class="comment">//序列化表单(即格式化key=val &amp; key=val);</span></div></pre></td></tr></table></figure>
+<p>三、响应</p>
+<p>我们需要监听服务器的响应状态，然后对从服务器中获取的数据做相应的处理。</p>
+<p>1)    onreadystatechange是JavaScript事件中的一种，用于监听XMLHttpRequest的状态</p>
+<p>2)    readystate：响应状态，返回XMLHTTP请求的当前状态</p>
+<p>readyState 状态</p>
+<p>状态说明</p>
+<p>(0)未初始化</p>
+<p>此阶段确认XMLHttpRequest对象是否创建，并为调用open()方法进行未初始化作好准备。值为0表示对象已经存在，否则浏览器会报错－－对象不存在。</p>
+<p>(1)载入</p>
+<p>此阶段对XMLHttpRequest对象进行初始化，即调用open()方法，根据参数(method,url,true)完成对象状态的设置。并调用send()方法开始向服务端发送请求。值为1表示正在向服务端发送请求。</p>
+<p>(2)载入完成</p>
+<p>此阶段接收服务器端的响应数据。但获得的还只是服务端响应的原始数据，并不能直接在客户端使用。值为2表示已经接收完全部响应数据。并为下一阶段对数据解析作好准备。</p>
+<p>(3)交互</p>
+<p>此阶段解析接收到的服务器端响应数据。即根据服务器端响应头部返回的MIME类型把数据转换成能通过responseBody、responseText或responseXML属性存取的格式，为在客户端调用作好准备。状态3表示正在解析数据。</p>
+<p>(4)完成</p>
+<p>此阶段确认全部数据都已经解析为客户端可用的格式，解析已经完成。值为4表示数据解析完毕，可以通过XMLHttpRequest对象的相应属性取得数据。</p>
+<h2 id="web服务器响应码"><a href="#web服务器响应码" class="headerlink" title="web服务器响应码"></a>web服务器响应码</h2><p>401 UNAUTHORIZED </p>
+<p>　　表示您必须有一个正确的用户名称及密码才能得到对方网页（unauthorized site）的使用权，例如浏览一些收费网页时就会出现这个信息。 </p>
+<p>　　403 FORBIDDEN </p>
+<p>　　可能是因为您未在对方网站注册，一般情况下可在网上进行即时注册，但一些完全”封闭”的网站都会产生以上的信息。 </p>
+<p>　　404 NOT FOUND </p>
+<p>　　最常见的出错信息，其实这是因为您的WWW浏览器不能找到您所要的文件（即网页），该文件可能被移到别的地方去了、或者根本就不复存在。 </p>
+<p>　　409 Fire flood and Pestilence </p>
+<p>　　无意义。 解决办法：重新连接。 </p>
+<p>　　500 SERVER ERROR </p>
+<p>　　这个信息通常是对方网页程序设计错误而产生的，您等待对方网页纠正错误后再上吧。 </p>
+<p>　　503 SERVICE UNAVAILABLE </p>
+<p>　　这个信息表示不能连上对方网站、是因为网络线路非常繁忙。过一会儿（比如三分钟后）再试试吧。 </p>
+<h2 id="21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？"><a href="#21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？" class="headerlink" title="21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？"></a>21、什么是同源策略？什么是跨域？怎么解决跨域？jsonp的原理是什么？jsonp是如何得到后台返回的数据的？</h2><p>22、什么是面向对象和面向过程？对象中什么是属性？什么是方法？</p>
+<h2 id="23、怎么获取person对象的age属性？有几种写法？"><a href="#23、怎么获取person对象的age属性？有几种写法？" class="headerlink" title="23、怎么获取person对象的age属性？有几种写法？"></a>23、怎么获取person对象的age属性？有几种写法？</h2><p>遍历一个JS对象中的所有属性</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">var obj = &#123;a:1,b:2,c:3&#125;</div><div class="line">for(var s in obj)</div><div class="line">alert(obj[s]);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>24、什么是类？js怎么定义类？什么是原型？有什么用？<br>javascript的方法可以分为三类：</p>
+<p>类方法<br>对象方法<br>原型方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">function People(name)</div><div class="line">&#123;</div><div class="line">  this.name=name;</div><div class="line">  //对象方法</div><div class="line">  this.Introduce=function()&#123;</div><div class="line">    alert("My name is "+this.name);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//类方法</div><div class="line">People.Run=function()&#123;</div><div class="line">  alert("I can run");</div><div class="line">&#125;</div><div class="line">//原型方法</div><div class="line">People.prototype.IntroduceChinese=function()&#123;</div><div class="line">  alert("我的名字是"+this.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//测试</div><div class="line"></div><div class="line">var p1=new People("Windking");</div><div class="line"></div><div class="line">p1.Introduce();</div><div class="line"></div><div class="line">People.Run();</div><div class="line"></div><div class="line">p1.IntroduceChinese();</div></pre></td></tr></table></figure>
+<p>25、什么是原型链？实现继承的方式有几种？</p>
+<p>26、call和apply是什么？有什么用</p>
+<p>27、什么是插件？自己封装过插件吗？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/17/JavaScript 最新面试题（偏基础）JavaScript 最新面试题（偏基础）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-关于异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1544,596 +2134,6 @@ $(&apos;#username&apos;).focus();
 
 
   
-    <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/AJAX/">AJAX</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/16/AJAX/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:54:22.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1/22/2017 9:40:51 PM </p>
-<h5 id="原生JavaScript的AJAX"><a href="#原生JavaScript的AJAX" class="headerlink" title="原生JavaScript的AJAX"></a>原生JavaScript的AJAX</h5><p>首先，获取XHR对象，它被内嵌在浏览器中了，主要为了区别IE6这类特殊浏览器，不然直接调用XMLHttpRequest这个方法即可获取。成功获取对象之后使用open（）方法传入请求方法，请求url。这个onreadystatechange是一个回调函数，负责接收服务器响应数据的处理，这里类似将它重写，浏览器会调用这个方法处理返回数据。send方法在GET请求中只需要传入null，因为send方法是把数据放在请求体内，只有POST方式才会往send里写数据。<br>回调函数的写法是按照视频代码抄写的。在responseText可以获得服务端写来的数据。</p>
-<pre><code>var XHR=false;
-function createXHR(){
-     if(window.XMLHttpRequest){
-        XHR=new XMLHttpRequest();
-    }else{
-        XHR=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
-    }
-}
-function checkUsername(){
-    var username=document.getElementById(&quot;check&quot;).value;
-    createXHR();
-    XHR.open(&quot;get&quot;,&quot;checkUsername?username=&quot;+username,true);
-    XHR.onreadystatechange=showMsgCallback;
-    XHR.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;); 
-    XHR.send();
-}
-function showMsgCallback(){
-    if(XHR.readyState==4){
-        if(XHR.status==200){
-            var text=XHR.responseText.toString(); 
-            alert(text==&apos;no&apos;);
-            console.log(text);
-            if(text==&quot;yes&quot;){
-                 alert(1);
-                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户名已注册!&quot;;
-            }
-            else if(text==&quot;no&quot;)
-            {
-                 alert(2);
-                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户可以注册&quot;;
-            }
-        }
-    }
-}
-</code></pre><h5 id="三种Jquery的ajax写法"><a href="#三种Jquery的ajax写法" class="headerlink" title="三种Jquery的ajax写法"></a>三种Jquery的ajax写法</h5><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;title&gt;ajax交互&lt;/title&gt;
-&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-
-    $(document).ready(function() {
-        $(&apos;#button1&apos;).click(function() {
-            var text = $(&apos;#msg1&apos;);
-            $.ajax({
-                type : &quot;POST&quot;,
-                url : &quot;jquery&quot;,
-                data : &quot;username=ssss&quot;,
-                dataType : &apos;text&apos;,
-                success : function(result) {
-
-                    if (result==&quot;success&quot;) {                   
-                        text.text(&quot;&quot;);
-                        text.append(&quot;成功&quot;);
-                    }else{
-                        text.text(&quot;&quot;);
-                        text.append(&quot;失败&quot;);
-                    }
-                },
-                error : function() {
-                    text.text(&quot;&quot;);
-                    text.append(&quot;操作出错&quot;);
-                }
-
-            });
-        });
-    });
-    $(document).ready(function(){
-        $(&apos;#button2&apos;).click(function(){
-            var text = $(&apos;#msg2&apos;);
-            $.post(&apos;jquery&apos;, &apos;username=xxxx&apos;,function(result){
-                if (result===&quot;success&quot;) {                  
-                        text.text(&quot;成功&quot;);
-                    }else{
-                        text.text(&quot;失败&quot;);
-                    }
-            },&apos;text&apos;);
-        });
-    });
-    $(document).ready(function(){
-        $(&apos;#button3&apos;).click(function(){
-            var text = $(&apos;#msg3&apos;);
-            $.get(&apos;jquery&apos;,&apos;username=zzzzz&apos;,function(result){
-                if (result===&quot;success&quot;) {                  
-                        text.text(&quot;成功&quot;);
-                    }else{
-                        text.text(&quot;失败&quot;);
-                    }
-            });
-        });
-    });
-
-&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;button id=&quot;button1&quot;&gt;点击使用$ajax发送&lt;/button&gt;
-    &lt;span id=&quot;msg1&quot;&gt;&lt;/span&gt;
-    &lt;br/&gt;
-    &lt;button id=&quot;button2&quot;&gt;点击使用$post发送&lt;/button&gt;
-    &lt;span id=&quot;msg2&quot;&gt;&lt;/span&gt;
-    &lt;br/&gt;
-    &lt;button id=&quot;button3&quot;&gt;点击使用$get发送&lt;/button&gt;
-    &lt;span id=&quot;msg3&quot;&gt;&lt;/span&gt;
-    &lt;br/&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
-    pageEncoding=&quot;UTF-8&quot;%&gt;
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
-&lt;%@ taglib prefix=&quot;s&quot; uri=&quot;/struts-tags&quot; %&gt;
-&lt;%@ taglib prefix=&quot;sx&quot; uri=&quot;/struts-dojo-tags&quot; %&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
-&lt;title&gt;AJAX范例&lt;/title&gt;
-&lt;sx:head/&gt;
-&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-$(document).ready(function(){
-    $(&apos;#usrname&apos;).blur(function(){
-        $.ajax({
-            type : &quot;POST&quot;,
-            url : &quot;checkUsername&quot;,
-            data : &apos;name=&apos;+$(&apos;#usrname&apos;).val(),
-            dataType : &apos;text&apos;,
-            success:function(data){
-                if(data===&apos;yes&apos;)
-                    $(&apos;#msg&apos;).text(&apos;可以登录&apos;);
-                else if(data===&apos;no&apos;)
-                    $(&apos;#msg&apos;).text(&apos;无法登录&apos;);
-            }
-        });
-    });
-});
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;center&gt;
-    &lt;form action=&quot;&quot;&gt;
-            &lt;span id=&quot;msg&quot;&gt;&lt;/span&gt;&lt;br/&gt;
-        用户名:&lt;input id=&quot;usrname&quot; name=&quot;name&quot; type=&quot;text&quot;/&gt;
-        &lt;br/&gt;
-        密码：&lt;input name=&quot;password&quot; type=&quot;password&quot;/&gt;
-        &lt;br/&gt;
-        &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
-        &lt;button type=&quot;reset&quot;&gt;重置&lt;/button&gt;
-    &lt;/form&gt;
-&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新建,模板,小书匠</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/16/AJAX/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/DOM/">DOM</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/16/DOM/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:53:42.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2017-01-21 22:29:04 星期一</p>
-<h5 id="DOM即文件对象模型（Document-Object-Model，简称DOM）"><a href="#DOM即文件对象模型（Document-Object-Model，简称DOM）" class="headerlink" title="DOM即文件对象模型（Document Object Model，简称DOM）"></a>DOM即文件对象模型（Document Object Model，简称DOM）</h5><p>HTML DOM 定义了访问和操作 HTML 文档的标准方法。<br>简言之：<br>  （1）其实它就是将 HTML 文档以节点（Node）为单位将其表达为等级明确、节构整齐的树节构，以便于简捷地操作文档的元素。<br>  （2）它在一定程度上对HTML（或XML）元素（节点）实现了“黑盒”访问和操作。例如，我们获得了一个节点对象，然后直接用它的parentNode属性获得它的父节点（如果父节点存在的话），进而访问或操作父节点对象，而我们无需知道它的父节点是什么类型的对象，它的id是什么等等，父节点就是封装好的一个“黑盒”，我们不知道它的id、name等所有属性，依然可以利用dom技术随意操作它。</p>
-<h5 id="DOM对节点（Node）的定义："><a href="#DOM对节点（Node）的定义：" class="headerlink" title="DOM对节点（Node）的定义："></a>DOM对节点（Node）的定义：</h5><p>Ø  整个文档是一个文档节点<br>Ø  每个 HTML 标签是一个元素节点<br>Ø  包含在 HTML 元素中的文本是文本节点<br>Ø  每一个 HTML 属性是一个属性节点<br>Ø  注释属于注释节点</p>
-<h5 id="DOM中节点的层级关系"><a href="#DOM中节点的层级关系" class="headerlink" title="DOM中节点的层级关系"></a>DOM中节点的层级关系</h5><p>层级关系很明确也很简单，根据节点之间的关系将其分为三种：父（parent）、子（child）、同胞（sibling）</p>
-<h5 id="DOM对象树"><a href="#DOM对象树" class="headerlink" title="DOM对象树"></a>DOM对象树</h5><p>DOM将每一个HTML或XML的文档都看待成内存中的一个对象树<br>浏览器中的一个页面对应一个HTML文档，因此有一颗与之对应的HTML的DOM树。<br>浏览器中一个页面可能处理很多个XML的文档，因此可能有很多颗XML的DOM树。</p>
-<h5 id="DOM对象树种的常用节点"><a href="#DOM对象树种的常用节点" class="headerlink" title="DOM对象树种的常用节点"></a>DOM对象树种的常用节点</h5><table>
-<thead>
-<tr>
-<th>接口</th>
-<th>nodeType常量（IE不支持）</th>
-<th>nodeType值</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Element</td>
-<td>Node.ELEMENT_NODE</td>
-<td>1</td>
-<td>元素节点（标签）</td>
-</tr>
-<tr>
-<td>Atrr</td>
-<td>Node.ATTRIBUTE_NODE</td>
-<td>2</td>
-<td>属性节点（属性）</td>
-</tr>
-<tr>
-<td>Text</td>
-<td>Node.TEXT_NODE</td>
-<td>3</td>
-<td>文本节点（文本）</td>
-</tr>
-<tr>
-<td>Comment</td>
-<td>Node.COMMENT_NODE</td>
-<td>8</td>
-<td>注释节点（注释）</td>
-</tr>
-<tr>
-<td>Document</td>
-<td>Node.DOCUMENT_NODE</td>
-<td>9</td>
-<td>文本根节点</td>
-</tr>
-</tbody>
-</table>
-<h5 id="DOM对象树不同节点的名值对比"><a href="#DOM对象树不同节点的名值对比" class="headerlink" title="DOM对象树不同节点的名值对比"></a>DOM对象树不同节点的名值对比</h5><table>
-<thead>
-<tr>
-<th>节点</th>
-<th>nodeName（节点名）</th>
-<th>nodeValue(节点值)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Element元素节点</td>
-<td>对应标签名的大写形式如：HTML</td>
-<td>Null</td>
-</tr>
-<tr>
-<td>Attr属性节点</td>
-<td>文档中定义的属性名如：type</td>
-<td>文档中定义的属性值如：button</td>
-</tr>
-<tr>
-<td>Text文本节点</td>
-<td>#text</td>
-<td>文本内容如：133</td>
-</tr>
-<tr>
-<td>Comment注释节点</td>
-<td>#comment</td>
-<td>注释内容如：comment</td>
-</tr>
-<tr>
-<td>Document根节点</td>
-<td>#document</td>
-<td>Null</td>
-</tr>
-</tbody>
-</table>
-<h5 id="根节点的属性和方法："><a href="#根节点的属性和方法：" class="headerlink" title="根节点的属性和方法："></a>根节点的属性和方法：</h5><pre><code>&lt;script type=&quot;text/javascript&quot; &gt;  
-
-            function testapi(){  
-
-                //获得根节点元素  
-
-                var htmlrootElement=document.documentElement;  
-
-                //获得指定的元素节点  
-
-                var divNode=document.getElementById(&quot;div1&quot;);  
-
-                //获得整个页面所有的div元素节点  
-
-                var divNodes=document.getElementsByTagName(&quot;div&quot;);  
-
-                //创建元素节点  
-
-                var newdivNode=document.createElement(&quot;div&quot;);  
-
-
-
-                //创建文本节点  
-
-                var newTextNode=document.createTextNode(&quot;aaaa&quot;);  
-
-            }  
-
-&lt;/script&gt;  
-</code></pre><h5 id="元素节点的属性和方法"><a href="#元素节点的属性和方法" class="headerlink" title="元素节点的属性和方法"></a>元素节点的属性和方法</h5><pre><code>//根据标签名获得元素节点  
-
-var divNode2=document.getElementById(&quot;div2&quot;);  
-
-var divNodes2=divNode2.getElementsByTagName(&quot;div&quot;);  
-
-
-
-//操作属性  
-
-var inputtext=document.getElementById(&quot;inputtext&quot;);  
-
-var flag=inputtext.hasAttribute(&quot;value&quot;);  
-
-inputtext.setAttribute(&quot;value&quot;, &quot;aaacede&quot;);  
-
-var textValue=inputtext.getAttribute(&quot;value&quot;);  
-
-flag=inputtext.hasAttribute(&quot;value&quot;);   
-
-inputtext.removeAttribute(&quot;value&quot;);  
-
-alert(&quot;完成&quot;);  
-</code></pre><h5 id="所有节点（Node）都拥有的属性和方法"><a href="#所有节点（Node）都拥有的属性和方法" class="headerlink" title="所有节点（Node）都拥有的属性和方法"></a>所有节点（Node）都拥有的属性和方法</h5><pre><code> //返回元素节点包含的属性节点  
-
- var attributes=inputtext.attributes;  
-
- //nodeName nodeValue nodeType  
-
- var inputName=inputtext.nodeName;  
-
- var nodetype=inputtext.nodeType;  
-
- var nodevalue=inputtext.nodeValue;  
-
-
-
- //获取所有的子节点  
-
- var childs=divNode2.childNodes;  
-
- //获取父节点  
-
- var parent=divNode2.parentNode;  
-
- //获取第一个子节点和最后一个子节点  
-
- var first=divNode2.firstChild;  
-
- var last=divNode2.lastChild;  
-
-
-
- //获取兄弟节点  
-
- var next=divNode2.nextSibling;  
-
- var last=divNode2.previousSibling;  
-
-
-
- //判断是否有子节点  
-
- var flag2=divNode2.hasChildNodes();  
-
- //追加节点  
-
- newdivNode.appendChild(newTextNode);  
-
- divNode2.appendChild(newdivNode);  
-
- var new2=document.createElement(&quot;div&quot;);  
-
- var text2=document.createTextNode(&quot;insert&quot;);  
-
- new2.appendChild(text2);  
-
- divNode2.insertBefore(new2,divNode2.firstChild);  
-
-
-
- var new3=document.createElement(&quot;div&quot;);  
-
- var text3=document.createTextNode(&quot;insert3&quot;);  
-
- new3.appendChild(text3);  
-
- divNode2.insertBefore(new3, null);  
-
- divNode2.insertBefore(new3,divNode2.firstChild);  
-
-
-
- //移除节点  
-
- var remove=divNode2.removeChild(new3);  
-
- var new4=document.createElement(&quot;div&quot;);  
-
- var text4=document.createTextNode(&quot;insert4&quot;);  
-
- new4.appendChild(text4);  
-
- //如果第一个参数曾经是当前节点的子节点，那么这个参数对应的节点会被移动到第二个参数对应的节点的位置。  
-
- //第二个参数对应的节点被删除了。  
-
- var replace=divNode2.replaceChild(new4,divNode2.getElementsByTagName(&quot;div&quot;)[0]);  
-
-
-
-//clone节点  
-
-var clone1=divNode2.cloneNode(true);  
-
-var clone2=divNode2.cloneNode(false);  
-</code></pre><h5 id="AJAX-DOM-和javascript的关系"><a href="#AJAX-DOM-和javascript的关系" class="headerlink" title="AJAX,DOM 和javascript的关系"></a>AJAX,DOM 和javascript的关系</h5><p>DOM能够为javascript引擎公开网页。通过DOM，可以采用编程的方式操作文档的结构。Web页面的DOM表示是一个树状结构，由元素或点组成。节点可以包含很多子节点。javascript通过全局变量document公开当前Webde根节点，这个变量是所有DOM操作的起点。DOM使用容器的属性来做索引，而不是使用数字做索引。DOM中元素的关系可以看作是HTML清单的镜像。这种关系可以是双向的，修改DOM将改变HTML标记，随之会反映在页面的现实上。<br>用一个简单一点的关系表示就是：<br>DOM–数据–&gt;jQuery–利用–&gt;Ajax–请求–&gt;后台<br>后台–回应Ajax请求–&gt;Jquery–操作dom变现请求–&gt;dom</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/16/DOM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-flag" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/16/flag/">flag</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/16/flag/" class="archive-article-date">
-  	<time datetime="2017-03-16T07:52:45.629Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2017-01-20 21:34:57 星期日<br>今天没学习 该打 偶然看到入门前端学习路线 立个flag 静心 慢慢学吧~</p>
-<h5 id="一、学习HTML5和CSS3基础"><a href="#一、学习HTML5和CSS3基础" class="headerlink" title="一、学习HTML5和CSS3基础"></a>一、学习HTML5和CSS3基础</h5><p>随着这移动互联网快速发展的时代，尤其是4G时代，HTML5+CSS3已然成为新一代的web前端技术。</p>
-<p>随着HTML5的发展和普及，了解 HTML5 也将成为 Web开发人员的必修课。涉及到网页外观时，就需要学习 CSS 了，它可以帮你把网页做得更美观。</p>
-<p>利用 HTML5 和 CSS3 模拟一些你所见过的网站的排版和布局（色彩，图片，文字样式等等）。</p>
-<p>如：京东首页的实现</p>
-<p>当然，达内Web前端开发课程第一阶段还会学习 PS设计工具使用和互联网UI设计理论。在阶段项目实战中，大家常见的京东详情页、360专题页、淘宝首页都可以实现。</p>
-<h5 id="二、学习JavaScript，了解DOM"><a href="#二、学习JavaScript，了解DOM" class="headerlink" title="二、学习JavaScript，了解DOM"></a>二、学习JavaScript，了解DOM</h5><p>JavaScript 是一种能让你的网页更加生动活泼的程序语言。学习 JavaScript 的基本语法，学会用 JavaScript 操作网页中 DOM 元素。</p>
-<p>在达内 Web前端开发课程第二阶段完全可以实现大家平常喜欢玩的 2048 游戏。（是不是感觉挺有意思）</p>
-<p>接着学习使用一些 JavaScript 库，比如 Jquery 是大部分 Web开发人员都喜欢用的，通过 Jquery 可以有效的提高 JavaScript 的开发效率。</p>
-<h5 id="三、学习Web前端核心"><a href="#三、学习Web前端核心" class="headerlink" title="三、学习Web前端核心"></a>三、学习Web前端核心</h5><p>学习 Jquery 之后，大家就要学习 HTML5 高级阶段（HTML5 Canvas 绘图、HTML5 SVG、音频和视频处理、表单处理、表单验证…等）</p>
-<p>达内培训每学习一个阶段，都是让学员真正进行项目实战，在熟悉和消化所学习知识的同时，增加自己的项目经验和团队协作能力。</p>
-<p>在学习 Jquery 和 HTML5 学习结束后，就可以完成飞机大战、飞扬的小鸟以及复杂订单的实现。</p>
-<h5 id="四、学习HTTP协议及Server端技术"><a href="#四、学习HTTP协议及Server端技术" class="headerlink" title="四、学习HTTP协议及Server端技术"></a>四、学习HTTP协议及Server端技术</h5><p>服务器端脚本编程（后台开发）也是Web开发人员的基本功之一，达内学员现在学习的是最流行的php。</p>
-<p>要构建动态页面通常会使用到数据库，通常PHP使用Oracle、MySQL数据库。</p>
-<p>对于Web服务器来说，Apache 一个就已经是了。那么Apache、php、数据库，该怎么理解它们的关系？</p>
-<p>1、Apache是服务器基础，php和数据库都需要Apache来协调工作</p>
-<p>2、php是脚本解释，如果不用php，那么Apache出来的东西就只是静态的，而不能在服务器实现功能</p>
-<p>3、数据库完全可以单独使用，但是和Apache、php一起，则是由php代码调用数据库接口，而apache就负责解释php代码，让他能真正地实现对数据库的调用</p>
-<p>这个阶段的项目实战是实现京东订单页和个人论坛。</p>
-<h5 id="五、学习Web前端高级技术"><a href="#五、学习Web前端高级技术" class="headerlink" title="五、学习Web前端高级技术"></a>五、学习Web前端高级技术</h5><p>当你掌握了HTML5，CSS3，JavaScript等技术之后，就应该找一个Web框架加快你的Web开发速度，使用框架可以节约你很多时间。</p>
-<p>在达内学习的Bootstrap是目前很受欢迎的前端框架。Bootstrap 是基于 HTML、CSS、JAVASCRIPT 的，它简洁灵活，使得 Web 开发更加快捷，是web前端开发者最喜欢，也是现在企业里最常用的前端框架。</p>
-<p>Angular JS是一款优秀的前端JS框架，已经被用于Google的多款产品当中。AngularJS有着诸多特性，最为核心的是：MVC编程、模块化、控制器、路由、事件绑定等等。</p>
-<p>AngularJS通过为开发者呈现一个更高层次的抽象来简化应用的开发。如同其他的抽象技术一样，这也会损失一部分灵活性。换句话说，并不是所有的应用都适合用AngularJS来做。AngularJS主要考虑的是构建CRUD应用。幸运的是，至少90%的WEB应用都是CRUD应用。但是要了解什么适合用AngularJS构建，就得了解什么不适合用AngularJS构建。</p>
-<p>从最简单的HTML5基础到Web前端高级技术，内容还是不少滴！要想精通这里的每一样技术，都得下苦功夫才行。四个月的时间，在达内讲师的指导下，足够你对Web前端开发产生一个有效的认识，并且找到理想的工作。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/16/flag/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -2227,19 +2227,19 @@ var clone2=divNode2.cloneNode(false);
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
