@@ -154,6 +154,296 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/DOM/">DOM</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/DOM/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:53:42.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017-01-21 22:29:04 星期一</p>
+<h5 id="DOM即文件对象模型（Document-Object-Model，简称DOM）"><a href="#DOM即文件对象模型（Document-Object-Model，简称DOM）" class="headerlink" title="DOM即文件对象模型（Document Object Model，简称DOM）"></a>DOM即文件对象模型（Document Object Model，简称DOM）</h5><p>HTML DOM 定义了访问和操作 HTML 文档的标准方法。<br>简言之：<br>  （1）其实它就是将 HTML 文档以节点（Node）为单位将其表达为等级明确、节构整齐的树节构，以便于简捷地操作文档的元素。<br>  （2）它在一定程度上对HTML（或XML）元素（节点）实现了“黑盒”访问和操作。例如，我们获得了一个节点对象，然后直接用它的parentNode属性获得它的父节点（如果父节点存在的话），进而访问或操作父节点对象，而我们无需知道它的父节点是什么类型的对象，它的id是什么等等，父节点就是封装好的一个“黑盒”，我们不知道它的id、name等所有属性，依然可以利用dom技术随意操作它。</p>
+<h5 id="DOM对节点（Node）的定义："><a href="#DOM对节点（Node）的定义：" class="headerlink" title="DOM对节点（Node）的定义："></a>DOM对节点（Node）的定义：</h5><p>Ø  整个文档是一个文档节点<br>Ø  每个 HTML 标签是一个元素节点<br>Ø  包含在 HTML 元素中的文本是文本节点<br>Ø  每一个 HTML 属性是一个属性节点<br>Ø  注释属于注释节点</p>
+<h5 id="DOM中节点的层级关系"><a href="#DOM中节点的层级关系" class="headerlink" title="DOM中节点的层级关系"></a>DOM中节点的层级关系</h5><p>层级关系很明确也很简单，根据节点之间的关系将其分为三种：父（parent）、子（child）、同胞（sibling）</p>
+<h5 id="DOM对象树"><a href="#DOM对象树" class="headerlink" title="DOM对象树"></a>DOM对象树</h5><p>DOM将每一个HTML或XML的文档都看待成内存中的一个对象树<br>浏览器中的一个页面对应一个HTML文档，因此有一颗与之对应的HTML的DOM树。<br>浏览器中一个页面可能处理很多个XML的文档，因此可能有很多颗XML的DOM树。</p>
+<h5 id="DOM对象树种的常用节点"><a href="#DOM对象树种的常用节点" class="headerlink" title="DOM对象树种的常用节点"></a>DOM对象树种的常用节点</h5><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>nodeType常量（IE不支持）</th>
+<th>nodeType值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element</td>
+<td>Node.ELEMENT_NODE</td>
+<td>1</td>
+<td>元素节点（标签）</td>
+</tr>
+<tr>
+<td>Atrr</td>
+<td>Node.ATTRIBUTE_NODE</td>
+<td>2</td>
+<td>属性节点（属性）</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Node.TEXT_NODE</td>
+<td>3</td>
+<td>文本节点（文本）</td>
+</tr>
+<tr>
+<td>Comment</td>
+<td>Node.COMMENT_NODE</td>
+<td>8</td>
+<td>注释节点（注释）</td>
+</tr>
+<tr>
+<td>Document</td>
+<td>Node.DOCUMENT_NODE</td>
+<td>9</td>
+<td>文本根节点</td>
+</tr>
+</tbody>
+</table>
+<h5 id="DOM对象树不同节点的名值对比"><a href="#DOM对象树不同节点的名值对比" class="headerlink" title="DOM对象树不同节点的名值对比"></a>DOM对象树不同节点的名值对比</h5><table>
+<thead>
+<tr>
+<th>节点</th>
+<th>nodeName（节点名）</th>
+<th>nodeValue(节点值)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element元素节点</td>
+<td>对应标签名的大写形式如：HTML</td>
+<td>Null</td>
+</tr>
+<tr>
+<td>Attr属性节点</td>
+<td>文档中定义的属性名如：type</td>
+<td>文档中定义的属性值如：button</td>
+</tr>
+<tr>
+<td>Text文本节点</td>
+<td>#text</td>
+<td>文本内容如：133</td>
+</tr>
+<tr>
+<td>Comment注释节点</td>
+<td>#comment</td>
+<td>注释内容如：comment</td>
+</tr>
+<tr>
+<td>Document根节点</td>
+<td>#document</td>
+<td>Null</td>
+</tr>
+</tbody>
+</table>
+<h5 id="根节点的属性和方法："><a href="#根节点的属性和方法：" class="headerlink" title="根节点的属性和方法："></a>根节点的属性和方法：</h5><pre><code>&lt;script type=&quot;text/javascript&quot; &gt;  
+
+            function testapi(){  
+
+                //获得根节点元素  
+
+                var htmlrootElement=document.documentElement;  
+
+                //获得指定的元素节点  
+
+                var divNode=document.getElementById(&quot;div1&quot;);  
+
+                //获得整个页面所有的div元素节点  
+
+                var divNodes=document.getElementsByTagName(&quot;div&quot;);  
+
+                //创建元素节点  
+
+                var newdivNode=document.createElement(&quot;div&quot;);  
+
+
+
+                //创建文本节点  
+
+                var newTextNode=document.createTextNode(&quot;aaaa&quot;);  
+
+            }  
+
+&lt;/script&gt;  
+</code></pre><h5 id="元素节点的属性和方法"><a href="#元素节点的属性和方法" class="headerlink" title="元素节点的属性和方法"></a>元素节点的属性和方法</h5><pre><code>//根据标签名获得元素节点  
+
+var divNode2=document.getElementById(&quot;div2&quot;);  
+
+var divNodes2=divNode2.getElementsByTagName(&quot;div&quot;);  
+
+
+
+//操作属性  
+
+var inputtext=document.getElementById(&quot;inputtext&quot;);  
+
+var flag=inputtext.hasAttribute(&quot;value&quot;);  
+
+inputtext.setAttribute(&quot;value&quot;, &quot;aaacede&quot;);  
+
+var textValue=inputtext.getAttribute(&quot;value&quot;);  
+
+flag=inputtext.hasAttribute(&quot;value&quot;);   
+
+inputtext.removeAttribute(&quot;value&quot;);  
+
+alert(&quot;完成&quot;);  
+</code></pre><h5 id="所有节点（Node）都拥有的属性和方法"><a href="#所有节点（Node）都拥有的属性和方法" class="headerlink" title="所有节点（Node）都拥有的属性和方法"></a>所有节点（Node）都拥有的属性和方法</h5><pre><code> //返回元素节点包含的属性节点  
+
+ var attributes=inputtext.attributes;  
+
+ //nodeName nodeValue nodeType  
+
+ var inputName=inputtext.nodeName;  
+
+ var nodetype=inputtext.nodeType;  
+
+ var nodevalue=inputtext.nodeValue;  
+
+
+
+ //获取所有的子节点  
+
+ var childs=divNode2.childNodes;  
+
+ //获取父节点  
+
+ var parent=divNode2.parentNode;  
+
+ //获取第一个子节点和最后一个子节点  
+
+ var first=divNode2.firstChild;  
+
+ var last=divNode2.lastChild;  
+
+
+
+ //获取兄弟节点  
+
+ var next=divNode2.nextSibling;  
+
+ var last=divNode2.previousSibling;  
+
+
+
+ //判断是否有子节点  
+
+ var flag2=divNode2.hasChildNodes();  
+
+ //追加节点  
+
+ newdivNode.appendChild(newTextNode);  
+
+ divNode2.appendChild(newdivNode);  
+
+ var new2=document.createElement(&quot;div&quot;);  
+
+ var text2=document.createTextNode(&quot;insert&quot;);  
+
+ new2.appendChild(text2);  
+
+ divNode2.insertBefore(new2,divNode2.firstChild);  
+
+
+
+ var new3=document.createElement(&quot;div&quot;);  
+
+ var text3=document.createTextNode(&quot;insert3&quot;);  
+
+ new3.appendChild(text3);  
+
+ divNode2.insertBefore(new3, null);  
+
+ divNode2.insertBefore(new3,divNode2.firstChild);  
+
+
+
+ //移除节点  
+
+ var remove=divNode2.removeChild(new3);  
+
+ var new4=document.createElement(&quot;div&quot;);  
+
+ var text4=document.createTextNode(&quot;insert4&quot;);  
+
+ new4.appendChild(text4);  
+
+ //如果第一个参数曾经是当前节点的子节点，那么这个参数对应的节点会被移动到第二个参数对应的节点的位置。  
+
+ //第二个参数对应的节点被删除了。  
+
+ var replace=divNode2.replaceChild(new4,divNode2.getElementsByTagName(&quot;div&quot;)[0]);  
+
+
+
+//clone节点  
+
+var clone1=divNode2.cloneNode(true);  
+
+var clone2=divNode2.cloneNode(false);  
+</code></pre><h5 id="AJAX-DOM-和javascript的关系"><a href="#AJAX-DOM-和javascript的关系" class="headerlink" title="AJAX,DOM 和javascript的关系"></a>AJAX,DOM 和javascript的关系</h5><p>DOM能够为javascript引擎公开网页。通过DOM，可以采用编程的方式操作文档的结构。Web页面的DOM表示是一个树状结构，由元素或点组成。节点可以包含很多子节点。javascript通过全局变量document公开当前Webde根节点，这个变量是所有DOM操作的起点。DOM使用容器的属性来做索引，而不是使用数字做索引。DOM中元素的关系可以看作是HTML清单的镜像。这种关系可以是双向的，修改DOM将改变HTML标记，随之会反映在页面的现实上。<br>用一个简单一点的关系表示就是：<br>DOM–数据–&gt;jQuery–利用–&gt;Ajax–请求–&gt;后台<br>后台–回应Ajax请求–&gt;Jquery–操作dom变现请求–&gt;dom</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/DOM/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-flag" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1357,11 +1647,11 @@ arr.splice(2,2,&apos;x&apos;,&apos;y&apos;);
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
+                <a href="javascript:void(0)" class="js-tag color5">meta</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">meta</a>
+                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1385,11 +1675,11 @@ arr.splice(2,2,&apos;x&apos;,&apos;y&apos;);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Node.Js</a>
+                <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color3">Node.Js</a>
               </li>
              
               <li class="article-tag-list-item">
