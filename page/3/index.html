@@ -154,6 +154,520 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jquery（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/jquery（一）/">jquery（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/jquery（一）/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:54:57.706Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2030-01-22 22:20:00 星期二</p>
+<h4 id="jQuery基础"><a href="#jQuery基础" class="headerlink" title="jQuery基础"></a>jQuery基础</h4><p>1)dom对象 — &gt; jQuery对象</p>
+<p>var $obj = $(dom对象);</p>
+<pre><code>var $d = $(div);
+</code></pre><p>2)jQuery对象 —- &gt; dom对象</p>
+<p>第一种方式:   var obj = $obj.get(0);</p>
+<p>第二种方式:   var obj = $obj.get()[0];</p>
+<p>(3) jQuery与prototype如何同时使用？</p>
+<p>因为jQuery与prototype都使用$函数，需要使用</p>
+<p>var $a = jQuery.noConflict()将$函数改名为”$a”。</p>
+<h4 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h4><h5 id="1-、基本选择器-selector-a1-html"><a href="#1-、基本选择器-selector-a1-html" class="headerlink" title="1)、基本选择器   selector/a1.html"></a>1)、基本选择器   selector/a1.html</h5><ul>
+<li>——&gt; 匹配所有元素               #id ——&gt; 根据给定的ID匹配一个元素。<br>.class ——&gt;  根据给定的类匹配元素。 element ——&gt;根据给定的元素名匹配所有元素<br>selector1,selector2..selectorn ——&gt;将每一个选择器匹配到的元素合并</li>
+</ul>
+<h5 id="2-、层次选择器"><a href="#2-、层次选择器" class="headerlink" title="2)、层次选择器"></a>2)、层次选择器</h5><p>select1 select2——&gt;匹配select1下的所有儿子元素（不包含孙子元素）</p>
+<p>select1&gt;select2——&gt;匹配select1下的所有子元素（包含孙子元素）</p>
+<p>select1+select2——&gt;匹配紧跟在select1后的第一个兄弟元素（同辈元素）</p>
+<p>select1~select2——&gt;匹配select1后的所有兄弟元素（及找到所有的同</p>
+<h5 id="3-、过滤选择器"><a href="#3-、过滤选择器" class="headerlink" title="3)、过滤选择器"></a>3)、过滤选择器</h5><h6 id="a-基本过滤选择器-selector-a3-html"><a href="#a-基本过滤选择器-selector-a3-html" class="headerlink" title="a.基本过滤选择器 selector/ a3.html"></a>a.基本过滤选择器 selector/ a3.html</h6><p>:first——&gt;获取第一个元素</p>
+<p>:last——&gt;获取第一个元素</p>
+<p>:not(selector)——&gt;获取去除给定元素后的所有匹配元素</p>
+<p>:even——&gt;匹配所有索引值为偶数的元素，从 0 开始计数</p>
+<p>:odd——&gt;匹配所有索引值为奇数的元素，从 0 开始计数</p>
+<p>:eq(index)——&gt;匹配一个给定索引值的元素</p>
+<p>:gt(index)——&gt;匹配所有大于给定索引值的元素</p>
+<p>:lt(index)——&gt;匹配所有小于给定索引值的元素</p>
+<h6 id="b-内容过滤选择器-selector-a4-html"><a href="#b-内容过滤选择器-selector-a4-html" class="headerlink" title="b.内容过滤选择器  selector/ a4.html"></a>b.内容过滤选择器  selector/ a4.html</h6><p>:contains(text)——&gt;匹配包含给定文本的元素</p>
+<p>:empty   ——&gt;匹配没有子元素且文本为空的元素<br>:has(selector)——&gt;匹配含有选择器所匹配的元素的元素</p>
+<p>:parent ——&gt; 跟empty相反,即有子节点，或者内容不为空的节点。</p>
+<h6 id="c-可见性过滤选择器-selector-a5-html"><a href="#c-可见性过滤选择器-selector-a5-html" class="headerlink" title="c.可见性过滤选择器 selector/ a5.html"></a>c.可见性过滤选择器 selector/ a5.html</h6><p>:hidden——&gt;匹配所有不可见元素，或者type为hidden的元素</p>
+<p>:visible——&gt;匹配所有的可见元素</p>
+<h6 id="d-属性过滤选择器-selector-a6-html"><a href="#d-属性过滤选择器-selector-a6-html" class="headerlink" title="d.属性过滤选择器 selector/ a6.html"></a>d.属性过滤选择器 selector/ a6.html</h6><p>[attribute]——&gt;匹配包含给定属性的元素</p>
+<p>[attribute=value]——&gt;匹配给定的属性是某个特定值的元素</p>
+<p>[attribute!=value]——&gt;匹配属性不等于特定值的元素。</p>
+<h6 id="e-子元素过滤选择器-selector-a7-html"><a href="#e-子元素过滤选择器-selector-a7-html" class="headerlink" title="e.子元素过滤选择器 selector/ a7.html"></a>e.子元素过滤选择器 selector/ a7.html</h6><p>:nth-child(index/even/odd)——&gt;匹配其父元素下的第N个子或奇</p>
+<p>偶元素（即同辈中第N个元素）<br> :first-child——&gt;匹配其父元素下第一个子元素<br> :last-child——&gt;匹配其父元素下最后一个子元素</p>
+<p>f.表单对象属性过滤选择器</p>
+<p>:enabled——&gt;匹配所有可用元素</p>
+<p>:disabled——&gt;匹配所有不可用元素</p>
+<p>:checked——&gt;匹配复选框、单选按钮中被选中的元素</p>
+<p>:selected——&gt;匹配所有选中的option元素</p>
+<h5 id="4-、表单选择器"><a href="#4-、表单选择器" class="headerlink" title="4)、表单选择器"></a>4)、表单选择器</h5><p>:input——&gt;匹配所有 input, textarea, select 和 button 元素</p>
+<p>:text——&gt;匹配所有的单行文本框</p>
+<p>:pasword——&gt;匹配所有密码框</p>
+<p>:radio——&gt;匹配所有单选按钮</p>
+<p>:checkbox——&gt;匹配所有复选框</p>
+<p>:submit——&gt;匹配所有提交按钮</p>
+<p>:image——&gt;匹配所有图像域</p>
+<p>:reset——&gt;匹配所有重置按钮</p>
+<p>:button——&gt;匹配所有按钮</p>
+<p>:file——&gt;匹配所有文件域</p>
+<p>:hidden——&gt; 匹配所有不可见元素，或者type为hidden的元素</p>
+<h4 id="dom操作"><a href="#dom操作" class="headerlink" title="dom操作"></a>dom操作</h4><h5 id="1-、查询-dom-d1-html"><a href="#1-、查询-dom-d1-html" class="headerlink" title="1)、查询  dom / d1.html"></a>1)、查询  dom / d1.html</h5><p>利用选择器找到要操作的节点之后，访问节点的html内容、text内容、节点的值以及节点的属性值。除此之外，还可以修改这些值。</p>
+<p>a, html() : 相当于innerHTML</p>
+<p>b, text(): 获取div,p,span等元素内文本相当于innerText，</p>
+<p>c, val():获取文本框text、下拉列表select或选择框checkbox的值</p>
+<p>d, attr():获取或设置节点的属性值</p>
+<h5 id="2-、创建-dom-d2-html"><a href="#2-、创建-dom-d2-html" class="headerlink" title="2)、创建   dom / d2.html"></a>2)、创建   dom / d2.html</h5><pre><code>$(html);
+</code></pre><h5 id="3-、插入节点"><a href="#3-、插入节点" class="headerlink" title="3)、插入节点"></a>3)、插入节点</h5><p>append():向每个匹配的元素内部追加内容，当做最后一个儿子</p>
+<p>prepend():向每个匹配的元素内部前置内容。当做第一个儿子</p>
+<p>after():在每个匹配的元素之后插入内容，当做后一个兄弟 </p>
+<p>before():在每个匹配的元素之前插入内容，当做前一个兄弟</p>
+<pre><code>var $obj = $(&apos;&lt;div&gt;首先是培养兴趣，然后是多写代码&lt;/div&gt;&apos;);
+
+$(&apos;body&apos;).append($obj);
+</code></pre><p>也可以简化为</p>
+<pre><code>$(&apos;body&apos;).append(&apos;&lt;div&gt;首先是培养兴趣，然后是多写代码&lt;/div&gt;&apos;);
+</code></pre><h5 id="4-、删除节点-dom-d3-html"><a href="#4-、删除节点-dom-d3-html" class="headerlink" title="4)、删除节点 dom / d3.html"></a>4)、删除节点 dom / d3.html</h5><p>remove()：$(‘ul li:eq(1)’).remove();</p>
+<p>remove(selector)：$(‘ul li’).remove(‘#l1’);</p>
+<p>empty():清空节点：$(‘ul li:eq(1)’).empty();</p>
+<h5 id="5-、复制节点-dom-d6-html"><a href="#5-、复制节点-dom-d6-html" class="headerlink" title="5)、复制节点  dom / d6.html"></a>5)、复制节点  dom / d6.html</h5><p>clone():不复制行为</p>
+<p>clone(true):使复制的节点也具有行为</p>
+<h5 id="6-、属性操作-dom-d7-html"><a href="#6-、属性操作-dom-d7-html" class="headerlink" title="6)、属性操作  dom / d7.html"></a>6)、属性操作  dom / d7.html</h5><p>读取：attr(‘ ‘);     $(“img”).attr(“src”);</p>
+<p>设置： attr(‘ ‘,’ ‘) $(“img”).attr(‘src’, ‘test.jpg’); </p>
+<pre><code>s(&apos;#d1&apos;).attr(&apos;value&apos;,&apos;font-size:40px;color:red;&apos;);
+
+$(&apos;#form1 input:disabled&apos;).attr(&apos;disabled&apos;,false);
+</code></pre><p>或者一次设置多个 attr({“”:””,””:””});</p>
+<pre><code>eg:$(&apos;div&apos;).attr({&apos;class&apos;:&apos;s1&apos;,&apos;style&apos;:&apos;color:red;&apos;});
+</code></pre><p>删除：removeAttr(‘ ‘)</p>
+<h5 id="7-、样式操作-dom-d8-html"><a href="#7-、样式操作-dom-d8-html" class="headerlink" title="7)、样式操作  dom / d8.html"></a>7)、样式操作  dom / d8.html</h5><p>   获取和设置: attr(“class”,””), attr(“style”,””);</p>
+<pre><code>alert($(&apos;div&apos;).attr(&apos;class&apos;));
+
+$(&apos;div&apos;).attr(&apos;class&apos;,&apos;s1&apos;)
+
+$(&apos;div&apos;).attr(&apos;style&apos;,&apos;color:blue;&apos;);
+</code></pre><p>追加:addClass(‘’):$(‘div’).addClass(‘s2 s3’);</p>
+<p>移除:removeClass(‘’) :$(‘div’).removeClass(‘s3’);</p>
+<p>或者removeClass(‘s1 s2’) </p>
+<p>或者removeClass()//会删除所有样式</p>
+<p>切换样式：toggleClass:$(‘div’).toggleClass(‘s3’);</p>
+<p>是否有某个样式 hasClass(‘’):alert($(‘div’).hasClass(‘s3’));</p>
+<p>读取css(‘’)</p>
+<p>设置css(‘’,’’)或者css({‘’:’’,’’:’’})//设置多个样式</p>
+<pre><code>$(&apos;table tr:first&apos;).css(&apos;background-color&apos;,&apos;#cccccc&apos;);
+
+$(&apos;table tr:first&apos;).css({&apos;background-color&apos;:&apos;#cccccc&apos;,’width’:’3px’});
+</code></pre><h5 id="8-、遍历节点-dom-d9-html"><a href="#8-、遍历节点-dom-d9-html" class="headerlink" title="8)、遍历节点 dom / d9.html"></a>8)、遍历节点 dom / d9.html</h5><p>children()/children(selector):var $obj = $(‘#d0’).children(‘div’);</p>
+<p>只考虑子元素，不考虑其它后代元素。</p>
+<p>next(selector): 下一个兄弟$(‘#d2’).next()</p>
+<p>prev(selector):上一个兄弟$(‘#d2’).prev()</p>
+<p>siblings(selector):其它兄弟，</p>
+<pre><code>$(&apos;#d2&apos;).siblings(‘#id’)除#d2之外的其他兄弟节点
+
+也可以写成：$(‘#id’).siblings()
+</code></pre><p>parent():父节点,不是爷爷节点</p>
+<p>find(selector): 从当前节点开始，查找所有后代，包括孙子。</p>
+<h4 id="事件处理机制-event"><a href="#事件处理机制-event" class="headerlink" title="事件处理机制   event"></a>事件处理机制   event</h4><h5 id="1-、事件绑订-event-e1-html"><a href="#1-、事件绑订-event-e1-html" class="headerlink" title="1)、事件绑订  event/e1.html"></a>1)、事件绑订  event/e1.html</h5><pre><code>$(function(){
+
+$(&apos;#d1&apos;).bind(&apos;click&apos;,function(){
+
+$(this).html(&apos;hello java&apos;);
+
+});
+
+});
+</code></pre><h5 id="2-、绑订方式的简写形式"><a href="#2-、绑订方式的简写形式" class="headerlink" title="2)、绑订方式的简写形式"></a>2)、绑订方式的简写形式</h5><p>上个列子可以简写为：<br>    $(function(){</p>
+<pre><code>$(&apos;#d1&apos;).click(function(){
+
+$(this).html(&apos;hello java&apos;);
+
+});
+
+});
+</code></pre><h5 id="3-、合成事件-event-e2-html-e3-html"><a href="#3-、合成事件-event-e2-html-e3-html" class="headerlink" title="3)、合成事件  event/e2.html   e3.html"></a>3)、合成事件  event/e2.html   e3.html</h5><p>hover(mouseenter,leave) : 模拟光标悬停事件，区别于CSS中的伪类</p>
+<pre><code>$(&apos;.s1&apos;).hover(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+},function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+});
+</code></pre><p>相当于以下连个函数的合成：</p>
+<pre><code>$(&apos;.s1&apos;).mouseenter(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+});
+
+$(&apos;.s1&apos;).mouseleave(function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+  });
+</code></pre><p>上面的mouseenter和mouseleave两个函数可以合并为：</p>
+<pre><code>$(&apos;.s1&apos;).mouseenter(function(){
+
+$(this).addClass(&apos;s2&apos;);
+
+}).mouseleave(function(){
+
+$(this).removeClass(&apos;s2&apos;);
+
+});
+
+toggle(fn1,fn2...)：模拟鼠标连续单击事件
+ $(&apos;#a1&apos;).toggle(function(){
+
+$(&apos;#d1&apos;).show(&apos;slow&apos;);
+
+},function(){
+
+$(&apos;#d1&apos;).hide(&apos;slow&apos;);
+
+});
+</code></pre><h5 id="4-、事件冒泡"><a href="#4-、事件冒泡" class="headerlink" title="4)、事件冒泡"></a>4)、事件冒泡</h5><p>(1)获得事件对象  event/e4.html e5.html e6.html<br>    click(function(e){</p>
+<pre><code>});
+
+function f1(e){
+</code></pre><p>依据事件对象获得事件源(即哪一个节点产生了该事件，返回的是原始的DOM节点)，其中e不再是DOM对象，而是封装之后的JQuery对象。</p>
+<pre><code>var srcObj = e.srcElement;  //ie
+
+var srcObj = e.target; //firefox,chrome
+
+var srcObj = e.srcElement || e.target; //同时兼容ie,firefox,chrome
+
+alert(srcObj.innerHTML);
+</code></pre><p>依据事件对象获得鼠标点击的坐标（相对于屏幕）</p>
+<pre><code>alert(e.clientX + &apos;:&apos; + e.clientY);
+</code></pre><h5 id="2-事件对象的属性-event-e6-html"><a href="#2-事件对象的属性-event-e6-html" class="headerlink" title="(2)事件对象的属性  event/e6.html"></a>(2)事件对象的属性  event/e6.html</h5><p>event.type</p>
+<p>event.target:返回事件源(是dom对象)</p>
+<p>event.pageX/pageY   获得相对于当前浏览器页面的坐标</p>
+<h5 id="3-停止冒泡-event-e7-html"><a href="#3-停止冒泡-event-e7-html" class="headerlink" title="(3)停止冒泡   event / e7.html"></a>(3)停止冒泡   event / e7.html</h5><pre><code>event.stopPropagation()
+
+function clickA(e){
+
+alert(&quot;你点击了一个链接&quot;);
+
+//取消冒泡
+
+e.stopPropagation();
+
+  }
+
+function clickDiv(e){
+
+alert(&quot;你点击了一个Div&quot;);
+
+}
+</code></pre><p>上列中，链接处于div中，当取消冒泡后，单击链接便不会触发div上面</p>
+<p>onlick事件的执行，上例中的输出结果为：你点击了一个链接</p>
+<h5 id="4-停止默认行为-event-e8-html"><a href="#4-停止默认行为-event-e8-html" class="headerlink" title="(4)停止默认行为  event / e8.html"></a>(4)停止默认行为  event / e8.html</h5><pre><code>event.preventDefault()
+
+$(function(){
+
+$(&apos;#d1&apos;).click(function(e){
+
+var flag = confirm(&apos;确定删除吗&apos;);
+
+if(!flag){
+
+e.preventDefault();
+
+}
+
+});
+
+});
+</code></pre><p>设置停止了默认行为后，表单提交按钮便不会自动提交了。相当于：</p>
+<p>　　&lt;input type=”submit” id=”d1” name=”username” </p>
+<p>　　  onclick=”return fonfirm(‘确定要删除吗’)”/&gt;</p>
+<h5 id="5-、模拟操作-event-e9-html"><a href="#5-、模拟操作-event-e9-html" class="headerlink" title="5)、模拟操作  event / e9.html"></a>5)、模拟操作  event / e9.html</h5><pre><code>trigger(&apos;click&apos;)
+
+$(function(){
+
+$(&apos;#b1&apos;).click(function(){
+
+//$(&apos;#username&apos;).trigger(&apos;focus&apos;);
+
+$(&apos;#username&apos;).focus();
+
+});
+
+});
+</code></pre><p>上列模拟了文本框控件获得焦点的行为，当点击按钮后，文本框便获得了焦点，表现为文本框内有光标闪动。</p>
+<p>mouseenter和mouseover效果一样，可以互换使用</p>
+<p>mouseout和mouseleave效果一样，可以互换使用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/jquery（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/16/AJAX/">AJAX</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/16/AJAX/" class="archive-article-date">
+  	<time datetime="2017-03-16T07:54:22.632Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1/22/2017 9:40:51 PM </p>
+<h5 id="原生JavaScript的AJAX"><a href="#原生JavaScript的AJAX" class="headerlink" title="原生JavaScript的AJAX"></a>原生JavaScript的AJAX</h5><p>首先，获取XHR对象，它被内嵌在浏览器中了，主要为了区别IE6这类特殊浏览器，不然直接调用XMLHttpRequest这个方法即可获取。成功获取对象之后使用open（）方法传入请求方法，请求url。这个onreadystatechange是一个回调函数，负责接收服务器响应数据的处理，这里类似将它重写，浏览器会调用这个方法处理返回数据。send方法在GET请求中只需要传入null，因为send方法是把数据放在请求体内，只有POST方式才会往send里写数据。<br>回调函数的写法是按照视频代码抄写的。在responseText可以获得服务端写来的数据。</p>
+<pre><code>var XHR=false;
+function createXHR(){
+     if(window.XMLHttpRequest){
+        XHR=new XMLHttpRequest();
+    }else{
+        XHR=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+}
+function checkUsername(){
+    var username=document.getElementById(&quot;check&quot;).value;
+    createXHR();
+    XHR.open(&quot;get&quot;,&quot;checkUsername?username=&quot;+username,true);
+    XHR.onreadystatechange=showMsgCallback;
+    XHR.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;); 
+    XHR.send();
+}
+function showMsgCallback(){
+    if(XHR.readyState==4){
+        if(XHR.status==200){
+            var text=XHR.responseText.toString(); 
+            alert(text==&apos;no&apos;);
+            console.log(text);
+            if(text==&quot;yes&quot;){
+                 alert(1);
+                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户名已注册!&quot;;
+            }
+            else if(text==&quot;no&quot;)
+            {
+                 alert(2);
+                document.getElementById(&quot;msg&quot;).innerHTML=&quot;此用户可以注册&quot;;
+            }
+        }
+    }
+}
+</code></pre><h5 id="三种Jquery的ajax写法"><a href="#三种Jquery的ajax写法" class="headerlink" title="三种Jquery的ajax写法"></a>三种Jquery的ajax写法</h5><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;ajax交互&lt;/title&gt;
+&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    $(document).ready(function() {
+        $(&apos;#button1&apos;).click(function() {
+            var text = $(&apos;#msg1&apos;);
+            $.ajax({
+                type : &quot;POST&quot;,
+                url : &quot;jquery&quot;,
+                data : &quot;username=ssss&quot;,
+                dataType : &apos;text&apos;,
+                success : function(result) {
+
+                    if (result==&quot;success&quot;) {                   
+                        text.text(&quot;&quot;);
+                        text.append(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;&quot;);
+                        text.append(&quot;失败&quot;);
+                    }
+                },
+                error : function() {
+                    text.text(&quot;&quot;);
+                    text.append(&quot;操作出错&quot;);
+                }
+
+            });
+        });
+    });
+    $(document).ready(function(){
+        $(&apos;#button2&apos;).click(function(){
+            var text = $(&apos;#msg2&apos;);
+            $.post(&apos;jquery&apos;, &apos;username=xxxx&apos;,function(result){
+                if (result===&quot;success&quot;) {                  
+                        text.text(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;失败&quot;);
+                    }
+            },&apos;text&apos;);
+        });
+    });
+    $(document).ready(function(){
+        $(&apos;#button3&apos;).click(function(){
+            var text = $(&apos;#msg3&apos;);
+            $.get(&apos;jquery&apos;,&apos;username=zzzzz&apos;,function(result){
+                if (result===&quot;success&quot;) {                  
+                        text.text(&quot;成功&quot;);
+                    }else{
+                        text.text(&quot;失败&quot;);
+                    }
+            });
+        });
+    });
+
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;button id=&quot;button1&quot;&gt;点击使用$ajax发送&lt;/button&gt;
+    &lt;span id=&quot;msg1&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;button id=&quot;button2&quot;&gt;点击使用$post发送&lt;/button&gt;
+    &lt;span id=&quot;msg2&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;button id=&quot;button3&quot;&gt;点击使用$get发送&lt;/button&gt;
+    &lt;span id=&quot;msg3&quot;&gt;&lt;/span&gt;
+    &lt;br/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h5 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h5><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;%@ taglib prefix=&quot;s&quot; uri=&quot;/struts-tags&quot; %&gt;
+&lt;%@ taglib prefix=&quot;sx&quot; uri=&quot;/struts-dojo-tags&quot; %&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;AJAX范例&lt;/title&gt;
+&lt;sx:head/&gt;
+&lt;script src=&quot;jquery.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function(){
+    $(&apos;#usrname&apos;).blur(function(){
+        $.ajax({
+            type : &quot;POST&quot;,
+            url : &quot;checkUsername&quot;,
+            data : &apos;name=&apos;+$(&apos;#usrname&apos;).val(),
+            dataType : &apos;text&apos;,
+            success:function(data){
+                if(data===&apos;yes&apos;)
+                    $(&apos;#msg&apos;).text(&apos;可以登录&apos;);
+                else if(data===&apos;no&apos;)
+                    $(&apos;#msg&apos;).text(&apos;无法登录&apos;);
+            }
+        });
+    });
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;
+    &lt;form action=&quot;&quot;&gt;
+            &lt;span id=&quot;msg&quot;&gt;&lt;/span&gt;&lt;br/&gt;
+        用户名:&lt;input id=&quot;usrname&quot; name=&quot;name&quot; type=&quot;text&quot;/&gt;
+        &lt;br/&gt;
+        密码：&lt;input name=&quot;password&quot; type=&quot;password&quot;/&gt;
+        &lt;br/&gt;
+        &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+        &lt;button type=&quot;reset&quot;&gt;重置&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新建,模板,小书匠</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/16/AJAX/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-DOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1651,19 +2165,15 @@ arr.splice(2,2,&apos;x&apos;,&apos;y&apos;);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">新建,模板,小书匠</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1675,15 +2185,19 @@ arr.splice(2,2,&apos;x&apos;,&apos;y&apos;);
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTML5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Node.Js</a>
+                <a href="javascript:void(0)" class="js-tag color5">生词记录</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">生词记录</a>
+                <a href="javascript:void(0)" class="js-tag color3">Node.Js</a>
               </li>
             
             <div class="clearfix"></div>
